@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Le projet - 911 history</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/styles/app.css">
+  <link rel="icon" href="assets/images/porsche-l.png">
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  
+
+</head>
+<body>
+
+  <header>
+   <nav class="navbar">
+
+   <div class="navbar__logo">
+      <a href="index.php">
+        <img src="assets/images/porsche-logo.png" alt="Porsche Logo">
+      </a>
+    </div>
+    
+      <div class="navbar__toggle" id="burger">&#9776;</div>
+        <ul class="navbar__links" id="nav-links">
+            <li><a href="index.php" class="nav-link active">ACCUEIL</a></li>
+            <li><a href="history.php" class="nav-link">HISTORIQUE</a></li>
+            <li><a href="competition.php" class="nav-link">COMPÉTITION</a></li>
+            <li><a href="quiz.php" class="nav-link quiz-btn quiz-link">Gagne ton poster</a></li>
+        </ul>
+    </nav>
+  </header>
+
+    <main>
+        <section class="accueil projet-intro">
+          <div class="projet-intro__overlay"></div>
+          <div class="projet-intro__content">
+            <h1 class="fade-in-on-scroll">Le projet</h1>
+          </div>
+        </section>
+
+        <section class="credit ">
+
+            <div class="credit__wrapper">
+                <h2>Pourquoi ce projet ?</h2>
+                <p class="fade-in fade-in-on-scroll">
+                  Passionné par le monde automobile et son histoire, ainsi que les belles mécaniques, j’ai choisi de consacrer mon travail de fin d’études à une marque et un modèle aussi mythique qu’intemporel connus de tous : la Porsche 911. Elle incarne à mes yeux l’équilibre parfait entre esthétique, performance et héritage.
+                </p>
+            
+                <h2>Un défi personnel et créatif</h2>
+                <p class="fade-in fade-in-on-scroll">
+                  Mon objectif était clair : créer une expérience web immersive, élégante et informative. J’ai voulu raconter l’évolution de la 911 à travers une interface à la fois dynamique et fidèle à l’univers premium de la marque. Ce projet m’a permis d’approfondir mes compétences en animation (GSAP) et intégration 3D (Model-Viewer) que j'ai déjà exploré mais pas encore intégré dans la version actuelle du projet, structuration (PHP, Twig) et design d’interface (SCSS).</p>
+                  <p class="fade-in fade-in-on-scroll">Ce projet m'a permis d'approfondir mes compétences et connaissances en JS. Lors de mes projets scolaires passés, j'étais principalement chargé du design et du scss, au besoin. J'ai donc ici dû me remettre dans le js et en redécouvrir son fonctionnement. 
+                </p>
+            
+                <h2>Ce que j’ai voulu transmettre</h2>
+                <p class="fade-in fade-in-on-scroll">
+                  Plus qu’un simple site, ce projet est une invitation à la découverte. Chaque modèle de voiture a son histoire, ses particularités, son caractère. J’ai cherché à valoriser ces éléments grâce à des animations sobres mais impactantes, une navigation fluide, et un soin particulier apporté à la typographie et à la palette de couleurs.
+                </p>
+            
+                <h2>Fonctionnalités envisagées</h2>
+                <ul class="fade-in feature-list">
+                  <li>Ajout de pages dédiées à la compétition et aux prototypes</li>
+                  <li>Ajout de pages dédier à chaque type de 911, avec une description plus détaillé</li>
+                  <li>Modèles 3D manipulables pour chaque nouvelle génération</li>
+                  <li>Quiz avancé avec niveaux de difficulté et récompenses visuelles</li>
+                  <li>Un système de comparaison de modèles</li>
+                </ul>
+            
+                <h2>Conclusion</h2>
+                <p class="fade-in fade-in-on-scroll">
+                  Ce projet marque une étape importante dans mon parcours. Il reflète ma vision du web design : mêler technique, émotion et exigence visuelle. Et s’il vous a donné envie d’en apprendre plus sur la Porsche 911, alors mon objectif est atteint.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+  <footer class="site-footer">
+    <div class="footer-overlay"></div>
+    <div class="footer-top-line"></div>
+    <div class="footer-content">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h2>Pages</h2>
+          <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="history.php">Histoire</a></li>
+            <li><a href="competition.php">Compétition</a></li>
+            <li><a href="quiz.php">Gagne ton poster</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>Modèles</h2>
+          <ul>
+            <li><a href="history.php#original">L’Original</a></li>
+            <li><a href="history.php#g-series">Porsche Série G</a></li>
+            <li><a href="history.php#964">Porsche 964</a></li>
+            <li><a href="history.php#993">Porsche 993</a></li>
+            <li><a href="history.php#996">Porsche 996</a></li>
+            <li><a href="history.php#997">Porsche 997</a></li>
+            <li><a href="history.php#991">Porsche 991</a></li>
+            <li><a href="history.php#porsche-992">Porsche 992</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>À propos</h2>
+          <ul>
+            <li><a href="#">Le projet</a></li>
+            <li><a href="credit.php">Crédits</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-brand">PORSCHE 911</div>
+        <div class="footer-copyright">DWT_@2025 – Dewandre Jonathan</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script type="module" src="assets/scripts/app.js" ></script>
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Compétition - 911 history</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/styles/app.css">
+  <link rel="icon" href="assets/images/porsche-l.png">
+
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+
+</head>
+<body>
+
+  <header>
+   <nav class="navbar">
+
+    <div class="navbar__logo">
+      <a href="index.php">
+        <img src="assets/images/porsche-logo.png" alt="Porsche Logo">
+      </a>
+    </div>
+
+      <div class="navbar__toggle" id="burger">&#9776;</div>
+        <ul class="navbar__links" id="nav-links">
+            <li><a href="index.php" class="nav-link active">ACCUEIL</a></li>
+            <li><a href="history.php" class="nav-link">HISTOIRE</a></li>
+            <li><a href="#" class="nav-link">COMPÉTITION</a></li>
+            <li><a href="quiz.php" class="nav-link quiz-btn quiz-link">Gagne ton poster</a></li>
+        </ul>
+    </nav>
+  </header>
+
+    <nav class="hist-sidenav" aria-label="Navigation de l'histoire">
+      <ol class="hist-sidenav__list">
+        <li class="hist-sidenav__item">
+          <a class="hist-sidenav__link" href="#Cprelude" data-target="#Cprelude">
+            <span class="hist-sidenav__dot" aria-hidden="true"></span>
+            <span class="hist-sidenav__label"> Prélude</span>
+          </a>
+        </li>
+        <li class="hist-sidenav__item">
+          <a class="hist-sidenav__link" href="#endurance" data-target="#endurance">
+            <span class="hist-sidenav__dot" aria-hidden="true"></span>
+            <span class="hist-sidenav__label">L'endurance</span>
+          </a>
+        </li>
+        <li class="hist-sidenav__item">
+          <a class="hist-sidenav__link" href="#rallye" data-target="#rallye">
+            <span class="hist-sidenav__dot" aria-hidden="true"></span>
+            <span class="hist-sidenav__label"><b>Rallye</b></span>
+          </a>
+        </li>
+        <li class="hist-sidenav__item">
+          <a class="hist-sidenav__link" href="#gt" data-target="#gt">
+            <span class="hist-sidenav__dot" aria-hidden="true"></span>
+            <span class="hist-sidenav__label"><b>Superstars et GT</b></span>
+          </a>
+        </li>
+        <li class="hist-sidenav__item">
+          <a class="hist-sidenav__link" href="#hybrides" data-target="#hybrides">
+            <span class="hist-sidenav__dot" aria-hidden="true"></span>
+            <span class="hist-sidenav__label"><b>Icônes et Hybrides</b></span>
+          </a>
+        </li>
+        <li class="hist-sidenav__item">
+          <a class="hist-sidenav__link" href="#monoplace" data-target="#monoplace">
+            <span class="hist-sidenav__dot" aria-hidden="true"></span>
+            <span class="hist-sidenav__label"><b>Monoplace</b></span>
+          </a>
+        </li>
+        <li class="hist-sidenav__item">
+          <a class="hist-sidenav__link" href="#now" data-target="#now">
+            <span class="hist-sidenav__dot" aria-hidden="true"></span>
+            <span class="hist-sidenav__label"><b>Maintenant</b></span>
+          </a>
+        </li>
+        <li class="hist-sidenav__item">
+          <a class="hist-sidenav__link" href="#compConclu" data-target="#compConclu">
+            <span class="hist-sidenav__dot" aria-hidden="true"></span>
+            <span class="hist-sidenav__label"><b>Conclusion</b></span>
+          </a>
+        </li>
+      </ol>
+      <span class="hist-sidenav__rail" aria-hidden="true"></span>
+      <span class="hist-sidenav__progress" aria-hidden="true"></span>
+    </nav>
+
+  <main>
+    <section class="accueil competition-intro">
+      <div class="competition-intro__overlay"></div>
+      <div class="competition-intro__content">
+        <h1 class="fade-in-on-scroll">De la piste à la légende</h1>
+      </div>
+    </section>
+
+    <section class="intro competition__intro">
+      <p class="accueil__text accueil__text1">Depuis la première Type 64 jusqu’à la 911 moderne, Porsche a bâti sa légende sur les circuits du monde entier.</p>
+      <p class="accueil__text">Chaque victoire, chaque innovation, chaque virage a forgé un mythe : celui d’une marque née pour la performance, perfectionnée sur la route.</p>
+    </section>
+
+    <section id="Cprelude" class="competition Cprelude competition__prelude">
+      <h2 class="competition__title Cprelude__title">La précurseur</h2>
+
+      <div class="Cprelude__grid">
+        <div class="Cprelude__left">
+          <h3 class="competition__title2 Cprelude__subtitle">
+            Type 64 : La première vision de la vitesse
+          </h3>
+
+          <div class="Cprelude__content original__content fade-in-on-scroll">
+            <p>Avant même la naissance de la 911, Ferdinand Porsche crée en 1939 la Type 64 : un prototype d’aluminium conçu pour la course Berlin - Rome.</p>
+            <p>Avec sa silhouette fluide et son aérodynamisme révolutionnaire, elle incarne déjà la philosophie Porsche : allier légèreté, performance et élégance intemporelle.</p>
+          </div>
+        </div>
+
+        <div class="Cprelude__right">
+          <img class="Cprelude__hero" src="assets/images/1939-porsche-type-64-removebg-preview.png" alt="Porsche Type 64 (1939)">
+
+          <div class="Cprelude__gallery">
+            <img src="assets/images/moteur-type-64.jpeg" alt="Détail moteur Type 64">
+            <img src="assets/images/interieur-type-64.jpeg" alt="Intérieur Type 64">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="endurance" class="competition endurance competition__endurance">
+      <!-- Vidéo de fond (côté gauche) -->
+      <video class="endurance__bg" autoplay muted loop playsinline>
+        <source src="assets/videos/video-porsche-format-tel.mp4" type="video/mp4">
+      </video>
+    
+      <!-- Contenu -->
+      <div class="endurance__panel">
+        <h2 class="competition__title endurance__title">L’endurance</h2>
+    
+        <h3 class="competition__title2 endurance__subtitle">
+          L’endurance, ADN de Porsche
+        </h3>
+    
+        <div class="original__content  endurance__content fade-in-on-scroll">
+          <p>
+            Dès les 24 Heures du Mans à Daytona, Porsche a fait de l’endurance son terrain d’expression privilégié, là où la fiabilité compte autant que la vitesse.<br><br>
+            Dès les années 1950, la marque s’impose avec des modèles conçus pour durer : de la 550 Spyder à la légendaire 917, jusqu’à la 919 Hybrid, véritable concentré de technologie moderne.
+          </p>
+          <p>
+            Avec plus de vingt victoires aux 24 Heures du Mans, Porsche inscrit l’endurance au cœur de son histoire.<br><br>
+            Courir longtemps, vite, sans faillir : l’essence même de l’ingénierie Porsche.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    
+    <section id="rallye" class="competition gserie backgroundBlack rallye competition__rallye">
+      <h2 class="competition__title gserie__title rallye__title">Le Rallye
+      </h2>
+      <div class="">
+        <h3 class="competition__title2 ">Du Monte-Carlo au Dakar</h3>
+        <div class="gserie__img rallye__img">
+          <img class="" src="assets/images/porsche-dakar-new.png" alt="">
+          <img class="" src="assets/images/porsche-dakar-original-removebg-preview.png" alt="">
+        </div>
+      </div>
+      <div class="original__content gserie__content competition__content rallye__content fade-in-on-scroll">
+        <p>Sur la glace, la terre ou le sable, la 911 a démontré qu’elle pouvait s’imposer bien au-delà des circuits traditionnels. Dès les années 1970, Porsche s’engage en rallye avec des modèles adaptés aux conditions extrêmes, capables d’allier motricité, fiabilité et performance.</p>
+        <p>Des 911 SC Safari aux mythiques 959 victorieuses du Paris-Dakar, la marque transforme l’impossible en succès technologique.<br><br>Les rallyes légendaires ont façonné le caractère tout-terrain et l’esprit d’aventure de Porsche</p>
+      </div>
+    </section>
+
+    <section id="gt" class="backgroundBlack competition gt competition__gt">
+      <h2 class="competition__title s964__title gt__title">Les Superstars, GT
+        {# <span class="s993__animated-title animated-casino" data-title="La série G"></span> #}
+      </h2>
+      <div class="">
+        <h3 class="gt__title2 ">La passion perpétuelle</h3>
+        <div class="">
+          <img class="gt__img s964__img scroll-scale-forward" src="assets/images/gt1.png" alt="">
+        </div>
+      </div>
+      <div class="original__content competition__content s991__content gt__content fade-in-on-scroll">
+        <p>La compétition Porsche ne vit pas seulement dans les équipes officielles.<br><br>Partout dans le monde, des milliers de pilotes privés prennent le volant de leur 911 GT3, RSR ou Clubsport, partageant la même passion pour les prouesses technologiques et la précision.</p>
+        <p>Véritables passerelles entre la route et la piste, ces modèles offrent un équilibre parfait entre puissance, fiabilité et sensations pures. Que ce soit en Porsche Cup, en endurance ou lors de track days, chaque pilote perpétue l’esprit Porsche Motorsport : une passion accessible, authentique et intemporelle.</p>
+      </div>
+    </section>
+
+    <section class="video953 videoComp">
+      <h2></h2>
+      <video 
+             src="assets/videos/video-porsche-comp.mp4"
+             autoplay
+             muted
+             playsinline
+             controls
+             poster="assets/images/poster.jpg">
+      </video>
+    </section>
+
+    <section id="hybrides" class="competition gserie rallye hybrides competition__hybrides">
+      <h2 class="competition__title hybrides__title">Les icônes des championnats et les hybrides
+        {# <span class="s993__animated-title animated-casino" data-title="La série G"></span> #}
+      </h2>
+      <div class="">
+        <h3 class="competition__title2 ">Hybride par nature</h3>
+        <div class="hybrides__img gserie__img">
+          <img class="scroll-scale-forward" src="assets/images/Porsche-911-Carrera-RSR-1973.png" alt="">
+        </div>
+      </div>
+      <div class="original__content gserie__content competition__content hybrides__content fade-in-on-scroll">
+        <p>Chez Porsche, l’hybride n’est pas une mode, mais une philosophie.<br><br>La marque fusionne depuis toujours la rigueur des circuits et le confort de la route, créant des modèles où innovation et performance avancent ensemble.<br>
+        <br>Chaque victoire inspire une 911 de série, et chaque avancée routière nourrit les voitures de course. Un échange constant qui fait de la 911 une véritable héritière de la compétition.</p>
+        <p></p>
+      </div>
+    </section>
+
+    <section id="monoplace" class="competition monoplace competition__monoplace">
+      <h2 class="competition__title s964__title monoplace__title">Les monoplaces
+        
+      </h2>
+      <div class="">
+        <h3 class="gt__title2 competition__title2 ">Une ambition au sommet des Grands Prix</h3>
+        <div class="s964__img monoplace__img">
+          <img class="scroll-scale-forward" src="assets/images/porsche-804.png" alt="">
+        </div>
+      </div>
+      <div class="original__content s991__content gt__content competition__content monoplace__content fade-in-on-scroll">
+        <p>Bien avant de devenir une icône des voitures de sport, Porsche s’illustre aussi en monoplace, là où la performance pure et l’ingénierie atteignent leur paroxysme.<br><br>Dès la fin des années 1950, la marque s’engage en Formule 2 avec la 718, démontrant déjà sa maîtrise des moteurs légers et efficaces. Cette aventure culmine en 1962 avec la Porsche 804, seule monoplace de la marque engagée officiellement en Formule 1, victorieuse lors du Grand Prix de France.</p>
+        <p>Après cette expérience directe, Porsche choisit une autre voie pour marquer l’histoire des Grands Prix : celle du motoriste. Dans les années 1980, le moteur TAG-Porsche propulse les McLaren MP4/2 vers la domination, offrant à la marque plusieurs titres mondiaux en Formule 1 aux côtés de pilotes légendaires.<br>
+      </div>
+      <div class="monoplace__F">
+        <div class="monoplace__Fleft">
+          <div class="monoplace__Fimg">
+            <img class="scroll-scale-forward" src="assets/images/MP4-2.png" alt="McLaren MP4/2 motorisée par TAG-Porsche">
+          </div>
+
+          <div class="monoplace__imgM">
+            <img src="assets/images/mp4-2-arriere.jpg" alt="McLaren MP4/2 – vue arrière">
+            <img src="assets/images/wm-mclaren-mp4-2-8.jpg" alt="McLaren MP4/2 – en piste">
+          </div>
+        </div>
+
+        <div class="monoplace__Fcontent fade-in-on-scroll">
+          <p>Après cette expérience directe, Porsche choisit une autre voie pour marquer l’histoire des Grands Prix : celle du motoriste. Dans les années 1980, le moteur TAG-Porsche propulse les McLaren MP4/2 vers la domination, offrant à la marque plusieurs titres mondiaux en Formule 1 aux côtés de pilotes légendaires.</p><br>
+          <p>Discrète mais décisive, l’aventure Porsche en monoplace révèle une vérité essentielle : qu’il s’agisse de circuits, de rallyes ou de Formule 1, l’ADN Porsche reste guidé par la même obsession de l’exploit et de la précision.</p>
+        </div>
+      </div>
+    </section>
+
+     <section id="now" class="competition compNow competition__compNow">
+
+      <h2 class="competition__title compNow__title">
+        Porsche aujourd’hui en compétition
+      </h2>
+
+      <div class="compNow__layout">
+
+        <!-- COLONNE IMAGES -->
+        <div class="compNow__media">
+
+          <!-- 2 petites images en haut -->
+          <div class="compNow__mediaTop">
+
+            <div class="compNow__img compNow__img--small">
+              <img class="scroll-scale-forward" src="assets/images/porschesport.webp" alt="Porsche en course de nuit">
+            </div>
+
+            <div class="compNow__img compNow__img--small">
+              <img class="scroll-scale-forward" src="assets/images/M24_0062_fine.jpg" alt="Porsche en course - lumière et  vitesse">
+            </div>
+
+          </div>
+
+          <!-- Grande image en bas -->
+          <div class="compNow__img compNow__img--main">
+            <img class="scroll-scale-forward" src="assets/images/24h-mans.webp" alt="Porsche aux 24 Heures du Mans">
+          </div>
+
+        </div>
+
+        <!-- COLONNE TEXTE -->
+        <div class="compNow__right">
+
+          <h3 class="competition__title2 compNow__title2">
+            Un héritage toujours en mouvement
+          </h3>
+
+          <div class="original__content competition__content  compNow__content   fade-in-on-scroll">
+
+            <p class="compNow__lead">
+              Aujourd’hui encore, Porsche reste l’un des acteurs les plus     engagés du sport automobile mondial.
+            </p>
+
+            <div class="compNow__pillars">
+
+              <div class="compNow__pillar">
+                <h4 class="compNow__pillar-title">Porsche Cup</h4>
+                <p>
+                  Avec les Porsche Cup organisées sur tous les continents,  la   marque anime le plus grand championnat mono-marque  au monde,
+                  offrant aux pilotes, professionnels comme amateurs, un    accès direct à la compétition de haut niveau.
+                </p>
+              </div>
+
+              <div class="compNow__pillar">
+                <h4 class="compNow__pillar-title">GT & compétition client</ h4>
+                <p>
+                  En parallèle, Porsche poursuit son engagement en GT et  en   endurance, notamment à travers ses 911 GT3 et GT4   engagées  dans
+                  les plus grandes séries internationales. Un modèle  unique   où la compétition client devient un pilier de   leur succès.
+                </p>
+              </div>
+
+              <div class="compNow__pillar">
+                <h4 class="compNow__pillar-title">Sprint & endurance</h4>
+                <p>
+                  Qu’il s’agisse de courses sprint, d’endurance ou de     championnats mono-marques, Porsche perpétue aujourd’hui   ce  qui a
+                  toujours fait sa force : transformer la course en     laboratoire, et la passion en moteur.
+                </p>
+              </div>
+
+            </div>
+
+            <p class="compNow__signature">
+              Transformer la course en laboratoire, et la passion en moteur.
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="compConclu" class="competition conclusion">
+      <h2 class="conclusion__title">Conclusion</h2>
+      <p>Plus qu’une simple quête de vitesse, l’histoire de Porsche est celle d’une passion guidée par l’exigence et la persévérance.</p>
+      <p>De la pionnière Type 64 à la 911 contemporaine, chaque engagement en compétition a façonné une vision unique de la performance, née sur les circuits et perfectionnée sur la route.</p>
+      <p>Chaque modèle, chaque victoire et chaque innovation prolonge une même ambition : repousser les limites et écrire, génération après génération, les chapitres d’une légende qui ne cesse de s’accélérer.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-overlay"></div>
+    <div class="footer-top-line"></div>
+    <div class="footer-content">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h2>Pages</h2>
+          <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="history.php">Histoire</a></li>
+            <li><a href="#">Compétition</a></li>
+            <li><a href="quiz.php">Gagne ton poster</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>Modèles</h2>
+          <ul>
+            <li><a href="history.php#original">L’Original</a></li>
+            <li><a href="history.php#g-series">Porsche Série G</a></li>
+            <li><a href="history.php#p964">Porsche 964</a></li>
+            <li><a href="history.php#p993">Porsche 993</a></li>
+            <li><a href="history.php#p996">Porsche 996</a></li>
+            <li><a href="history.php#p997">Porsche 997</a></li>
+            <li><a href="history.php#p991">Porsche 991</a></li>
+            <li><a href="history.php#porsche-992">Porsche 992</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>À propos</h2>
+          <ul>
+            <li><a href="projet.php">Le projet</a></li>
+            <li><a href="credit.php">Crédits</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-brand">PORSCHE 911</div>
+        <div class="footer-copyright">DWT_@2025 – Dewandre Jonathan</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script type="module" src="assets/scripts/app.js"></script>
+
+</body>
+</html>

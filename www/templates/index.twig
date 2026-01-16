@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home - 911 history</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/styles/app.css">
+  <link rel="icon" href="assets/images/porsche-l.png">
+
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+ 
+
+</head>
+<body>
+
+  <header>
+   <nav class="navbar">
+
+    <div class="navbar__logo">
+      <a href="#">
+        <img src="assets/images/porsche-logo.png" alt="Porsche Logo">
+      </a>
+    </div>
+
+      <div class="navbar__toggle" id="burger">&#9776;</div>
+        <ul class="navbar__links" id="nav-links">
+            <li><a href="#" class="nav-link active">ACCUEIL</a></li>
+            <li><a href="history.php" class="nav-link">HISTOIRE</a></li>
+            <li><a href="competition.php" class="nav-link">COMPÉTITION</a></li>
+            <li><a href="quiz.php" class="nav-link quiz-btn quiz-link">Gagne ton poster</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="Accueil" class=" accueil">
+      <div>
+        <h1 class="accueil__title fade-in-on-scroll">Une icône intemporelle</h1>
+        <h2 class="accueil__title__2">Porsche</h2>
+        
+      </div>
+    </section>
+    <div class="accueil__img-wrapper">
+      <img class="accueil__img scroll-scale-forward" src="assets/images/porsche-accueil-front.png" alt="">
+    </div>
+
+    <section class="intro">
+      <p class="accueil__text accueil__text1">Le statut d'icône qu'ils acquièrent et l'éternelle jeunesse qui en découle inspirent les générations futures.</p>
+      <p class="accueil__text">Le concept de la 911 fait partie de ceux-là. Depuis plus de 50 ans, la 911 s'est montrée avant toute chose "évolutionnaire" tout en restant fidèle à elle-même.</p>
+    </section>
+
+    <section class="S3 slider">
+      <div class="slider fade-in-on-scroll">
+        <div class="slide is-visible">
+          <h2>MOTEUR</h2>
+          <p>
+            Le flat-6 biturbo de la 911 allie puissance, réactivité, et une sonorité inimitable.
+            De 385 à 450 ch, il offre un couple généreux dès les bas régimes et propulse la 911 de 0 à 100 km/h en 3,4 s.<br/>
+            Un moteur taillé pour la performance et l'émotion.
+          </p>
+          <img src="assets/images/moteur-911-carrera-1.png" alt="Moteur Porsche 911 Carrera" />
+        </div>
+
+        <div class="slide">
+          <h2>FREIN</h2>
+          <p>
+          Les freins Porsche Ceramic Composite Brake (PCCB) offrent des performances de freinage supérieures et constantes. Leur légèreté améliore la maniabilité et le confort de conduite.
+          </p>
+          <img class="slide__frein__img" src="assets/images/frein.png" alt="Disque de frein avec étrier jaune typique de la PCCB" />
+        </div>
+
+        <div class="slide">
+          <h2>DESIGN</h2>
+          <p>
+            Le design de la Porsche 911 est un subtil mélange d'élégance intemporelle et de sportivité affirmée. Avec sa silhouette iconique en forme de goutte d'eau, ses ailes galbées, ses phares ronds et sa ligne de toit plongeante, elle incarne l'équilibre parfait entre tradition et innovation.
+            Chaque détail, du dessin des jantes aux courbes du capot, reflète la quête de performance et de raffinement qui définit l'ADN de la 911 depuis plus de 60.
+          </p>
+          <img class="slide__design__img" src="assets/images/design.png" alt="Porsche 911 noir" />
+        </div>
+
+        <!-- Slide suivante ici -->
+    
+        <div class="pagination">
+          <span class="dot is-current"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </section>
+
+  <section class="S3 porsche-features">
+    <div class="content-left">
+      <h2 id="feature-title">MOTEUR</h2>
+      <p id="feature-text">Le flat-6 biturbo de la 911 allie puissance, réactivité, et une sonorité inimitable.
+      De 385 à 450 ch, il offre un couple généreux dès les bas régimes et propulse la 911 de 0 à 100 km/h en 3,4 s.<br/>
+      Un moteur taillé pour la performance et l'émotion.
+      </p>
+      <img id="feature-image" src="assets/images/moteur-911-carrera-1.png" alt="Moteur">
+    </div>
+  
+    <div class="content-right" id="cards-container">
+      <!-- Cartes créées dynamiquement -->
+    </div>
+  </section>
+
+    <section class="porsche-hero">
+      <div class="car-container">
+        <img src="assets/images/porsche-front.png" alt="Porsche 911" class="porsche-car" />
+        <div class="headlight left"></div>
+        <div class="headlight right"></div>
+      </div>
+    </section>
+
+    <section class="prelude prelude__1" id="prelude-1">
+      <div class="prelude__content">
+        <h2 class="prelude__h2">Au commencement</h2>
+        <div class="prelude__step">1</div>
+        <h3 class="prelude__title">Aux origines de la 911</h3>
+        <p class="prelude__text">
+          La Coccinelle, créée par Ferdinand Porsche, pose les bases de l'ingénierie Porsche.<br><br>
+          Simplicité, fiabilité, esprit accessible… avant l’ère sportive.<br>
+          Moteur arrière, refroidissement par air, design arrondi : un ADN commun.<br><br>
+          <strong>La 911 doit beaucoup à la Coccinelle.</strong>
+        </p>
+      </div>
+    </section>
+
+    <div class="prelude__separator"></div>
+
+    <section class="prelude" id="prelude-2">
+      <div class="prelude__content">
+        <div class="prelude__step">2</div>
+        <h3 class="prelude__title">1948 – Porsche 356</h3>
+        <p class="prelude__text">
+          Premier modèle officiel de la marque Porsche, avec moteur arrière et design léger.<br><br>
+          <strong>Le début d'une légende.</strong>
+        </p>
+      </div>
+    </section>
+
+    <div class="prelude__separator"></div>
+
+    <section class="prelude" id="prelude-3">
+      <div class="prelude__content">
+        <div class="prelude__step">3</div>
+        <h3 class="prelude__title">1964 – Porsche 911</h3>
+        <p class="prelude__text">
+          Version améliorée de la 356.<br>
+          Icône de la marque, design légendaire, performances sportives. L’héritière directe de la 356.<br><br>
+          <strong>Un modèle qui ne feras que évoluer.</strong>
+        </p>
+      </div>
+    </section>
+
+    <section class="porsche-timeline-section">
+      <h2 class="prelude__h2">Au commencement</h2>
+      <div class="porsche-timeline-wrapper">
+
+        <!-- Partie gauche : images -->
+        <div class="porsche-image-side left">
+          <img src="assets/images/coccinelle-slider.jpg" alt="Coccinelle" class="porsche-image" data-step="1" />
+          <img src="assets/images/356-slider.jpg" alt="Porsche 356" class="porsche-image" data-step="2" />
+          <img src="assets/images/356-interieur.jpg" alt="Porsche 911" class="porsche-image" data-step="3" />
+        </div>
+
+        <!-- Timeline centrale -->
+        <div class="porsche-step-indicator">
+          <div class="porsche-step" data-step="1"><span>1</span></div>
+          <div class="porsche-step" data-step="2"><span>2</span></div>
+          <div class="porsche-step" data-step="3"><span>3</span></div>
+        </div>
+
+        <!-- Partie droite : textes -->
+        <div class="porsche-image-side right">
+            <img src="assets/images/design-old.jpg" class="timeline-image image-1 active" alt="Coccinelle">
+            
+          <div class="porsche-slide" data-step="1">
+            <h3>Volkswagen Coccinelle</h3>
+            <p>La Coccinelle, créée par Ferdinand Porsche, pose les bases de l'ingénierie Porsche.<br><br>
+          Simplicité, fiabilité, esprit accessible… avant l’ère sportive.<br>
+          Moteur arrière, refroidissement par air, design arrondi : un ADN commun.<br><br>
+          <strong>La 911 doit beaucoup à la Coccinelle.</strong></p>
+            {# <img src="assets/images/coccinelle-detail.jpg" class="porsche-image-right" alt="Détail Coccinelle"> #}
+          </div>
+          <div class="porsche-slide" data-step="2">
+            <h3>1948 – Porsche 356</h3>
+            <p>Premier modèle officiel de la marque Porsche, avec moteur arrière et design léger. <br><br><strong>Le début d'une légende.</strong></p>
+            {# <img src="assets/images/356-interieur.jpg" class="porsche-image-right" alt="Détail Porsche 356"> #}
+          </div>
+          <div class="porsche-slide porsche-slide__3" data-step="3">
+            <h3>1964 – Porsche 911</h3>
+            <p>Icône de la marque, design légendaire, performances sportives. <br><br> <strong>L’héritière directe de la 356.</strong></p>
+            {# <img src="assets/images/911-detail.jpg" class="porsche-image-right" alt="Détail Porsche 911"> #}
+          </div>
+        </div>
+    
+      </div>
+      <div class="porsche-timeline-buffer-internal">
+        <div class="buffer-spacer"></div>
+    </div>
+    </section>
+
+
+    <section class="timeline">
+      <h2 class="timeline__title">DÉCOUVREZ SON HISTOIRE<br>ET ÉVOLUTION</h2>
+
+      <a href="history.php#original" class="timeline__item">
+        <img src="assets/images/901-original.png" alt="Original">
+        <p class="timeline__label">L’ORIGINAL</p>
+        <div class="timeline__infos">
+          <p>1963 - 1973</p>
+          <p>110 - 210 ch</p>
+          <p>210 km/h</p>
+        </div>
+      </a>
+
+      <div class="timeline__divider"></div>
+
+      <a href="history.php#g-serie" class="timeline__item">
+        <img src="assets/images/g-serie.png" alt="Série G">
+        <p class="timeline__label">SÉRIE G</p>
+        <div class="timeline__infos">
+          <p>1973 - 1989</p>
+          <p>150 - 330 ch</p>
+          <p>245 km/h</p>
+        </div>
+      </a>
+
+      <div class="timeline__divider"></div>
+
+      <a href="history.php#p964" class="timeline__item">
+        <img src="assets/images/964.png" alt="964">
+        <p class="timeline__label">964</p>
+        <div class="timeline__infos">
+          <p>1988 - 1994</p>
+          <p>250 - 385 ch</p>
+          <p>260 km/h</p>
+        </div>
+      </a>
+
+      <div class="timeline__divider"></div>
+
+      <a href="history.php#p993" class="timeline__item">
+        <img src="assets/images/993.png" alt="993">
+        <p class="timeline__label">993</p>
+        <div class="timeline__infos">
+          <p>1993 - 1998</p>
+          <p>272 - 450 ch</p>
+          <p>270 km/h</p>
+        </div>
+      </a>
+
+      <div class="timeline__divider"></div>
+
+      <a href="history.php#p996" class="timeline__item">
+        <img src="assets/images/996.png" alt="996">
+        <p class="timeline__label">996</p>
+        <div class="timeline__infos">
+          <p>1997 - 2005</p>
+          <p>300 - 483 ch</p>
+          <p>280 km/h</p>
+        </div>
+      </a>
+
+      <div class="timeline__divider"></div>
+
+      <a href="history.php#p997" class="timeline__item">
+        <img src="assets/images/997.png" alt="997">
+        <p class="timeline__label">997</p>
+        <div class="timeline__infos">
+          <p>2004 - 2012</p>
+          <p>325 - 620 ch</p>
+          <p>285 km/h</p>
+        </div>
+      </a>
+
+      <div class="timeline__divider"></div>
+
+      <a href="history.php#p991" class="timeline__item">
+        <img src="assets/images/991.png" alt="991">
+        <p class="timeline__label">991</p>
+        <div class="timeline__infos">
+          <p>2011 - 2018</p>
+          <p>350 - 700 ch</p>
+          <p>297 km/h</p>
+        </div>
+      </a>
+    </section>
+    
+{# partie pour l'evolution du model #}
+    <section class="porsche-evolution">
+      <div class="head">
+        <h2>Évolution de la Porsche 911</h2>
+        <div class="controls">
+          <button id="prev" class="nav-btn" aria-label="Précédent">‹</button>
+          <button id="next" class="nav-btn" aria-label="Suivant">›</button>
+        </div>
+      </div>
+
+      <div class="sliderEvo">
+        <div class="track" id="track">
+
+          <!-- 911 Originale -->
+          <article class="project-card" data-year="1964" data-hp="130 ch" data-vmax="210 km/h">
+            <img class="project-card__bg" src="assets/slices/original-for-full.png" alt="Tranche Porsche 911 Originale">
+            <div class="project-card__content">
+              <h3 class="project-card__title">911 Originale</h3>
+            </div>
+            <button class="p911-close" aria-label="Fermer">×</button>
+            <div class="p911-open">
+              <figure class="p911-figure">
+                <img class="p911-full" src="assets/full/901-original.png" alt="Porsche 911 Originale">
+              </figure>
+              <div class="p911-info">
+                <ul class="p911-specs">
+                  <li><span>Année :</span> <strong class="p911-year"></strong></li>
+                  <li><span>Chevaux :</span> <strong class="p911-hp"></strong></li>
+                  <li><span>Vitesse max :</span> <strong class="p911-vmax"></strong></li>
+                </ul>
+                <a class="p911-cta" href="history.php#original">Voir ce modèle</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Série G -->
+          <article class="project-card" data-year="1973" data-hp="165 ch" data-vmax="225 km/h">
+            <img class="project-card__bg" src="assets/slices/serie-G-for-full.png" alt="Tranche Porsche 911 Série G">
+            <div class="project-card__content">
+              <h3 class="project-card__title">Série G</h3>
+            </div>
+            <button class="p911-close" aria-label="Fermer">×</button>
+            <div class="p911-open">
+              <figure class="p911-figure">
+                <img class="p911-full" src="assets/full/g-serie.png" alt="Porsche 911 Série G">
+              </figure>
+              <div class="p911-info">
+                <ul class="p911-specs">
+                  <li><span>Année :</span> <strong class="p911-year"></strong></li>
+                  <li><span>Chevaux :</span> <strong class="p911-hp"></strong></li>
+                  <li><span>Vitesse max :</span> <strong class="p911-vmax"></strong></li>
+                </ul>
+                <a class="p911-cta" href="history.php#g-serie">Voir ce modèle</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 964 -->
+          <article class="project-card" data-year="1989" data-hp="250 ch" data-vmax="260 km/h">
+            <img class="project-card__bg" src="assets/slices/964-for-full.png" alt="Tranche Porsche 911 (964)">
+            <div class="project-card__content">
+              <h3 class="project-card__title">964</h3>
+            </div>
+            <button class="p911-close" aria-label="Fermer">×</button>
+            <div class="p911-open">
+              <figure class="p911-figure">
+                <img class="p911-full" src="assets/full/964.png" alt="Porsche 911 (964)">
+              </figure>
+              <div class="p911-info">
+                <ul class="p911-specs">
+                  <li><span>Année :</span> <strong class="p911-year"></strong></li>
+                  <li><span>Chevaux :</span> <strong class="p911-hp"></strong></li>
+                  <li><span>Vitesse max :</span> <strong class="p911-vmax"></strong></li>
+                </ul>
+                <a class="p911-cta" href="history.php#p964">Voir ce modèle</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 993 -->
+          <article class="project-card" data-year="1993" data-hp="272 ch" data-vmax="270 km/h">
+            <img class="project-card__bg" src="assets/slices/993-for-full.png" alt="Tranche Porsche 911 (993)">
+            <div class="project-card__content">
+              <h3 class="project-card__title">993</h3>
+            </div>
+            <button class="p911-close" aria-label="Fermer">×</button>
+            <div class="p911-open">
+              <figure class="p911-figure">
+                <img class="p911-full" src="assets/full/993.png" alt="Porsche 911 (993)">
+              </figure>
+              <div class="p911-info">
+                <ul class="p911-specs">
+                  <li><span>Année :</span> <strong class="p911-year"></strong></li>
+                  <li><span>Chevaux :</span> <strong class="p911-hp"></strong></li>
+                  <li><span>Vitesse max :</span> <strong class="p911-vmax"></strong></li>
+                </ul>
+                <a class="p911-cta" href="history.php#p993">Voir ce modèle</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 996 -->
+          <article class="project-card" data-year="1998" data-hp="300 ch" data-vmax="280 km/h">
+            <img class="project-card__bg" src="assets/slices/996-for-full.png" alt="Tranche Porsche 911 (996)">
+            <div class="project-card__content">
+              <h3 class="project-card__title">996</h3>
+            </div>
+            <button class="p911-close" aria-label="Fermer">×</button>
+            <div class="p911-open">
+              <figure class="p911-figure">
+                <img class="p911-full" src="assets/full/996.png" alt="Porsche 911 (996)">
+              </figure>
+              <div class="p911-info">
+                <ul class="p911-specs">
+                  <li><span>Année :</span> <strong class="p911-year"></strong></li>
+                  <li><span>Chevaux :</span> <strong class="p911-hp"></strong></li>
+                  <li><span>Vitesse max :</span> <strong class="p911-vmax"></strong></li>
+                </ul>
+                <a class="p911-cta" href="history.php#p996">Voir ce modèle</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 997 -->
+          <article class="project-card" data-year="2004" data-hp="325 ch" data-vmax="285 km/h">
+            <img class="project-card__bg" src="assets/slices/997-for-full.png" alt="Tranche Porsche 911 (997)">
+            <div class="project-card__content">
+              <h3 class="project-card__title">997</h3>
+            </div>
+            <button class="p911-close" aria-label="Fermer">×</button>
+            <div class="p911-open">
+              <figure class="p911-figure">
+                <img class="p911-full" src="assets/full/997.png" alt="Porsche 911 (997)">
+              </figure>
+              <div class="p911-info">
+                <ul class="p911-specs">
+                  <li><span>Année :</span> <strong class="p911-year"></strong></li>
+                  <li><span>Chevaux :</span> <strong class="p911-hp"></strong></li>
+                  <li><span>Vitesse max :</span> <strong class="p911-vmax"></strong></li>
+                </ul>
+                <a class="p911-cta" href="history.php#p997">Voir ce modèle</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 991 -->
+          <article class="project-card" data-year="2019" data-hp="385 ch" data-vmax="293 km/h">
+            <img class="project-card__bg" src="assets/slices/991-for-full.png" alt="Tranche Porsche 911 (992)">
+            <div class="project-card__content">
+              <h3 class="project-card__title">991</h3>
+            </div>
+            <button class="p911-close" aria-label="Fermer">×</button>
+            <div class="p911-open">
+              <figure class="p911-figure">
+                <img class="p911-full" src="assets/full/991.png" alt="Porsche 911 (992)">
+              </figure>
+              <div class="p911-info">
+                <ul class="p911-specs">
+                  <li><span>Année :</span> <strong class="p911-year"></strong></li>
+                  <li><span>Chevaux :</span> <strong class="p911-hp"></strong></li>
+                  <li><span>Vitesse max :</span> <strong class="p911-vmax"></strong></li>
+                </ul>
+                <a class="p911-cta" href="history.php#p991">Voir ce modèle</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="dots" id="dots"></div>
+    </section>
+
+    <section class="new911">
+      <div class="new911__overlay">
+        <h2 class="new911__title">
+          <span class="behind">LA NOUVELLE</span>
+          <span class="big front">911</span>
+        </h2>
+      </div>
+      <img src="assets/images/porsche-fin-new.png" alt="Nouvelle Porsche 911" class="new911__image">
+      <a href="history.php#porsche-992" class="new911__cta">Découvrir la 992</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-overlay"></div>
+    <div class="footer-top-line"></div>
+    <div class="footer-content">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h2>Pages</h2>
+          <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="history.php">Histoire</a></li>
+            <li><a href="competition.php">Compétition</a></li>
+            <li><a href="quiz.php">Gagne ton poster</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>Modèles</h2>
+          <ul>
+            <li><a href="history.php#original">L’Original</a></li>
+            <li><a href="history.php#g-series">Porsche Série G</a></li>
+            <li><a href="history.php#p964">Porsche 964</a></li>
+            <li><a href="history.php#p993">Porsche 993</a></li>
+            <li><a href="history.php#p996">Porsche 996</a></li>
+            <li><a href="history.php#p997">Porsche 997</a></li>
+            <li><a href="history.php#p991">Porsche 991</a></li>
+            <li><a href="history.php#porsche-992">Porsche 992</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>À propos</h2>
+          <ul>
+            <li><a href="projet.php">Le projet</a></li>
+            <li><a href="credit.php">Crédits</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-brand">PORSCHE 911</div>
+        <div class="footer-copyright">DWT_@2025 – Dewandre Jonathan</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script type="module" src="assets/scripts/app.js" ></script>
+
+</body>
+</html>

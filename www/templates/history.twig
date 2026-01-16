@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>911 history</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Histoire de la Porsche 911">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/styles/app.css">
+  <link rel="icon" href="assets/images/porsche-l.png">
+
+
+    <!-- dans <head> AVANT ton <script type="module" src="assets/scripts/app.js"> -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <!-- Charge Three.js AVANT ton script personnalisé -->
+
+</head>
+<body>
+
+  <header>
+   <nav class="navbar">
+
+   <div class="navbar__logo">
+      <a href="index.php">
+        <img src="assets/images/porsche-logo.png" alt="Porsche Logo">
+      </a>
+    </div>
+
+      <div class="navbar__toggle" id="burger">&#9776;</div>
+        <ul class="navbar__links" id="nav-links">
+            <li><a href="index.php" class="nav-link active">ACCUEIL</a></li>
+            <li><a href="#" class="nav-link">HISTOIRE</a></li>
+            <li><a href="competition.php" class="nav-link">COMPÉTITION</a></li>
+            <li><a href="quiz.php" class="nav-link quiz-btn quiz-link">Gagne ton poster</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <!-- NAV LATERALE HISTOIRE -->
+<nav class="hist-sidenav" aria-label="Navigation de l'histoire">
+  <ol class="hist-sidenav__list">
+    <li class="hist-sidenav__item">
+      <a class="hist-sidenav__link" href="#original" data-target="#original">
+        <span class="hist-sidenav__dot" aria-hidden="true"></span>
+        <span class="hist-sidenav__label"><b>1963</b> Originale</span>
+      </a>
+    </li>
+    <li class="hist-sidenav__item">
+      <a class="hist-sidenav__link" href="#g-serie" data-target="#g-serie">
+        <span class="hist-sidenav__dot" aria-hidden="true"></span>
+        <span class="hist-sidenav__label"><b>1973</b> Série G</span>
+      </a>
+    </li>
+    <li class="hist-sidenav__item">
+      <a class="hist-sidenav__link" href="#p964" data-target="#p964">
+        <span class="hist-sidenav__dot" aria-hidden="true"></span>
+        <span class="hist-sidenav__label"><b>1988</b> 964</span>
+      </a>
+    </li>
+    <li class="hist-sidenav__item">
+      <a class="hist-sidenav__link" href="#p993" data-target="#p993">
+        <span class="hist-sidenav__dot" aria-hidden="true"></span>
+        <span class="hist-sidenav__label"><b>1993</b> 993</span>
+      </a>
+    </li>
+    <li class="hist-sidenav__item">
+      <a class="hist-sidenav__link" href="#p996" data-target="#p996">
+        <span class="hist-sidenav__dot" aria-hidden="true"></span>
+        <span class="hist-sidenav__label"><b>1997</b> 996</span>
+      </a>
+    </li>
+    <li class="hist-sidenav__item">
+      <a class="hist-sidenav__link" href="#p997" data-target="#p997">
+        <span class="hist-sidenav__dot" aria-hidden="true"></span>
+        <span class="hist-sidenav__label"><b>2004</b> 997</span>
+      </a>
+    </li>
+    <li class="hist-sidenav__item">
+      <a class="hist-sidenav__link" href="#p991" data-target="#p991">
+        <span class="hist-sidenav__dot" aria-hidden="true"></span>
+        <span class="hist-sidenav__label"><b>2011</b> 991</span>
+      </a>
+    </li>
+    <li class="hist-sidenav__item">
+      <a class="hist-sidenav__link" href="#porsche-992" data-target="#porsche-992">
+        <span class="hist-sidenav__dot" aria-hidden="true"></span>
+        <span class="hist-sidenav__label"><b>2018</b> 992</span>
+      </a>
+    </li>
+  </ol>
+  <span class="hist-sidenav__rail" aria-hidden="true"></span>
+  <span class="hist-sidenav__progress" aria-hidden="true"></span>
+</nav>
+
+
+  <main>
+    <section class="accueil histoire-intro">
+      <div class="histoire-intro__overlay"></div>
+      <div class="histoire-intro__content">
+        <h1 class="fade-in-on-scroll">L’HISTOIRE D’UNE LÉGENDE</h1>
+      </div>
+    </section>
+
+<section class="histoire original" id="original">
+      <h2 class="original__title">Ça débute au XX<sup>e</sup> siècle avec le modèle d’origine</h2>
+      <div class="">
+        <img class="original__img" src="assets/images/901-sans-fond.png" alt="">
+      </div>
+      <div>
+        <p class="annee annee__63">1963</p>
+      </div>
+      <div class="original__content fade-in-on-scroll">
+        <p>La première 911 est présentée au salon de l’auto de Francfort-sur-le-Main le 12 septembre 1963. Elle s’appelle 901. Cependant, un constructeur français possédait des droits sur ce genre de numérotation (avoir le “0” au centre). Ce qui va aboutir à la 911 !</p>
+        <p>Cette 911, voulue par Ferry Porsche, succède en toute légitimité à la 356. Son design est réalisé par le fils de Ferry Porsche, Ferdinand Alexander. Le design va traverser et transcender le temps. Tout comme son moteur 6 cylindres à plat de 2,0 l et sa ligne de toit effilée, caractéristique de la 911.</p>
+      </div>
+    </section>
+
+    <section id="g-serie" class="histoire gserie">
+      <h2 class="original__title gserie__title">Du classique et moderne <br>La serie G
+        
+      </h2>
+      <div class="gserie__group">
+        <div>
+          <p class="annee annee__73">1973</p>
+        </div>
+        <div class="gserie__img">
+          <img class="scroll-scale-forward" src="assets/images/serie-g-front.png" alt="">
+        </div>
+      </div>
+      <div class="original__content gserie__content fade-in-on-scroll">
+        <p>La 2<sup>ème</sup>  génération de 911 sera en production de 1973 à 1989. Avec son arrivée, elle va apporter des innovations qui vont en faire un modèle de classicisme moderne. Elle va notamment améliorer la protection des occupants, offrir un traitement des gaz d'échappement plus sophistiqué, une électronique moteur digitalisée et, depuis 1975, une carrosserie entièrement galvanisée.</p>
+        <p>Cette 911 aura plusieurs variantes; avec elle arrivera le Turbo, ainsi que le Speeder et la CS. La plus marquante est la 911 Turbo 3.3, connue sous le nom de 930, appelée aussi The Widowmaker, - en français “La Faiseuse de Veuves”. Elle se distingue par sa motorisation, avec le moteur 6 cylindres à plat de 3,3 litres, qui développe 300 chevaux permettant d’atteindre  0 à 100 km/h en 5,4 secondes, un chiffre impressionnant pour l'époque.</p>
+      </div>
+    </section>
+
+    <section id="p964" class="histoire s964">
+      <h2 class="original__title s964__title">3<sup class="lower">e</sup> génération de 911<br>La 964
+          
+      </h2>
+      
+      <div class="">
+        <img class="s964__img" src="assets/images/964.png" alt="">
+      </div>
+      <div>
+        <p class="annee annee__88">1988</p>
+      </div>
+      <div class="original__content fade-in-on-scroll">
+        <p>Avec cette 3<sup>e</sup> génération, la 911 fait un bond vers l'avant. Même si elle conserve les codes et la forme de la 911, elle ne conserve que 15% des éléments du modèle d'origine. Cette génération à marqué l'avancée spectaculaire tenant au chiffre "4", accolé au monogramme Carrera. Ce qui vient distinguer les modèles de 911 à transmission intégrale mis au point et testés par Porsche dans les années 80, notamment en rallye.</p>
+        <div>
+        
+          <h3 class="s964__h3">La 964 et le rallye ?</h3>
+          <p>Porsche est l'une des marques qui a le plus de succès dans le sport automobile. Avec le Dakar et sa 911 type 953, elle marque un tournant décisif. Ce prototype tout-terrain, doté d’une transmission intégrale, ouvre la voie à de nouvelles ambitions techniques. Cette innovation sera perfectionnée et intégrée à la 911 type 964, première à bénéficier de la transmission intégrale de série. Une technologie née pour la compétition, mais pensée pour la route.</p>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="video953">
+    <h2>Découvrez la mélodie incroyable du flat 6 de la Porsche GT3</h2>
+      <video id="video-953"
+             src="assets/videos/porsche-GT3.mp4"
+             autoplay
+             muted
+             playsinline
+             controls
+             poster="assets/images/poster.jpg">
+      </video>
+    </section>
+
+    <section id="p993" class="histoire sdark s993">
+      <h2 class="original__title s993__title">La dernière de son genre<br>La 993
+        
+      </h2>
+      <div class="s993__images">
+        <img class="s993__img" src="assets/images/porsche-993-front.png" alt="">
+        <img class="s993__img s993__img2" src="assets/images/993-back-v2.png" alt="">
+      </div>
+      <div>
+        <p class="annee annee__93">1993</p>
+      </div>
+      <div class="original__content s993__content fade-in-on-scroll">
+        <p>La Porsche 911 type 993 est la dernière génération de 911 refroidie par air. C’est ce qui en fait aujourd’hui un modèle culte et très recherché par les passionnés. Elle marque la fin d’une ère commencée en 1964 avec la toute première 911.</p>
+        <p>La sonorité pure et rauque de ce flat-six fait, encore aujourd'hui, de nombreux admirateurs passionnés. Aucun doute pour les ingénieurs Porsche de l'époque, le refroidissement par eau est plus efficace et sera donc la meilleure technologie pour l'avenir.</p>
+      </div>
+    </section>
+
+    <section id="p996" class="histoire sdark s996">
+      <h2 class="original__title s996__title">Une rupture audacieuse<br>La 996
+        
+      </h2>
+      <div class="">
+        <img class="s996__img" src="assets/images/996.png" alt="">
+      </div>
+      <div>
+        <p class="annee annee__97">1997</p>
+      </div>
+      <div class="original__content s996__content fade-in-on-scroll">
+        <p>Avec l'arrivée de la 996 qui a suscité dès le début beaucoup de débats. Pas uniquement pour le design des phares avant en forme "d'oeufs au plat”. La 996 est également la première 911 à refroidissement par eau commercialisée. Ce qui prouve que ce moteur avait effectivement de l'avenir dans les voitures de série.</p>
+        <p>La 996 marque aussi une hausse dans les valeurs ajoutées à la 911. Plus large, elle présente un empattement plus long et une assise plus large, donnant ainsi nettement plus d'espace à ses occupants. Porsche s'améliore aussi en matière de confort, d'efficience et de dynamique;moteur et châssis redéfinissent les valeurs à la hausse.</p>
+      </div>
+    </section>
+
+    <section class="histoire s997" id="p997">
+      <h2 class="original__title s997__title">Le retour aux sources<br>La 997 
+        
+      </h2>
+
+      <div class="s997__image-container">
+        <img class="s997__img" src="assets/images/997-jonction.png" alt="Porsche 997">
+      </div>
+
+      <p class="annee annee__04">2004</p>
+
+      <div class="original__content s997__content">
+        <p class="s997__fade-in">Les feux optiques avant s'arrondissent à nouveau, les jantes s'agrandissent et les ailes arrière s'élargissent. La 997 a ce design qui évoque ses racines, et pourtant, sa technique est bien au cœur même du XXI<sup>e</sup> siècle. La boîte Porsche Doppenlkupplung, plus connue sous le nom de PDK, et l'injection directe d'essence font leur apparition sur une 911 de série dès 2008.</p>
+        <div class="s997__fade-in">
+          <h3 class="s964__h3">Les bienfaits de ces technologies</h3>
+          <p>Ces deux technologies apportent des résultats évidents, puissance en hausse et consommation en baisse, ce qui contribue à l'amélioration des performances et de l'efficacité.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="p991" class="histoire s991 s964">
+      <h2 class="original__title s991__title s964__title">Un équilibre parfait entre luxe et sportivité.<br>La 991
+        
+      </h2>
+      <div class="">
+        <img class="s991__img s964__img fade-in-on-scroll" src="assets/images/991.png" alt="">
+      </div>
+      <div>
+        <p class="annee annee__11 annee__88 fade-in-on-scroll">2011</p>
+      </div>
+      <div class="original__content s991__content fade-in-on-scroll">
+        <p>En mai 2017, la millionième 911 sort de l'usine de Zuffenhausen, qui rappelle à tous la success story de ce modèle passé au rang d'icône. Avec cette génération et cette millionième 911 sortie, la 911 Carrera S Vert Irlandais, rend honneur aux anciennes teintes des voitures de service de Ferry Porsche. </p>
+        <p>Cette 7<sup>e</sup> génération est produite à partir de 2011. Plus légère de 65 kg environ que ses prédécesseurs, elle a rallongé son empattement de 100 mm et adopte des jantes mesurant jusqu'à 21 pouces.</p>
+      </div>
+    </section>
+
+    <section class="porsche-3d" id="porsche-992">
+    <h2 class=" s964__title">
+        Icône intemporelle<br>La Nouvelle 911, type 992
+        
+      </h2>
+
+      <p class="annee p3dannee ">2018</p>
+
+      <div class="p3d-wrap">
+          <button class="p3d-nav prev" id="view-prev" aria-label="Vue précédente">‹</button>
+
+        <div class="p3d-stage">
+          <!-- Canvas Three.js se monte ici -->
+          <div id="viewer" class="p3d-viewer" aria-label="3D viewer" role="application"></div>
+        </div>
+
+        <button class="p3d-nav next" id="view-next" aria-label="Vue suivante">›</button>
+      </div>
+
+      <div class="p3d-caption">
+        
+        <p id="view-text">
+          La face avant de la 992 affirme sa sportivité avec des lignes acérées et une signature lumineuse à LED emblématique. Le regard est intense, ancré dans l’ADN Porsche, mêlant modernité et puissance.
+        </p>
+        <div class="p3d-dots" id="view-dots" role="navigation" aria-label="Navigation des vues"></div>
+      </div>
+
+      <!-- Loader -->
+      <div class="p3d-loading" id="loading">
+        <div class="bar"><span id="progress" style="width:0%"></span></div>
+        <p id="status">Chargement…</p>
+      </div>
+    
+    </section>
+
+    <section id="porsche-992" class="histoire s992 porsche-fake3d-section">
+      <h2 class="original__title s992__title">
+        Icône intemporelle<br>La Nouvelle 911, type 992
+       
+      </h2>
+
+      <p class="annee ">2018</p>
+
+      <div class="rotation-container">
+        <button class="rotation-arrow left" id="prevView">◀</button>
+        <img class="scroll-scale-forward" id="porscheImage" src="assets/images/porsche-1.png" alt="Porsche 911">
+        <button class="rotation-arrow right" id="nextView">▶</button>
+        <div id="rotationDescription" class="rotation-text">
+          La face avant de la 992 affirme sa sportivité...
+        </div>
+      </div>
+
+      <div class="rotation-controls">
+        <button data-index="0" data-text="La face avant de la 992 affirme sa sportivité avec des lignes acérées et une signature lumineuse à LED emblématique. Le regard est intense, ancré dans l’ADN Porsche, mêlant modernité et puissance."></button>
+        <button data-index="1" data-text="Sous cet angle, la 992 impose sa présence. Les ailes musclées, la posture large et abaissée, ainsi que les entrées d’air sculptées, évoquent une bête prête à bondir. L’élégance n’a jamais été aussi agressive."></button>
+        <button data-index="2" data-text="La silhouette intemporelle de la 911 est sublimée par une ligne de toit fluide et tendue. Les courbes se prolongent harmonieusement jusqu’au spoiler arrière, offrant équilibre et mouvement, même à l’arrêt."></button>
+        <button data-index="3" data-text="Un angle qui met en valeur les hanches larges et la finesse du bandeau lumineux à LED. L’allure est musclée mais raffinée, fidèle à l’héritage tout en affirmant une nouvelle ère technologique."></button>
+        <button data-index="4" data-text="Un design large et pur, dominé par le bandeau LED et le lettrage Porsche élégant. Les doubles sorties d’échappement rappellent que sous cette carrosserie racée sommeille un moteur prêt à rugir."></button>
+        <button data-index="5" data-text="Cette 911 ne déroge pas à la règle par rapport à ses grandes sœurs. Elle est à la fois rétro, moderne et futuriste. Une 911, avec sa silhouette reconnaissable entre toutes, un design qui traverse le temps et une richesse technologique appartenant à ses nombreuses victoires en courses."></button>
+        <button data-index="6" data-text="Cette 8e génération est comme toutes ses grandes sœurs une pionnière et nous fait parcourir le temps. La 911, voiture de sport, qui à l'heure actuelle est un point de repère et fidèle à elle-même dans un monde qui est au changement."></button>
+        <button data-index="7" data-text="La Porsche 911 type 992 n’est pas qu’une voiture, c’est une icône en mouvement. Héritière d’une lignée légendaire, elle réussit l’exploit de conjuguer tradition et modernité, puissance et élégance, maîtrise et émotion. À chaque ligne, à chaque son, à chaque virage, elle rappelle pourquoi elle reste l’ultime référence du sport automobile… sur route, comme dans les cœurs."></button>
+      </div>
+    </section>
+
+    <section class="comparo" id="comparo">
+
+    <h2 class="comparo__h2" >911 contre 911 : <br>laquelle vous séduit le plus</h2>
+      <!-- Liste des modèles -->
+      <aside class="comparo-list">
+        <h2 class="comparo-title">Choisissez deux modèles</h2>
+
+        <div class="comparo-selector">
+          <button class="comparo-nav comparo-prev" aria-label="Précédent">‹</button>
+
+          <!-- Viewport : c'est CET élément qui scrolle -->
+          <div class="comparo-viewport">
+            <ul id="comparoModelList" class="comparo-track">
+              <!-- Garde tes <li> avec data-model -->
+              <li draggable="true" data-model="911 Classic">911 Classic</li>
+              <li draggable="true" data-model="911 G Series">911 G Series</li>
+              <li draggable="true" data-model="911 964">911 964</li>
+              <li draggable="true" data-model="911 993">911 993</li>
+              <li draggable="true" data-model="911 996">911 996</li>
+              <li draggable="true" data-model="911 997">911 997</li>
+              <li draggable="true" data-model="911 992">911 992</li>
+            </ul>
+          </div>
+
+          <button class="comparo-nav comparo-next" aria-label="Suivant">›</button>
+        </div>
+
+        <div class="comparo-reset-all">
+          <button id="comparoResetAll" class="comparo-reset-all-btn">Réinitialiser la comparaison</button>
+        </div>
+      </aside>
+
+      <!-- Zones de comparaison -->
+      <div class="comparo-area">
+        <div class="comparo-slot" id="comparoSlot1" data-slot="1">
+          <div class="comparo-slot-header">
+            <p>Modèle 1</p>
+            <button class="comparo-reset-btn" data-reset="1">✖</button>
+          </div>
+          <div class="comparo-info" id="comparoInfo1">Glissez ou sélectionné un modèle</div>
+        </div>
+
+        <div class="comparo-slot" id="comparoSlot2" data-slot="2">
+          <div class="comparo-slot-header">
+            <p>Modèle 2</p>
+            <button class="comparo-reset-btn" data-reset="2">✖</button>
+          </div>
+          <div class="comparo-info" id="comparoInfo2">Glissez ou sélectionné un modèle</div>
+        </div>
+      </div>
+    </section>
+
+
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-overlay"></div>
+    <div class="footer-top-line"></div>
+    <div class="footer-content">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h2>Pages</h2>
+          <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="#">Histoire</a></li>
+            <li><a href="competition.php">Compétition</a></li>
+            <li><a href="quiz.php">Gagne ton poster</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>Modèles</h2>
+          <ul>
+            <li><a href="#original">L’Original</a></li>
+            <li><a href="#g-series">Porsche Série G</a></li>
+            <li><a href="#p964">Porsche 964</a></li>
+            <li><a href="#p993">Porsche 993</a></li>
+            <li><a href="#p996">Porsche 996</a></li>
+            <li><a href="#p997">Porsche 997</a></li>
+            <li><a href="#p991">Porsche 991</a></li>
+            <li><a href="history.php#porsche-992">Porsche 992</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>À propos</h2>
+          <ul>
+            <li><a href="projet.php">Le projet</a></li>
+            <li><a href="credit.php">Crédits</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-brand">PORSCHE 911</div>
+        <div class="footer-copyright">DWT_@2025 – Dewandre Jonathan</div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script type="module" src="assets/scripts/app.js" ></script>
+
+</body>
+</html>

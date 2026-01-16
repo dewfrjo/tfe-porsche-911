@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz - 911 history</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/images/porsche-l.png">
+  <link rel="stylesheet" href="assets/styles/app.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+
+  <script src="assets/scripts/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Flip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/Draggable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/TextPlugin.min.js"></script>
+
+
+
+</head>
+<body>
+  <header>
+   <nav class="navbar">
+   <div class="navbar__logo">
+      <a href="index.php">
+        <img src="assets/images/porsche-logo.png" alt="Porsche Logo">
+      </a>
+    </div>
+    
+      <div class="navbar__toggle" id="burger">&#9776;</div>
+        <ul class="navbar__links" id="nav-links">
+            <li><a href="index.php" class="nav-link active">ACCUEIL</a></li>
+            <li><a href="history.php" class="nav-link">HISTOIRE</a></li>
+            <li><a href="competition.php" class="nav-link">COMPÉTITION</a></li>
+            <li><a href="#" class="nav-link quiz-btn quiz-link">Gagne ton poster</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="accueil quiz-section">
+     <div class="quiz-section__overlay"></div>
+     <div class="quiz-section__content">
+       <h1 class="fade-in-on-scroll">TEST TES CONNAISSANCES<br>SUR LA 911</h1>
+     </div>
+    </section>
+
+
+  <section class="question-quiz">
+    <div class="quiz-container">
+      <div class="quiz-left">
+        <p class="question-text"></p>
+      </div>
+
+      <!-- Cadran au centre + aiguille -->
+      <div class="quiz-center">
+        <div class="dial">
+          <!-- 1) Fond du cadran (ex-Compteur-gt3.png) -->
+          <img class="dial-bg" src="assets/images/compteur-cadran-2.png" alt="Cadran GT3">
+          <!-- 2) Aiguille -->
+          <img id="needle" class="needle" src="assets/images/aiguille.png" alt="">
+          <!-- 3) Compteur numérique -->
+          <div id="question-counter" class="counter-display">0</div>
+        </div>
+      </div>
+
+      <div class="quiz-right">
+        <button class="answer-btn" data-index="0"></button>
+        <button class="answer-btn" data-index="1"></button>
+        <button class="answer-btn" data-index="2"></button>
+        <button class="answer-btn" data-index="3"></button>
+      </div>
+    </div>
+  </section>
+
+    <!-- SECTION DES RÉSULTATS -->
+  <section class="result-quiz hidden">
+    <div class="result-container">
+      <h2>Résultats du quiz</h2>
+      <p id="final-score"></p>
+      <button id="restart-quiz" class="restart-quiz">Rejouer</button>
+  
+      <!-- Message d'encouragement à part -->
+      <div id="encouragement-message" class="hidden">
+        <p class="encouragement">
+          Bravo d'avoir terminé ! Réessaie pour améliorer ton score et découvrir encore plus sur la Porsche 911 !
+        </p>
+      </div>
+  
+      <!-- Bloc des récompenses -->
+      <div id="reward-links" class="reward-section hidden">
+        <h3>🎁 Récompenses à télécharger</h3>
+        <div class="reward-buttons">
+          <a id="reward-1" href="assets/rewards/reward-1.jpg" download class="reward-btn hidden">🏆 Récompense 1</a>
+          <a id="reward-2" href="assets/rewards/reward-2.jpg" download class="reward-btn hidden">🥈 Récompense 2</a>
+          <a id="reward-3" href="assets/rewards/reward-3.jpg" download class="reward-btn hidden">🥉 Récompense 3</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+     MINI-JEUX — CARDS
+     ========================= -->
+<section class="mini-games o_container">
+  <h2>Mini-jeux</h2>
+  <div class="mini-games-grid">
+
+    <!-- Card Launch Control -->
+    <div class="game-card" data-game="launch">
+      <img src="assets/images/launch-thumb.jpg" alt="Launch Control" class="game-thumb">
+      <h3>Launch Control</h3>
+      <p>Teste tes réflexes comme en Porsche Cup.</p>
+    </div>
+
+    <!-- Card Memory -->
+    <div class="game-card" data-game="memory">
+      <img src="assets/images/memory-thumb.jpg" alt="Memory Porsche" class="game-thumb">
+      <h3>Memory Porsche</h3>
+      <p>Associe les paires de Porsche 911.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     OVERLAYS DES JEUX
+     ========================= -->
+
+<!-- Overlay Launch Control -->
+<div class="game-overlay" id="overlay-launch">
+  <div class="overlay-content">
+    <button class="close-btn">&times;</button>
+    <section class="launch-control o_container" id="launchControl">
+    <div class="lc-card">
+      <header class="lc-head">
+        <h2>Launch Control — Réflexe</h2>
+        <p>
+          Arme le départ. Quand ça passe au <strong>VERT</strong>, clique
+          (ou tape <kbd>Espace</kbd>) le plus vite possible. 5 essais.
+        </p>
+      </header>
+
+      <div class="lc-stage" aria-live="polite">
+        <div class="lc-lights" role="img" aria-label="Feux de départ">
+          <span class="lc-light lc-red"></span>
+          <span class="lc-light lc-amber"></span>
+          <span class="lc-light lc-green"></span>
+        </div>
+        <div class="lc-status" id="lc-status">Prêt ?</div>
+      </div>
+
+      <div class="lc-actions">
+        <button id="lc-arm" class="btn btn--primary">Armer</button>
+        <button id="lc-retry" class="btn restartbtn" disabled>Rejouer</button>
+      </div>
+
+      <div class="lc-readout">
+        <div>Essai <span id="lc-try">0</span>/5</div>
+        <div>Dernier : <span id="lc-last">–</span> ms</div>
+        <div>Moyenne : <span id="lc-avg">–</span> ms</div>
+        <div>Meilleur : <span id="lc-best">–</span> ms</div>
+        <div>Record : <span id="lc-record">–</span> ms</div>
+      </div>
+
+      <div class="lc-result" id="lc-result"></div>
+    </div>
+  </section>
+  </div>
+</div>
+
+<!-- Overlay Memory -->
+<div class="game-overlay" id="overlay-memory">
+  <div class="overlay-content">
+    <button class="close-btn">&times;</button>
+    <div id="memoryGame">
+    <section class="memory-game" id="memoryStandalone">
+  <div class="memory-card">
+    <header class="memory-head">
+      <h2>Memory — Porsche 911</h2>
+      <div class="memory-status">
+        Coups : <span id="mem-stand-moves">0</span> • Temps : <span id="mem-stand-time">0</span>s
+      </div>
+    </header>
+
+    <div class="memory-grid" id="mem-stand-grid"></div>
+
+    <div class="memory-actions">
+      <button id="mem-stand-restart" class="btn restartbtn">Rejouer</button>
+    </div>
+
+    <!-- Panneau de résultat (overlay interne) -->
+    <div class="memory-result" id="mem-stand-result">
+      <p class="result-text"></p>
+      <button class="btn restartbtn" id="mem-stand-play-again">Rejouer</button>
+    </div>
+  </div>
+</section>
+
+    </div>
+  </div>
+</div>
+
+  
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-overlay"></div>
+    <div class="footer-top-line"></div>
+    <div class="footer-content">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h2>Pages</h2>
+          <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="history.php">Histoire</a></li>
+            <li><a href="competition.php">Compétition</a></li>
+            <li><a href="#">Gagne ton poster</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>Modèles</h2>
+          <ul>
+            <li><a href="history.php#original">L’Original</a></li>
+            <li><a href="history.php#g-series">Porsche Série G</a></li>
+            <li><a href="history.php#964">Porsche 964</a></li>
+            <li><a href="history.php#993">Porsche 993</a></li>
+            <li><a href="history.php#996">Porsche 996</a></li>
+            <li><a href="history.php#997">Porsche 997</a></li>
+            <li><a href="history.php#991">Porsche 991</a></li>
+            <li><a href="history.php#porsche-992">Porsche 992</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>À propos</h2>
+          <ul>
+            <li><a href="projet.php">Le projet</a></li>
+            <li><a href="credit.php">Crédits</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-brand">PORSCHE 911</div>
+        <div class="footer-copyright">DWT_@2025 – Dewandre Jonathan</div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/scripts/app.js" ></script>
+
+</body>
+</html>

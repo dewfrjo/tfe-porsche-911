@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crédits - 911 history</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/styles/app.css">
+  <link rel="icon" href="assets/images/porsche-l.png">
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  
+
+</head>
+<body>
+
+  <header>
+   <nav class="navbar">
+   <div class="navbar__logo">
+      <a href="index.php">
+        <img src="assets/images/porsche-logo.png" alt="Porsche Logo">
+      </a>
+    </div>
+      <div class="navbar__toggle" id="burger">&#9776;</div>
+        <ul class="navbar__links" id="nav-links">
+            <li><a href="index.php" class="nav-link active">ACCUEIL</a></li>
+            <li><a href="history.php" class="nav-link">HISTORIQUE</a></li>
+            <li><a href="competition.php" class="nav-link">COMPÉTITION</a></li>
+            <li><a href="quiz.php" class="nav-link quiz-btn quiz-link">Gagne ton poster</a></li>
+        </ul>
+    </nav>
+  </header>
+
+    <main>
+        <section class="accueil credit-intro">
+          <div class="credit-intro__overlay"></div>
+          <div class="credit-intro__content">
+            <h1 class="fade-in-on-scroll">Crédits</h1>
+          </div>
+        </section>
+
+    <section class="credit">
+      <div class="credit__wrapper">
+        <h2>Ressources utilisées</h2>
+        <ul class="fade-in-on-scroll">
+          <li><strong>Images Porsche :</strong> Officielles et libres de droits sous usage éducatif, Unsplash</li>
+          <li><strong>Typographies :</strong> Bebas Neue, Roboto, Playfair Display (Google Fonts)</li>
+          <li><strong>Icônes :</strong> Lucide Icons</li>
+          <li><strong>Bibliothèques JS :</strong> GSAP, ScrollTrigger, Model-Viewer</li>
+          <li><strong>Documentation historique :</strong> Porsche AG, Wikipedia, livre fourni par le centre Porsche Liège</li>
+        </ul>
+
+        <h2>Palette de couleurs</h2>
+        <div class="color-palette fade-in-on-scroll">
+            <div class="color-item">
+              <img src="assets/images/logo-jaune.svg" class="color-swatch" style="filter: drop-shadow(0 0 5px #FFD700);" alt="Jaune Racing" />
+              <p class="color-name">Jaune Racing</p>
+              <code>#FFD700</code>
+            </div>
+
+            <div class="color-item">
+              <img src="assets/images/logo-rouge.svg" class="color-swatch" style="filter: drop-shadow(0 0 5px #D21F1B);" alt="Rouge Indien" />
+              <p class="color-name">Rouge Indien</p>
+              <code>#D21F1B</code>
+            </div>
+        </div>
+
+        <h2>Développement</h2>
+        <ul class="fade-in-on-scroll">
+          <li><strong>Conception, design et développement :</strong> Jonathan Dewandre</li>
+          <li><strong>Projet réalisé dans le cadre d’un TFE - 2025</strong></li>
+        </ul>
+
+        <h2>Remerciements</h2>
+        <ul class="fade-in-on-scroll">
+          <li>Merci à mes enseignants pour leur accompagnement tout au long de ce projet</li>
+          <li>À Porsche pour avoir créé une voiture aussi emblématique</li>
+          <li>À Porsche Liège pour leur accueil et les documentations fournies</li>
+          <li>Et à vous, visiteurs passionnés, pour votre curiosité</li>
+        </ul>
+      </div>
+    </section>
+
+
+    </main>
+
+  <footer class="site-footer">
+    <div class="footer-overlay"></div>
+    <div class="footer-top-line"></div>
+    <div class="footer-content">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h2>Pages</h2>
+          <ul>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="history.php">Histoire</a></li>
+            <li><a href="competition.php">Compétition</a></li>
+            <li><a href="quiz.php">Gagne ton poster</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>Modèles</h2>
+          <ul>
+            <li><a href="history.php#original">L’Original</a></li>
+            <li><a href="history.php#g-series">Porsche Série G</a></li>
+            <li><a href="history.php#964">Porsche 964</a></li>
+            <li><a href="history.php#993">Porsche 993</a></li>
+            <li><a href="history.php#996">Porsche 996</a></li>
+            <li><a href="history.php#997">Porsche 997</a></li>
+            <li><a href="history.php#991">Porsche 991</a></li>
+            <li><a href="history.php#porsche-992">Porsche 992</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h2>À propos</h2>
+          <ul>
+            <li><a href="projet.php">Le projet</a></li>
+            <li><a href="#">Crédits</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-brand">PORSCHE 911</div>
+        <div class="footer-copyright">DWT_@2025 – Dewandre Jonathan</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script type="module" src="assets/scripts/app.js" ></script>
+
+</body>
+</html>
