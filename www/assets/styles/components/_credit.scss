@@ -1,0 +1,171 @@
+/* utile si pas déjà défini plus haut */
+:root { --vw-safe: 100dvw; }
+
+.credit-intro {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: -3.5rem;
+
+  /* évite tout débordement de l’élément ::before */
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  overflow-y: hidden;
+
+  /* Image de fond via pseudo, recentrée sans élargir la page */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('../images/porsche-credit.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 0; /* dessous le contenu */
+
+    /* Au lieu de left:-130% (qui débordait), on recadre par la position */
+    background-position: 60% center; /* décale visuellement vers la droite en mobile */
+
+    @media (min-width: $breakpoint-desktop) {
+      background-position: center center; /* reset desktop */
+    }
+  }
+
+  /* Overlay foncé sur l'image */
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  /* Contenu */
+  &__content {
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem;
+    inline-size: min(100%, var(--vw-safe));
+  }
+}
+
+/* Ancienne version commentée : inutile de remettre 100vw (source d’overflow) */
+/*
+.credit {
+  width: 100vw;
+  background-color: $carrara-white;
+  overflow: hidden;
+}
+*/
+
+.credit {
+  background-color: $carrara-white;
+  padding: 5rem 2rem;
+  font-family: $font-text;
+  color: $black;
+
+  /* largeur sûre + anti débordement horizontal */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+
+  &__wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: white;
+    padding: 4rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.07);
+    position: relative;
+    z-index: 2;
+
+    h2 {
+      font-family: $font-title;
+      font-size: 2.8rem;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      color: $indian-red;
+      position: relative;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: $yellow;
+        margin-top: 0.5rem;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 2rem;
+
+      li {
+        padding-left: 1rem;
+        position: relative;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+
+        &::before {
+          content: '⟡';
+          position: absolute;
+          left: 0;
+          color: $gentiane-blue;
+        }
+
+        strong { color: $black; }
+      }
+    }
+  }
+}
+
+.color-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  /* garde-fou largeur */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+
+  .color-item {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 150px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .color-swatch {
+      width: 100%;
+      height: auto;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .color-name {
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      font-family: $font-text;
+    }
+
+    code {
+      font-size: 0.85rem;
+      color: #333;
+    }
+  }
+
+  /* Ombres spécifiques */
+  .color-item:nth-child(1) {
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3); /* Jaune Racing */
+  }
+  .color-item:nth-child(2) {
+    box-shadow: 0 4px 10px rgba(210, 31, 27, 0.3); /* Rouge Indien */
+  }
+}

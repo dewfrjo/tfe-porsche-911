@@ -1,0 +1,73 @@
+.model-description {
+    background-color: $carrara-white;
+    padding: 90px 67px;
+    color: $black;
+}
+
+.description-header h2 {
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+.model-3d {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    // background: #ddd;
+    // border-radius: 10px;
+}
+.model-3d model-viewer {
+    width: 120%;
+    height: 100%;
+}
+
+.description-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 45px;
+}
+
+.text-content {
+    width: 635px;
+}
+
+.description-content h3 {
+    font-size: 24px;
+    margin-top: 45px;
+    color: $gentiane-blue;
+}
+
+.description-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: $black;
+}
+
+.description-images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.description-images img {
+    width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    // margin: 0 auto;
+}
+
+.description-paralax {
+    width: 100vw;
+    margin: 0 auto;
+    margin-left: -67px;
+}
+
+.img-coccinelle {
+    width: 50%;
+}

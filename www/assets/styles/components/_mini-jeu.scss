@@ -1,0 +1,438 @@
+/* =========================
+   LAUNCH CONTROL – STYLE PREMIUM
+   ========================= */
+
+   .launch-control {
+    padding: clamp(2rem, 4vw, 4rem) 0;
+    background: radial-gradient(circle at 50% 20%, #0a0a0a 0%, #000 90%);
+    background-image: url('../images/carbon-texture.jpg'); // texture carbone
+    background-size: cover;
+    background-blend-mode: multiply;
+    border-top: 3px solid $yellow;
+    border-bottom: 3px solid $yellow;
+    color: $carrara-white;
+  }
+  
+  .lc-card {
+    max-width: 980px;
+    margin: 0 auto;
+    border-radius: 18px;
+    padding: 2rem;
+    background: rgba(10, 10, 10, .85);
+    border: 1px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(255, 215, 0, .08);
+    font-family: '911Porscha', sans-serif;
+    text-align: center;
+  }
+  
+  /* === Titre & texte === */
+  .lc-head h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: $yellow;
+    margin-bottom: .5rem;
+  }
+  .lc-head p {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* === Zone lights + statut === */
+  .lc-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Feux F1 (horizontaux) */
+  .lc-lights {
+    display: flex;
+    gap: 1rem;
+  }
+  .lc-light {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #111;
+    border: 2px solid #333;
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, .9);
+    transition: all .3s ease;
+  }
+  .lc-red.on {
+    background: #ff1e1e;
+    box-shadow: 0 0 25px #ff1e1e, inset 0 0 12px rgba(0, 0, 0, .7);
+  }
+    /* 🔶 Ambre / Orange */
+  .lc-amber.on {
+    background: #ffb300;
+    box-shadow: 0 0 25px #ffb300, inset 0 0 12px rgba(0, 0, 0, .7);
+  }
+  .lc-green.on {
+    background: #00ff5e;
+    box-shadow: 0 0 25px #00ff5e, inset 0 0 12px rgba(0, 0, 0, .7);
+  }
+  
+  /* Texte statut */
+  .lc-status {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    text-shadow: 0 0 8px rgba(255, 255, 255, .4);
+    color: $carrara-white;
+  }
+  
+  /* === Boutons === */
+  .lc-actions {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1rem;
+  
+    .btn {
+      font-family: '911Porscha', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .05em;
+      border-radius: 50px;
+      padding: 0.9rem 1.4rem;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: linear-gradient(145deg, #111, #1a1a1a);
+      box-shadow: inset 0 0 8px rgba(255, 255, 255, .05);
+      color: $carrara-white;
+      transition: all .3s ease;
+      cursor: pointer;
+  
+      &:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+      }
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+  
+    /* Bouton Armer → bleu Porsche */
+    .btn--primary {
+      background: radial-gradient(circle at 30% 30%, $gentiane-blue, #020e40);
+      border: 1px solid $gentiane-blue;
+      box-shadow: 0 0 15px rgba(12, 44, 132, .6);
+      &:hover {
+        box-shadow: 0 0 30px rgba(12, 44, 132, .8);
+      }
+    }
+  
+    /* Bouton Rejouer → style "paddle shift" */
+    .restartbtn {
+      background: linear-gradient(145deg, #222, #111);
+      border: 1px solid $yellow;
+      &:not(:disabled):hover {
+        background: $yellow;
+        color: $black;
+        box-shadow: 0 0 20px $yellow;
+      }
+    }
+  }
+  
+  /* === Tableau de stats === */
+  .lc-readout {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 1.2rem;
+    font-variant-numeric: tabular-nums;
+    justify-content: center;
+  
+    @media (max-width: 720px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* Résultat final */
+  .lc-result {
+    margin-top: .5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: $yellow;
+    text-shadow: 0 0 6px rgba(255, 215, 0, .6);
+  }
+  .lc-readout,
+  .lc-result{
+    font-family: $font-title !important;
+  }
+    
+
+    
+  /* =========================
+   MINI-GAMES CARDS
+   ========================= */
+.mini-games {
+  padding: 4rem 0;
+  background: #000;
+  color: $carrara-white;
+  text-align: center;
+  background-image: url('../images/carbon-texture.jpg');
+
+
+  h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: $yellow;
+    text-transform: uppercase;
+  }
+
+  .mini-games-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .game-card {
+    background: rgba(20,20,20,.9);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform .3s, box-shadow .3s;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 20px rgba(255,215,0,.3);
+    }
+
+    .game-thumb {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      color: $yellow;
+      margin-bottom: .3rem;
+    }
+
+    p {
+      font-size: .95rem;
+      color: rgba(255,255,255,.7);
+    }
+  }
+}
+
+/* =========================
+   GAME OVERLAYS
+   ========================= */
+.game-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(6px);
+
+  &.active {
+    display: flex;
+  }
+
+  .overlay-content {
+    position: relative;
+    max-width: 1000px;
+    width: 90%;
+    max-height: 90%;
+    background: rgba(15,15,15,.95);
+    border-radius: 16px;
+    padding: 2rem;
+    overflow-y: auto;
+    box-shadow: 0 0 30px rgba(255,215,0,.2);
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: $carrara-white;
+    cursor: pointer;
+    transition: color .3s;
+
+    &:hover { color: $yellow; }
+  }
+}
+
+/* =========================
+   MEMORY — STYLE (réutilisable)
+   ========================= */
+
+   .memory-game { 
+    padding: 4rem 0;
+    background: radial-gradient(circle at 50% 20%, #0a0a0a, #000);
+    color: $carrara-white; 
+  }
+  
+  .memory-card {
+    position: relative; /* nécessaire pour l'overlay de résultat */
+    background: rgba(10,10,10,.85);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    padding: 1rem 1rem 1.4rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  
+  .memory-head {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+  
+    h2 { 
+      color: $yellow; 
+      margin: .4rem 0; 
+      letter-spacing: .03em; 
+      font-size: clamp(1.25rem, 2.4vw, 2rem);
+    }
+  
+    .memory-status { 
+      opacity: .9; 
+      font-variant-numeric: tabular-nums; 
+      font-weight: 600;
+    }
+  }
+  
+  .memory-grid {
+    --size: 120px;
+    margin: 1rem auto 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(4, var(--size));
+    gap: .85rem;
+    justify-content: center;
+  
+    @media (max-width: 900px) { --size: 110px; }
+    @media (max-width: 560px) { --size: 84px; grid-template-columns: repeat(4, var(--size)); }
+  }
+  
+  /* ---- Carte (conteneur + flip) ---- */
+  .mem-card {
+    width: var(--size);
+    height: var(--size);
+    perspective: 900px;
+    border-radius: 12px;
+  }
+  
+  .mem-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    transform-style: preserve-3d;
+    transition: transform .5s ease;
+    will-change: transform;
+  
+    &:hover { transform: translateY(-2px); }
+    &.is-flipped { transform: rotateY(180deg); }
+  }
+  
+  .mem-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  
+  /* Face arrière (dos de carte) */
+  .mem-back {
+    background:
+      radial-gradient(120% 100% at 20% 20%, rgba(255,215,0,.08), transparent 40%),
+      #0f0f0f;
+    display: grid; place-items: center;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset,
+                0 6px 14px rgba(0,0,0,.6);
+    transition: transform .25s ease, box-shadow .3s ease;
+  }
+  .mem-back::after{
+    content:""; width: 60%; height: 60%;
+    background: url('../images/logo.svg') center/contain no-repeat;
+    opacity: .75;
+    filter: drop-shadow(0 0 6px rgba(255,215,0,.25));
+  }
+  
+  
+  /* Face avant (image) */
+  .mem-front {
+    transform: rotateY(180deg);
+  }
+  
+  /* Appariée */
+  .mem-card.matched .mem-inner {
+    transform: rotateY(180deg) scale(.98);
+  }
+  .mem-card.matched .mem-front {
+    outline: 2px solid $yellow;
+    box-shadow: 0 0 30px rgba(255, 210, 0, .25);
+  }
+  
+  /* Boutons */
+  .memory-actions { 
+    display: flex; 
+    justify-content: center; 
+    gap: .5rem; 
+  }
+  
+  .restartbtn {
+    background: transparent;
+    border: 2px solid $yellow;
+    color: $yellow;
+    padding: .55rem 1.2rem;
+    border-radius: 30px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    transition: all .25s ease;
+  
+    &:hover { 
+      background: $yellow; 
+      color: #000;
+      transform: translateY(-1px);
+    }
+  }
+  
+  /* ---- Overlay de résultat ---- */
+  .memory-result {
+    position: absolute;
+    inset: 0;
+    display: none;        /* caché par défaut, affiché en JS */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(0,0,0,.86);
+    border-radius: 14px;
+    z-index: 20;
+  
+    .result-text {
+      font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+      color: $yellow;
+      text-align: center;
+      font-weight: 800;
+    }
+  }
+  

@@ -1,0 +1,893 @@
+/* Utilitaire global au besoin (OK si déjà défini ailleurs) */
+:root { --vw-safe: 100dvw; }
+
+.backgroundBlack {
+  background: $black !important;
+  color: $carrara-white;
+}
+
+.competition-intro {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: -3.5rem;
+  
+    /* sécurise la largeur + bloque toute fuite horizontale */
+    position: relative;
+    inline-size: min(100%, var(--vw-safe));
+    overflow-x: clip;
+    overflow-y: hidden;
+  
+    /* Image de fond */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('../images/img-gt3rs-piste-back.webp') no-repeat center center;
+      background-size: cover;
+      z-index: 0;
+  
+      /* au lieu de left:-130% → on recadre via background-position */
+      background-position: 60% center; /* décale le cadrage sur mobile */
+  
+      @media (min-width: $breakpoint-desktop) {
+        background-position: center center; /* reset desktop */
+      }
+    }
+  
+    /* Overlay foncé sur l'image */
+    &__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+  
+    /* Contenu */
+    &__content {
+      position: relative;
+      z-index: 2;
+      padding: 0 2rem;
+      inline-size: min(100%, var(--vw-safe));
+    }
+  }
+  
+  .competition {
+    background: linear-gradient(to top,#ECECE7 100%, #010101 95% );
+
+    &__intro {
+
+      padding-top: 2rem ;
+    }
+
+    &__content{
+      margin-bottom: 0;
+      padding-bottom: 5rem;
+    }
+
+    &__title {
+
+      @media (min-width:$breakpoint-desktop) {
+        padding-top: 5rem;
+        padding-left: 7rem;
+      }
+    }
+  
+    &__title2 {
+
+      align-items: center;
+      text-align: center;
+      
+      @media (min-width:$breakpoint-desktop) {
+        padding-left: 7rem;
+        align-items: flex-start;
+        text-align: start;
+      }
+    }
+    // &__prelude {
+
+    // }
+    // &__endurance {
+
+    // }
+  }
+
+  .Cprelude {
+
+    &__content {
+        margin-top: 0;
+        gap: 2rem;
+    }
+  }
+
+  /* =========================
+   COMPÉTITION — PRÉCURSEUR (Type 64)
+========================= */
+
+.Cprelude {
+  background: $carrara-white !important;
+  color: $black;
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow: hidden;
+
+  &::after{
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 40%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    z-index: 1; pointer-events: none;
+  }
+
+}
+
+/* Grille principale */
+.Cprelude__grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: start;
+    padding-bottom: 7rem;
+    padding-right: 7rem;
+  }
+}
+
+/* Colonne gauche */
+.Cprelude__left {
+  @media (min-width: $breakpoint-desktop) {
+    padding-top: 0;
+  }
+}
+
+.Cprelude__subtitle {
+  margin: 0 0 1.6rem 0;
+  text-transform: uppercase;
+}
+
+/* Texte */
+.Cprelude__content {
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 7rem;
+  align-items: center;
+
+  @media (min-width:$breakpoint-desktop) {
+    align-items: start;
+  }
+
+}
+
+.gt__title {
+  padding-left: 0;
+}
+
+/* Colonne droite */
+.Cprelude__right {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  margin-top: -7rem;
+}
+
+/* Grande image */
+.Cprelude__hero {
+  width: min(620px, 100%);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,.22));
+}
+
+/* Galerie 2 vignettes */
+.Cprelude__gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  width: min(620px, 100%);
+}
+
+.Cprelude__gallery img {
+  display: block;
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 14px 24px rgba(0,0,0,.18);
+}
+
+.Cprelude {
+
+  &__title {
+    text-align: center;
+    margin-top: 5rem;
+
+    @media (min-width: $breakpoint-desktop) {
+      text-align: start;
+      margin-top: O;
+    }
+  }
+}
+/* Mobile : images sous le texte */
+@media (max-width: 900px) {
+
+  .Cprelude {
+    padding-top: 7rem;
+
+    &__title {
+      text-align: center;
+    }
+    &__right {
+      justify-items: center;
+    }
+  
+    &__subtitle{
+      text-align: center;
+    }
+    &__content {
+      margin-inline: auto;
+      padding: 2rem;
+    }
+  
+    &__gallery img {
+      display: none;
+    }
+
+    &__hero {
+      margin-top: 5rem;
+      margin-bottom: 10rem;
+    }
+  }
+
+
+}
+
+
+  .endurance {
+    background: $black;
+    color: $carrara-white;
+
+    &__content {
+        margin-top: 0;
+        gap: 2rem;
+    }
+
+    &__title {
+      text-align: center;
+
+      @media (min-width: $breakpoint-desktop) {
+        text-align: start;
+      }
+    }
+    &__subtitle {
+      text-align: center;
+
+      @media (min-width: $breakpoint-desktop) {
+        text-align: start;
+      }
+    }
+  }
+
+
+  /* =========================
+   COMPÉTITION — ENDURANCE
+   vidéo à gauche + panneau noir à droite
+========================= */
+
+.endurance {
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow: hidden;
+  
+  background: $black;
+  color: $carrara-white;
+}
+
+/* Vidéo fond (côté gauche) */
+.endurance__bg {
+  position: absolute;
+  inset: 0 auto 0 0;
+  padding-left: 7rem;
+  padding-top: 5rem;
+  width: 40%;
+  /* border-radius: 43px; */
+  -o-object-fit: cover;
+  object-fit: cover;
+  z-index: 0;
+  filter: saturate(1.05) contrast(1.05);
+  
+  @media (max-width: 900px) {
+    width: 100%;
+    height: 45vh;
+    padding-left: 0;
+  }
+}
+
+/* Panneau noir à droite */
+.endurance__panel {
+  margin-left: 0;
+  width: 100%;
+  min-height: auto;
+  padding: 3.5rem 2rem 4rem;
+  margin-top: 45vh; /* le panneau commence après la vidéo */
+
+  @media (min-width: $breakpoint-desktop) {
+    position: relative;
+    z-index: 2;
+    margin-left: 45%;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+}
+
+/* Titres */
+.endurance__title {
+
+  @media (min-width: $breakpoint-desktop) {
+    margin: 0;
+    text-transform: uppercase;
+    font-family: $font-title;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+
+}
+
+.endurance__subtitle {
+
+  @media (min-width:$breakpoint-desktop) {
+    margin: 0;
+    text-transform: uppercase;
+    font-family: $font-title;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+}
+
+/* Texte */
+.endurance__content {
+  padding: 2rem 0;
+  @media (min-width:$breakpoint-desktop) {
+    padding-left: 7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    align-items: flex-start;
+  
+    p {
+      margin: 0;
+      line-height: 1.55;
+      opacity: 0.92;
+    }
+  }
+
+}
+
+/* Optionnel : image 917 par-dessus le panneau */
+.endurance__img {
+  margin-top: 1rem;
+  pointer-events: none;
+
+  img {
+    width: min(520px, 100%);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 18px 28px rgba(0,0,0,.45));
+  }
+}
+
+
+/* =========================
+   COMPÉTITION — RALLYE
+========================= */
+
+.rallye {
+
+  padding: 0 2rem;
+
+  @media (min-width:$breakpoint-desktop) {
+    padding: 0;
+  }
+
+  &__title {
+
+    text-align: center;
+
+    @media (min-width:$breakpoint-desktop) {
+      text-align: start;
+      padding-left: 7rem;
+    }
+  }
+
+  &__title2 {
+    text-align: center;
+
+    @media (min-width: $breakpoint-desktop) {
+      text-align: start;
+    }
+  }
+
+  &__content {
+
+    padding: 0 0 5rem 0;
+    gap: 2rem;
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-top: -35rem;
+      padding-left: 7rem;
+      align-items: flex-start;
+    }
+  }
+
+  &__img {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10rem;
+  
+    @media (min-width: $breakpoint-desktop) {
+      align-items: flex-end;
+      margin-top: 0;
+    }
+  
+    img {
+      @media (min-width: $breakpoint-desktop) {
+        inline-size: 55%;
+        margin-top: -4rem;
+      }
+    }
+  }
+}
+
+  
+  .videoComp {
+  
+    video {
+      opacity: 1 !important;
+      transform: translateY(-30px);
+    }
+  }
+  
+  .videoComp::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;              // ajuste si tu veux un fondu plus long
+    pointer-events: none;
+    z-index: 1;                 // au-dessus du fond, en-dessous de ta vidéo (qui est à z-index:2)
+  
+    background: linear-gradient(
+    to top,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,1) 100%
+    );
+  }
+  
+  .gt {
+    &__title2 {
+      padding-bottom: 2rem;
+      text-align: center;
+
+      @media (min-width: $breakpoint-desktop) {
+        padding-bottom: 0;
+      }
+    }
+
+    &__img {
+      top: 0;
+    }
+
+    &__content {
+      gap: 2rem;
+
+      @media (min-width:$breakpoint-desktop) {
+        gap: 5rem;
+      }
+    }
+  }
+
+  .hybrides{
+
+    &__title {
+      text-align: center;
+
+      @media (min-width: $breakpoint-desktop) {
+        text-align: start;
+      }
+    }
+
+    &__content {
+
+      @media (min-width: $breakpoint-desktop) {
+        margin-top: -30rem;
+        
+      }
+    }
+
+    &__img {
+
+      img {
+        margin-top: 1rem;
+        @media (min-width: $breakpoint-desktop) {
+          margin-top: 0 !important;
+        }
+      }
+    }
+  }
+
+  .monoplace {
+
+    &__content {
+      padding-bottom: 0;
+    }
+
+    &__img {
+      
+      @media (min-width: $breakpoint-desktop) {
+        top: 0 ;
+        left: 7rem;
+      }
+    }
+  }
+
+  .monoplace {
+    &__img {
+      top: 0;
+
+      img {
+        width: 80%;
+        padding-left: 3rem;
+      }
+    }
+    /* ============ Bloc "F" (MP4/2) ============ */
+    &__F {
+      margin-top: clamp(22px, 3vw, 34px);
+  
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: center;
+
+      border-radius: 12px;
+      padding: clamp(14px, 2vw, 24px);
+      padding-left: 2rem;
+      padding-right: 2rem;
+
+      padding-bottom: 5rem;
+    }
+  
+    &__Fleft {
+      display: grid;
+      gap: 14px;
+      justify-content: center;
+    }
+  
+    /* grande image (profil voiture) */
+    &__Fimg {
+      display: flex;
+      justify-content: center;
+  
+      img {
+        width: 100%;
+        max-width: 640px;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.12));
+      }
+    }
+  
+    /* 2 vignettes */
+    &__imgM {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      max-width: 640px;
+  
+      img {
+        width: 100%;
+        height: 140px;
+        display: block;
+        object-fit: cover;
+  
+        border-radius: 6px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.75);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+      }
+    }
+  
+    /* colonne texte : je ne touche PAS aux <p> */
+    &__Fcontent {
+
+      margin: auto;
+      p {
+        max-width: 36ch;
+      font-size: 22px;
+      }
+    }
+  
+    /* ============ Desktop ============ */
+    @media (min-width: $breakpoint-desktop) {
+      &__F {
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: clamp(31px, 5rem, 60px);
+        padding-left: 7rem;
+        padding-bottom: 5rem;
+      }
+  
+      &__Fcontent {
+        padding-top: 28px;
+
+        p {
+          max-width: 36ch;
+          font-size: 22px;
+        }
+      }
+  
+      &__Fimg img {
+        max-width: 720px;
+      }
+  
+      &__imgM {
+        max-width: 720px;
+  
+        img {
+          height: 150px;
+        }
+      }
+    }
+  }
+  
+  
+
+  /* CONCLUSION — COMPÉTITION*/
+
+.conclusion {
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow: hidden;
+
+
+  background: url("../images/img-conclusion.jpg") center / cover no-repeat;
+  color: $carrara-white;
+
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 5rem 1.5rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.62);
+    z-index: 0;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 58ch;
+  }
+
+  &__title {
+    margin: 0 0 1.5rem 0;
+    text-transform: uppercase;
+    font-family: $font-title;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+  }
+
+  p {
+    margin: 0;
+    font-family: $font-text;
+    font-size: clamp(1.05rem, 3.2vw, 1.2rem);
+    line-height: 1.55;
+    opacity: 0.92;
+
+    & + p {
+      margin-top: 1.3rem;
+    }
+  }
+
+  &__title,
+  p {
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Desktop */
+  @media (min-width: $breakpoint-desktop) {
+    min-height: 100vh;
+    padding: 7rem 2rem;
+
+    > * {
+      max-width: 70ch;
+    }
+
+    &__title {
+      font-size: clamp(3rem, 4vw, 4.2rem);
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-size: 26px;
+
+      & + p {
+        margin-top: 1.6rem;
+      }
+    }
+
+    /* Overlay un peu plus doux sur grand écran */
+    &::before {
+      background: rgba(0, 0, 0, 0.75);
+    }
+  }
+}
+
+
+/* =========================
+   COMP NOW - Porsche aujourd'hui
+   ========================= */
+
+   #now.compNow {
+
+    .compNow__layout {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+  
+    /* ========== MEDIA COLUMN ========== */
+    .compNow__media {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      // align-items: center;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin: 1rem 5rem 2rem 5rem;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        margin: 0;
+      }
+
+    }
+  
+    .compNow__mediaTop {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+  
+    /* IMPORTANT : on garde compNow__img comme classe base */
+    .compNow__img {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+  
+      /* overlay discret premium (comme sur tes visuels) */
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.55) 0%,
+          rgba(0, 0, 0, 0.15) 55%,
+          rgba(0, 0, 0, 0.00) 100%
+        );
+        pointer-events: none;
+      }
+    }
+  
+    .compNow__img--small {
+      height: 150px; /* mobile */
+    }
+  
+    .compNow__img--main {
+      height: 260px; /* mobile */
+    }
+  
+    /* ========== TEXT COLUMN ========== */
+    .compNow__title2 {
+      margin-bottom: 1.4rem;
+      padding-left: 2rem;
+    }
+  
+    .compNow__content {
+      /* évite les effets "colonne bizarre" : on force une lecture clean */
+      flex-direction: column;
+      gap: 0;
+      align-items: center;
+
+      @media (min-width: $breakpoint-desktop) {
+        align-items: flex-start;
+      }
+    }
+  
+    .compNow__lead {
+      margin-bottom: 1.6rem;
+    }
+  
+    /* “Piliers” façon éditorial racing : un trait, pas une card */
+    .compNow__pillars {
+      display: grid;
+      gap: 1.8rem;
+      margin-top: 1.2rem;
+    }
+  
+    .compNow__pillar-title {
+      margin: 0;
+    }
+  
+    .compNow__pillar p {
+      margin-top: 0.65rem;
+    }
+  
+    .compNow__signature {
+      margin-top: 2.2rem !important;
+      font-weight: bold;
+    }
+
+    .compNow__title {
+      text-align: center;
+    }
+  
+    /* ========== DESKTOP ========== */
+    @media (min-width: $breakpoint-desktop) {
+
+      .compNow__media {
+        // align-items: center;
+        padding-left: 7rem;
+      }
+
+      .compNow__title {
+        padding-bottom: 3rem;
+      }
+      .compNow__layout {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        align-items: start;
+        gap: 4rem;
+      }
+  
+      .compNow__img--small {
+        height: 170px;
+      }
+  
+      .compNow__img--main {
+        height: 520px; /* gros visuel comme dans ta capture */
+      }
+  
+      .compNow__right {
+        padding-top: 0.4rem;
+      }
+    }
+  }
+  

@@ -1,0 +1,163 @@
+/* Accessibilité canvas */
+canvas:focus { 
+  display: none;
+  @media (min-width: $breakpoint-tablet) {
+    display: block;
+    outline: 2px solid #ffc107; outline-offset: 2px;
+  }
+   
+}
+
+/* ===== Section Porsche 3D (style “site web”, non plein écran) ===== */
+.porsche-3d{
+  display: none;
+  @media (min-width: $breakpoint-desktop) {
+    display: block;
+    --bg:#f1f1ec; --ink:#111; --muted:#c9c9c9; --accent:#e12; --glass:rgba(255,255,255,.75);
+    position: relative;
+    padding: 48px 24px 36px;
+    background: $carrara-white;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+}
+
+/* Grande année en arrière-plan (modifie data-year sur la section) */
+.porsche-3d::before{
+  content: attr(data-year);
+  position: absolute; inset: 0 auto auto 50%;
+  transform: translateX(-50%);
+  font: 900 clamp(120px,28vw,420px)/1 "Porsche Next", system-ui, sans-serif;
+  color: rgba(0,0,0,.06);
+  letter-spacing: .08em;
+  pointer-events: none; user-select: none;
+}
+
+/* Bande centrale: flèches + scène 3D */
+.p3d-wrap{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Scène 3D en ratio 16:9 */
+.p3d-stage{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;         /* responsive, ajuste au besoin */
+  background: transparent;
+  border-radius: 12px;
+}
+.p3d-viewer{ position: absolute; inset: 0; }
+
+/* Flèches de navigation */
+.p3d-nav{
+  width: 48px; height: 48px;
+  border-radius: 999px;
+  border: 0; cursor: pointer;
+  background: $carrara-white; color: $indian-red;
+  display: grid; place-items: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,.2);
+  transition: transform .15s ease, opacity .2s ease;
+}
+.p3d-nav:hover{ transform: translateY(-1px); }
+
+/* Caption sous la voiture */
+.p3d-caption{
+  text-align: center;
+  color: $black;
+}
+.p3d-caption h2{
+  margin: 0 0 8px;
+  font-weight: 800;
+  letter-spacing: .4px;
+}
+.p3d-caption p{
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 1.2rem;
+    color: #111;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s, transform 0.3s;
+    max-width: 55ch;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    height: 8rem;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Dots */
+.p3d-dots{ display: flex; justify-content: center; gap: 10px; }
+.p3d-dots button{
+  width: 10px; height: 10px; border-radius: 999px;
+  border: 0; background: var(--muted); cursor: pointer;
+  transition: transform .15s ease, background .2s ease, opacity .2s ease;
+  opacity: .95;
+}
+.p3d-dots button.active{ background: var(--accent); transform: scale(1.15); }
+
+/* Loader discret */
+.p3d-loading{
+  position: absolute;
+  left: 50%; top: 10px; transform: translateX(-50%);
+  width: min(420px, 90vw);
+  text-align: center;
+}
+.p3d-loading .bar{
+  height: 6px; background: rgba(0,0,0,.12);
+  border-radius: 999px; overflow: hidden;
+}
+.p3d-loading .bar span{
+  display: block; height: 100%;
+  background: #ffc107;
+  transition: width .2s ease;
+}
+.p3d-loading p{ margin: 6px 0 0; font-size: 12px; opacity: .8; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px){
+  .p3d-wrap{ grid-template-columns: 48px 1fr 48px; }
+  .p3d-nav{ width: 44px; height: 44px; }
+}
+@media (max-width: 760px){
+  .porsche-3d{ padding: 40px 16px 28px; }
+  .p3d-wrap{ grid-template-columns: 40px 1fr 40px; gap: 8px; }
+  .p3d-nav{ width: 40px; height: 40px; }
+  .p3d-caption p{ font-size: clamp(14px, 2.4vw, 17px); }
+}
+
+/* ===== (Optionnel) Thème sombre basé sur le système ===== */
+@media (min-width: $breakpoint-desktop){
+  // .porsche-3d{ color: $carrara-white; }
+  .porsche-3d::before{ color: $carrara-white(255,255,255,.07); }
+  .p3d-nav{ background: $carrara-white(20,22,26,.9); color: $indian-red; }
+  .p3d-nav:hover {background-color: $indian-red-hover; color: $carrara-white;}
+  .p3d-dots button{ background: #C9C9C9; }
+  .p3d-dots button.active{ background: $indian-red; width: 2rem;
+    border-radius: 8px;}
+  .p3dannee{color: $black;
+      font-weight: bold;
+      opacity: 10%;
+      position: relative;
+      font-family: "Bebas Neue", sans-serif;
+      z-index: 0;
+      position: absolute;
+      left: 50%;
+      top: 60%;
+      transform: translate(-50%, -50%);
+    }
+}
+
+/* ===== (Facultatif) Masquer tes anciens styles plein écran si encore en place ===== */
+/* On neutralise #viewer plein écran au cas où */
+#viewer { position: static; inset: auto; background: transparent; height: 100%; }
+/* On n’utilise plus .hud/.ui en section — si tu les gardes, commente-les */

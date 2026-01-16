@@ -1,0 +1,168 @@
+/* ========== Sécurisation globale ========= */
+:root {
+  --vw-safe: 100dvw;
+}
+
+/* =========================
+   INTRO – Projet
+========================= */
+.projet-intro {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: -3.5rem;
+
+  /* Correction : évite tout débordement horizontal */
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  overflow-y: hidden;
+
+  /* Image de fond */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('../images/porsche-fond-projet.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 0;
+
+    /* au lieu de left:-130%, on recadre via la position */
+    background-position: 60% center; // petit décalage visuel sur mobile
+
+    @media (min-width: $breakpoint-desktop) {
+      background-position: center center;
+    }
+  }
+
+  /* Overlay foncé */
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  /* Contenu texte */
+  &__content {
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem;
+    inline-size: min(100%, var(--vw-safe));
+  }
+}
+
+/* =========================
+   SECTION – Projet
+========================= */
+.projet {
+  /* width: 100vw; → remplacé pour éviter overflow */
+  inline-size: min(100%, var(--vw-safe));
+  background-color: $carrara-white;
+  overflow-x: clip;
+  overflow-y: hidden;
+}
+
+/* =========================
+   CONTENU – Projet
+========================= */
+.projet__wrapper {
+  padding: 5rem 2rem;
+  margin: 0 auto;
+  color: $black;
+  inline-size: min(100%, var(--vw-safe));
+
+  h2 {
+    font-family: $font-title;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: $indian-red;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: $indian-red;
+      margin-top: 0.5rem;
+    }
+  }
+
+  p,
+  ul {
+    font-family: $font-text;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  ul {
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 1rem;
+      position: relative;
+
+      &::before {
+        content: "⟡";
+        color: $indian-red;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  /* Animation fade-in */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* =========================
+   LISTE DES FONCTIONNALITÉS
+========================= */
+.feature-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 2rem;
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+
+  li {
+    opacity: 0;
+    transform: translateX(-40px);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    font-family: $font-text;
+    color: #010101;
+    padding-left: 1rem;
+    position: relative;
+    max-inline-size: 100%;
+
+    &::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      color: $indian-red;
+      font-size: 0.9rem;
+    }
+
+    &.visible {
+      opacity: 1;
+      transform: translateX(0);
+      transition: all 0.6s ease-out;
+    }
+  }
+}

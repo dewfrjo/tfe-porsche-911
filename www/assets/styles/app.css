@@ -1,0 +1,5173 @@
+@charset "UTF-8";
+/* Utilitaire global (ok si déjà défini ailleurs) */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display&family=Roboto:wght@400;700&display=swap");
+:root {
+  --vw-safe: 100dvw;
+}
+
+/* ===== Accueil (hero) ===== */
+.accueil {
+  margin: 0 auto;
+  margin-bottom: -5px;
+  position: relative;
+  z-index: -2;
+  /* Évite tout débordement horizontal parasite du hero */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  overflow-y: hidden;
+}
+.accueil__title {
+  margin-top: 15%;
+  text-align: center;
+  color: #ECECE7;
+}
+@media (min-width: 821px) {
+  .accueil__title {
+    margin-top: 10%;
+  }
+}
+@media (min-width: 1025px) {
+  .accueil__title {
+    margin-top: 5%;
+  }
+}
+.accueil__title__2 {
+  text-align: center;
+  font-size: 3rem;
+  color: #F1F1F1;
+  opacity: 25%;
+  margin: 0 auto;
+  position: relative;
+  z-index: -1;
+  font-family: "911 Porscha", sans-serif;
+}
+@media (min-width: 821px) {
+  .accueil__title__2 {
+    font-size: 9rem;
+  }
+}
+@media (min-width: 1025px) {
+  .accueil__title__2 {
+    font-size: 11rem;
+    margin-top: -3%;
+  }
+}
+.accueil__img {
+  /* Sur mobile, évite le débordement grâce à clamp + max-inline-size */
+  margin: 0 auto;
+  margin-top: -15%;
+  display: flex;
+  inline-size: clamp(260px, 90vw, 1000px);
+  max-inline-size: 100%;
+  position: relative;
+  left: 0; /* supprime le -7rem qui poussait hors écran à petite largeur */
+}
+@media (min-width: 821px) {
+  .accueil__img {
+    inline-size: 100%;
+    left: 0;
+  }
+}
+@media (min-width: 1025px) {
+  .accueil__img {
+    inline-size: clamp(800px, 80vw, 1250px);
+    max-inline-size: 1250px;
+  }
+}
+.accueil__text {
+  color: #010101;
+  max-width: 50ch;
+  text-align: center;
+  font-size: 14px;
+  padding: 1rem;
+  font-weight: bold;
+}
+@media (min-width: 821px) {
+  .accueil__text {
+    font-size: 32px;
+    padding: 2rem;
+  }
+}
+.accueil__text1 {
+  margin-top: 20%;
+}
+@media (min-width: 480px) {
+  .accueil__text1 {
+    margin-top: 0;
+  }
+}
+
+/* Anim entrée image hero */
+.accueil__img {
+  opacity: 0;
+  transform: scale(0.7) translateY(100px);
+  transition: opacity 1.6s ease-out, transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.accueil__img.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Wrapper : on “clipse” toute fuite horizontale éventuelle */
+.accueil__img-wrapper {
+  padding-top: 5rem;
+  overflow-x: clip;
+}
+@media (min-width: 821px) {
+  .accueil__img-wrapper {
+    padding-top: 10rem;
+  }
+}
+
+/* ===== Déco ===== */
+.deco-rectangle__white {
+  inline-size: min(100%, var(--vw-safe)); /* remplace width:100vw */
+  height: 324px;
+  flex-shrink: 0;
+  background: linear-gradient(to bottom, #010101, #ECECE7);
+  position: relative;
+  z-index: -1;
+  margin: -35% 0 0 0;
+  overflow: hidden;
+}
+
+/* ===== Intro bloc ===== */
+.intro {
+  background-color: #ECECE7;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: -5px;
+  justify-content: center;
+  padding: 8rem 0 0;
+  /* Évite tout débordement sur la droite */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+}
+@media (min-width: 1025px) {
+  .intro {
+    height: 70vh;
+    padding: 1rem;
+  }
+}
+@media (min-width: 821px) {
+  .intro {
+    padding-top: 5rem;
+  }
+}
+
+/* ===== Prelude (mobile) ===== */
+.prelude {
+  min-height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  color: #ECECE7;
+  padding: 2rem;
+  /* sécurise la largeur */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  /* Fonds */
+}
+@media (min-width: 1025px) {
+  .prelude {
+    display: none;
+  }
+}
+.prelude::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+.prelude__1 {
+  height: 100vh;
+}
+.prelude__h2 {
+  padding: 2rem;
+  margin-bottom: 5rem;
+}
+@media (min-width: 1025px) {
+  .prelude__h2 {
+    text-align: center;
+  }
+}
+.prelude__content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  color: #ECECE7;
+}
+.prelude__step {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #ECECE7;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.prelude__title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+@media (min-width: 1025px) {
+  .prelude__title {
+    font-size: 2rem;
+  }
+}
+.prelude__text {
+  font-size: 20px;
+  line-height: 1.6;
+}
+.prelude__text strong {
+  display: block;
+  margin-top: 1rem;
+}
+.prelude.prelude#prelude-1 {
+  background: url("../images/coccinelle-slider.jpg") no-repeat center center/cover;
+}
+.prelude.prelude#prelude-2 {
+  background: url("../images/356-slider.jpg") no-repeat center center/cover;
+}
+.prelude.prelude#prelude-3 {
+  background: url("../images/356-interieur.jpg") no-repeat center center/cover;
+}
+.prelude__separator {
+  width: 4px;
+  height: 80px;
+  background-color: #ECECE7;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+  top: 3rem;
+  margin-top: -80px;
+}
+@media (min-width: 1025px) {
+  .prelude__separator {
+    display: none;
+  }
+}
+
+/* ===== Prelude desktop (timeline sticky) ===== */
+.porsche-timeline-section {
+  display: none;
+  contain: layout style paint;
+}
+@media (min-width: 1025px) {
+  .porsche-timeline-section {
+    display: block;
+    height: 400vh;
+    position: relative;
+    background: #000;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+  }
+  .porsche-timeline-section .porsche-timeline-wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    transform: translateZ(0);
+  }
+  .porsche-timeline-section .porsche-image-side {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .porsche-timeline-section .porsche-image-side.left {
+    background: #000;
+  }
+  .porsche-timeline-section .porsche-image-side.left .porsche-image {
+    position: absolute;
+    inline-size: 100%;
+    block-size: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    filter: brightness(30%);
+    z-index: 1;
+    will-change: opacity, filter;
+    backface-visibility: hidden;
+  }
+  .porsche-timeline-section .porsche-image-side.left .porsche-image.active {
+    opacity: 1;
+    z-index: 2;
+  }
+  .porsche-timeline-section .porsche-image-side.right {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    position: relative;
+  }
+  .porsche-timeline-section .porsche-image-side.right .timeline-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    opacity: 0.1;
+    z-index: -1;
+    transition: opacity 0.5s ease;
+  }
+  .porsche-timeline-section .porsche-image-side.right .timeline-image.active {
+    opacity: 0.2;
+  }
+  .porsche-timeline-section .porsche-image-side.right .porsche-slide {
+    display: none;
+    max-width: 500px;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    position: relative;
+    z-index: 2;
+  }
+  .porsche-timeline-section .porsche-image-side.right .porsche-slide.active {
+    display: block;
+    animation: fadeInUp 0.8s ease;
+  }
+  .porsche-timeline-section .porsche-image-side.right .porsche-slide[data-step="3"] h3 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    margin-bottom: 1.5rem;
+  }
+  .porsche-timeline-section .porsche-image-side.right .porsche-slide[data-step="3"] p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  }
+  .porsche-timeline-section .porsche-image-side.right .porsche-slide h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .porsche-timeline-section .porsche-image-side.right .porsche-slide p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .porsche-timeline-section .porsche-step-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .porsche-timeline-section .porsche-step-indicator .porsche-step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;
+    transition: all 0.3s ease;
+    transform-origin: center;
+    will-change: transform, background-color, border-color;
+    cursor: pointer;
+  }
+  .porsche-timeline-section .porsche-step-indicator .porsche-step.active {
+    background: #fff;
+    color: #000;
+    transform: scale(1.2);
+  }
+  .porsche-timeline-section .porsche-step-indicator .porsche-step:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+  .porsche-timeline-section .porsche-timeline-buffer-internal {
+    position: absolute;
+    bottom: 0;
+    inline-size: 100%;
+    height: 200vh;
+    background: transparent;
+    pointer-events: none;
+  }
+  .porsche-timeline-section .porsche-timeline-buffer-internal .buffer-spacer {
+    inline-size: 100%;
+    block-size: 100%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .porsche-timeline-section .porsche-image, .porsche-timeline-section .porsche-slide, .porsche-timeline-section .porsche-step {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+/* ===== Timeline mobile ===== */
+.timeline {
+  text-align: center;
+  background: linear-gradient(to bottom, #010101 15%, #ECECE7 21%);
+  padding: 2rem 1rem;
+  min-height: 200vh;
+  /* sécurise largeur */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+}
+@media (min-width: 1025px) {
+  .timeline {
+    display: none;
+  }
+}
+.timeline__title {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 5rem 0;
+  color: #ECECE7;
+}
+@media (min-width: 821px) {
+  .timeline__title {
+    font-size: 64px;
+  }
+}
+.timeline__item {
+  margin: 2rem 0;
+  transition: transform 0.4s ease;
+  will-change: transform;
+  transform: scale(0.95);
+  opacity: 0.3;
+}
+.timeline__item.active {
+  transform: scale(1);
+  opacity: 1;
+}
+.timeline__item img {
+  inline-size: 100%;
+  block-size: auto;
+  display: block; /* évite les espaces inline */
+  transition: transform 0.4s ease;
+}
+.timeline__item .timeline__label {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: #000;
+}
+.timeline__divider {
+  height: 1px;
+  background-color: #000;
+  inline-size: 80%;
+  margin: 0 auto;
+}
+.timeline__final {
+  margin-top: 4rem;
+}
+.timeline__final h3 {
+  font-size: 3rem;
+  color: #ccc;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+}
+.timeline__final h3 span {
+  font-size: 4rem;
+  display: block;
+  font-weight: 900;
+}
+.timeline__final img {
+  inline-size: 100%;
+  max-inline-size: 600px;
+  margin: 1rem auto 0;
+  display: block;
+}
+.timeline__infos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  gap: 3rem;
+}
+@media (min-width: 821px) {
+  .timeline__infos {
+    margin-bottom: 2rem;
+  }
+}
+
+.timeline__item {
+  transition: transform 0.4s ease;
+  will-change: transform;
+  margin: 20px 0;
+}
+
+/* ===== New 911 section ===== */
+.new911 {
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  height: 65vh;
+  overflow: hidden;
+  background-color: #ECECE7;
+  margin-top: -1px;
+}
+@media (min-width: 1025px) {
+  .new911 {
+    height: 100vh;
+  }
+}
+.new911__image {
+  block-size: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center bottom;
+     object-position: center bottom;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 1025px) {
+  .new911__image {
+    /* remplace width:100vw; */
+    inline-size: min(100%, var(--vw-safe));
+  }
+}
+.new911__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+.new911__cta {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  text-decoration: none;
+  color: #ECECE7;
+  padding: 1rem 2rem;
+  background-color: #D21F1B;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+.new911__cta:hover {
+  background-color: #FFD700;
+  transform: translateX(-50%) translateY(-3px);
+  color: #010101;
+}
+.new911__title {
+  font-family: "Helvetica Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  line-height: 1.1;
+  position: relative;
+}
+.new911__title .behind {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #B5B5B5;
+  z-index: 0;
+  position: relative;
+  top: -5rem;
+}
+@media (min-width: 821px) {
+  .new911__title .behind {
+    font-size: 8rem;
+    z-index: -6;
+    top: -14rem;
+  }
+}
+@media (min-width: 1025px) {
+  .new911__title .behind {
+    font-size: 9rem;
+  }
+}
+.new911__title .big {
+  font-weight: 900;
+  line-height: 1;
+  color: #D9D9D9;
+  font-size: 8rem;
+}
+@media (min-width: 821px) {
+  .new911__title .big {
+    font-size: 10rem;
+  }
+}
+@media (min-width: 1025px) {
+  .new911__title .big {
+    font-size: 12rem;
+  }
+}
+.new911__title .front {
+  position: absolute;
+  top: 7rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  pointer-events: none;
+}
+@media (min-width: 821px) {
+  .new911__title .front {
+    top: 20rem;
+  }
+}
+@media (min-width: 1025px) {
+  .new911__title .front {
+    top: 100%;
+  }
+}
+
+.timeline a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== Hero Porsche (desktop) ===== */
+.porsche-hero {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .porsche-hero {
+    background-color: #000;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .porsche-hero .car-container {
+    position: relative;
+    inline-size: min(80vw, 1400px);
+    max-inline-size: 1400px;
+    transform: scale(0.7) translateY(100px) translateX(400px);
+    /* parent overflow hidden => pas de scroll horizontal visible */
+  }
+  .porsche-hero .porsche-car {
+    inline-size: 100%;
+    block-size: auto;
+    display: block;
+  }
+  .porsche-hero .headlight {
+    position: absolute;
+    inline-size: 100px;
+    block-size: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(173, 216, 230, 0.9) 0%, rgba(0, 0, 0, 0) 70%);
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(8px);
+    transition: opacity 0.3s ease;
+  }
+  .porsche-hero .headlight::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -3rem;
+    inline-size: 400px;
+    block-size: 4px;
+    background: linear-gradient(90deg, transparent 0%, #00faff 50%, transparent 100%);
+    box-shadow: 0 0 10px #00faff, 0 0 30px rgba(0, 250, 255, 0.5);
+    transform: translateY(-50%);
+    opacity: 0.7;
+  }
+  .porsche-hero .headlight.left {
+    top: 43%;
+    left: 21%;
+  }
+  .porsche-hero .headlight.right {
+    top: 42%;
+    right: 48%;
+  }
+}
+
+/* ===== Évolution Porsche (desktop) ===== */
+.porsche-evolution {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .porsche-evolution {
+    display: block;
+    background-color: #ECECE7;
+    color: #010101;
+    padding-top: 10rem;
+    position: relative;
+  }
+}
+
+.porsche-slices {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .porsche-slices {
+    display: flex;
+    position: relative;
+    height: 65vh;
+    overflow: hidden;
+  }
+}
+
+.slice {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .slice {
+    display: block;
+    flex: 1;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .slice:hover {
+    transform: scale(1.03);
+    box-shadow: inset 0 0 40px rgba(255, 215, 0, 0.3);
+  }
+  .slice::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 215, 0, 0.08);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .slice:hover::after {
+    opacity: 1;
+  }
+}
+
+/* ===== Fiche modèle (overlay) ===== */
+.model-info {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .model-info {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+    z-index: 20;
+    color: #ECECE7;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    pointer-events: none;
+    inline-size: min(70vw, var(--vw-safe));
+    border-radius: 8px;
+    margin: 0 auto;
+  }
+  .model-info.visible {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .model-info img {
+    inline-size: 70%;
+    max-block-size: 300px;
+    -o-object-fit: contain;
+       object-fit: contain;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    display: block;
+  }
+  .model-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+  }
+  .model-info ul li {
+    margin-bottom: 0.7rem;
+    font-size: 1.3rem;
+  }
+  .model-info ul strong {
+    color: #D21F1B;
+    margin-right: 0.5rem;
+  }
+  .model-info .close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 3rem;
+    background: none;
+    border: none;
+    color: #ECECE7;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.3s ease;
+  }
+  .model-info .close-btn:hover {
+    transform: rotate(90deg);
+  }
+  .model-info .link-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #D21F1B;
+    color: #ECECE7;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 1rem;
+  }
+  .model-info .link-btn:hover {
+    background-color: rgb(164.8101265823, 24.3291139241, 21.1898734177);
+    transform: translateY(-2px);
+  }
+}
+.model-info .model-info__nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  background: none;
+  border: none;
+  color: #ECECE7;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 5;
+  transition: transform 0.3s ease, color 0.3s ease;
+  line-height: 1;
+  opacity: 0.7;
+}
+.model-info .model-info__nav-btn:hover {
+  transform: translateY(-50%) scale(1.2);
+  opacity: 1;
+  color: white;
+}
+.model-info .model-info__nav-btn--left {
+  left: 1rem;
+}
+@media (min-width: 1025px) {
+  .model-info .model-info__nav-btn--left {
+    left: 2rem;
+  }
+}
+.model-info .model-info__nav-btn--right {
+  right: 1rem;
+}
+@media (min-width: 1025px) {
+  .model-info .model-info__nav-btn--right {
+    right: 2rem;
+  }
+}
+@keyframes fadeInModel {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.model-info .model-info.fade-in {
+  animation: fadeInModel 0.4s ease both;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.model-info .model-info.visible {
+  animation: fadeInUp 0.5s ease both;
+}
+
+/* ===== Vars + headers ===== */
+:root {
+  --gap: 0;
+  --closed: 10rem;
+  --open: 22rem;
+  --accent: $indian-red;
+  --speed: 0.35s ease;
+}
+
+.head {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .head {
+    display: block;
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+  }
+  .head h2 {
+    color: #010101;
+  }
+}
+
+/* ===== Contrôles ===== */
+.controls {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .controls .nav-btn {
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    border: 0;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #ECECE7 20, 22, 26, 0.9;
+    color: #D21F1B;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s ease, opacity 0.2s ease;
+  }
+  .controls .nav-btn:hover {
+    background-color: #B71C17;
+    color: #ECECE7;
+  }
+  .controls .nav-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+/* ===== Slider ===== */
+.sliderEvo {
+  max-width: 1400px;
+  margin: auto;
+  overflow: hidden; /* masque tout débordement horizontal */
+}
+.sliderEvo .track {
+  display: flex;
+  gap: var(--gap);
+  align-items: flex-start;
+  justify-content: center;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 40px;
+}
+.sliderEvo .track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== Cards ===== */
+.project-card {
+  position: relative;
+  flex: 0 0 var(--closed);
+  height: 26rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex-basis var(--speed), transform var(--speed), box-shadow 0.35s ease;
+  scroll-snap-align: center;
+}
+.project-card:hover {
+  transform: translateY(-3px);
+}
+.project-card:hover .project-card__bg {
+  filter: brightness(0.95) saturate(1);
+  transform: scale(1.04);
+}
+.project-card__bg {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: filter 0.3s, transform var(--speed);
+}
+.project-card__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  z-index: 2;
+  color: #ECECE7;
+}
+.project-card__content .project-card__title {
+  color: #010101;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+}
+.project-card[active] {
+  flex-basis: var(--open);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
+  margin-top: 0.5rem;
+  height: 55vh;
+}
+.project-card[active] .project-card__content {
+  display: none;
+}
+.project-card[active] .project-card__bg {
+  filter: brightness(0.65) saturate(0.9);
+}
+.project-card[active] .p911-open {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.25);
+}
+.project-card[active] .p911-close {
+  display: grid;
+}
+
+/* ===== Contenu ouvert ===== */
+.p911-open {
+  position: absolute;
+  inset: 0;
+  display: none;
+  z-index: 3;
+  padding: 1rem;
+}
+
+.p911-close {
+  display: none;
+  position: absolute;
+  top: 25px;
+  right: 26px;
+  inline-size: 40px;
+  block-size: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ECECE7;
+  font-size: 24px;
+  line-height: 1;
+  place-items: center;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.p911-figure {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 0.8rem;
+}
+.p911-figure .p911-full {
+  max-inline-size: 90%;
+  block-size: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}
+
+.p911-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #ECECE7;
+  flex-direction: column;
+}
+.p911-info .p911-specs {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0.9rem;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 0.6rem;
+  font-size: 1.05rem;
+}
+.p911-info .p911-specs li {
+  margin: 0.25rem 0;
+}
+.p911-info .p911-specs span {
+  color: #D21F1B;
+  font-weight: 800;
+  margin-right: 8px;
+}
+.p911-info .p911-cta {
+  background: #D21F1B;
+  color: #ECECE7;
+  text-decoration: none;
+  border-radius: 0.7rem;
+  padding: 0.65rem 1.1rem;
+  box-shadow: 0 6px 18px #D21F1B 230, 57, 47, 0.35;
+  transition: 0.2s;
+}
+.p911-info .p911-cta:hover {
+  background: #E6B800;
+  color: #010101;
+  box-shadow: 0 10px 28px #B71C17 255, 214, 10, 0.35;
+}
+
+/* ===== Dots ===== */
+.dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 20px 0;
+}
+.dots .dot {
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 8px;
+  background-color: #C9C9C9;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.dots .dot.active {
+  background-color: #D21F1B;
+  transform: scale(1.2);
+  inline-size: 2rem;
+}
+
+/* utile si pas déjà défini globalement */
+:root {
+  --vw-safe: 100dvw;
+}
+
+/* =========================
+   HERO "Histoire" (safe)
+========================= */
+.histoire-intro {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: -3.5rem;
+  /* sécurise la largeur + bloque toute fuite horizontale */
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  overflow-y: hidden;
+  /* Image de fond */
+  /* Overlay foncé sur l'image */
+  /* Contenu */
+}
+.histoire-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/porsche-centre.jpg") no-repeat center center;
+  background-size: cover;
+  z-index: 0;
+  /* au lieu de left:-130% → on recadre via background-position */
+  background-position: 60% center; /* décale le cadrage sur mobile */
+}
+@media (min-width: 1025px) {
+  .histoire-intro::before {
+    background-position: center center; /* reset desktop */
+  }
+}
+.histoire-intro__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+.histoire-intro__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 2rem;
+  inline-size: min(100%, var(--vw-safe));
+}
+
+/* =========================
+   Section "histoire" (safe)
+========================= */
+.histoire {
+  /* width: 100vw;  ← source de débordement */
+  inline-size: min(100%, var(--vw-safe));
+  background-color: #ECECE7;
+  overflow-x: clip; /* garde-fou local */
+  overflow-y: hidden; /* conforme à ton usage précédent */
+}
+
+/* =========================
+   Original
+========================= */
+.original {
+  background: linear-gradient(to top, #ECECE7 95%, #010101 95%);
+}
+.original__title {
+  text-align: center;
+  padding: 7rem 2rem 0;
+}
+@media (min-width: 1025px) {
+  .original__title {
+    text-align: start;
+    inline-size: 55%;
+    padding: 15rem 7rem 0;
+  }
+}
+.original__img {
+  /* width: 100vw; left: 24%; → remplace par largeur sûre + centrage */
+  display: block;
+  inline-size: min(100%, var(--vw-safe));
+  max-inline-size: 100%;
+  margin-inline: auto;
+  position: relative;
+  left: 0;
+}
+@media (min-width: 821px) {
+  .original__img {
+    top: -5rem;
+  }
+}
+@media (min-width: 1025px) {
+  .original__img {
+    inline-size: 70vw;
+    max-inline-size: 70vw;
+    margin-top: -15rem;
+    z-index: 1;
+    /* si tu veux un léger décalage visuel à droite sans impacter la mise en page */
+    transform: translateX(35%); /* remplace left:45% */
+  }
+}
+.original__content {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  inline-size: min(100%, var(--vw-safe));
+  padding: 2rem;
+  align-items: center;
+}
+@media (min-width: 821px) {
+  .original__content {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5rem;
+    align-items: baseline;
+  }
+}
+.original__content p {
+  max-width: 36ch;
+  font-size: 22px;
+}
+
+/* =========================
+   Années (grands chiffres)
+========================= */
+.annee {
+  font-size: 200px;
+  font-weight: bold;
+  opacity: 10%;
+  position: relative;
+  font-family: "Bebas Neue", sans-serif;
+  z-index: 0;
+}
+@media (min-width: 1025px) {
+  .annee {
+    font-size: 520px;
+  }
+}
+.annee__63 {
+  margin: -22% 0 -15%;
+}
+.annee__73 {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+@media (min-width: 1025px) {
+  .annee__73 {
+    justify-content: flex-end;
+    margin-bottom: -20%;
+  }
+}
+.annee__88 {
+  margin-top: -13rem;
+  padding: 0 0 10% 0;
+  z-index: 0;
+}
+@media (min-width: 1025px) {
+  .annee__88 {
+    margin-top: -35rem;
+  }
+}
+.annee__93 {
+  margin-top: -4rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  .annee__93 {
+    margin-top: -20rem;
+  }
+}
+.annee__97 {
+  margin-top: -15rem;
+}
+@media (min-width: 1025px) {
+  .annee__97 {
+    margin-top: -25%;
+    text-align: start;
+  }
+}
+.annee__04 {
+  z-index: 0;
+  text-align: center;
+  margin-top: -80%;
+  margin-bottom: 6rem;
+}
+@media (min-width: 1025px) {
+  .annee__04 {
+    position: absolute;
+    right: 2%;
+    top: 10%;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+.annee__11 {
+  opacity: 10% !important;
+}
+@media (min-width: 1025px) {
+  .annee__11 {
+    margin-top: -40rem;
+  }
+}
+.annee__18 {
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  .annee__18 {
+    position: absolute;
+    top: 25%;
+  }
+}
+
+/* =========================
+   G-Serie
+========================= */
+.gserie__title {
+  padding-top: 5rem;
+}
+@media (min-width: 1025px) {
+  .gserie__title {
+    padding-top: 10rem;
+  }
+}
+.gserie__img {
+  display: flex;
+  justify-content: flex-end;
+}
+.gserie__img img {
+  inline-size: 100%;
+  margin-top: -8rem;
+  z-index: 0;
+}
+@media (min-width: 1025px) {
+  .gserie__img img {
+    inline-size: 60%;
+  }
+}
+.gserie__group {
+  margin-top: -5%;
+}
+.gserie__content {
+  padding-left: 7%;
+}
+@media (min-width: 1025px) {
+  .gserie__content {
+    inline-size: 45%;
+    flex-direction: column;
+    margin-top: -45rem;
+    padding-left: 7rem;
+    gap: 2rem;
+  }
+}
+
+/* =========================
+   964
+========================= */
+.s964 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.s964__title {
+  text-align: center;
+  padding: 10% 0 0;
+}
+.s964__img {
+  inline-size: 100%;
+  top: 4rem;
+  z-index: 1;
+  position: relative;
+}
+@media (min-width: 1025px) {
+  .s964__img {
+    top: 10rem;
+  }
+}
+.s964__h3 {
+  padding: 0 0 2rem 0;
+}
+
+/* =========================
+   Vidéo 953
+========================= */
+.video953 {
+  display: flex;
+  justify-content: center;
+  background-color: #ECECE7;
+  padding: 100px 0;
+  transition: none;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  /* évite toute fuite d’overlay */
+  inline-size: min(100%, var(--vw-safe));
+  overflow: hidden;
+}
+.video953::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.video953.half-black-bg::after {
+  opacity: 1;
+}
+.video953 video {
+  inline-size: 100%;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(50px);
+}
+@media (min-width: 1025px) {
+  .video953 video {
+    inline-size: 60%;
+    border-radius: 15px;
+  }
+}
+.video953 h2 {
+  margin-bottom: 5rem;
+  text-align: center;
+  max-width: 29ch;
+}
+
+/* =========================
+   Section sombre
+========================= */
+.sdark {
+  background-color: #010101;
+  color: #ECECE7;
+}
+
+/* =========================
+   993 (images décalées)
+========================= */
+.s993 {
+  position: relative;
+  /* clippe les décalages horizontaux internes */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+}
+.s993__images {
+  position: relative;
+  display: flex;
+  z-index: 1;
+}
+.s993__img {
+  inline-size: 80%;
+  position: relative;
+  /* remplace left négatif par transform non-layout + clip parent */
+  transform: translateX(-40%);
+}
+@media (min-width: 1025px) {
+  .s993__img {
+    inline-size: 60%;
+    transform: translateX(-26%);
+  }
+}
+.s993__img2 {
+  transform: translateX(-20%);
+}
+@media (min-width: 1025px) {
+  .s993__img2 {
+    transform: translateX(8%);
+  }
+}
+.s993__title {
+  max-inline-size: 79%;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: -15%;
+}
+@media (min-width: 1025px) {
+  .s993__title {
+    inline-size: auto;
+  }
+}
+.s993__content {
+  margin-top: -20%;
+}
+
+/* =========================
+   996 (overlays)
+========================= */
+.s996 {
+  background-image: url(../images/996-phares.jpg);
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* largeur sûre + clip si un enfant tire à côté */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  /* contenus au-dessus des overlays */
+}
+.s996::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+.s996::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+.s996 .s996__title,
+.s996 .s996__img,
+.s996 .s996__content,
+.s996 .annee__97 {
+  position: relative;
+  z-index: 3;
+}
+.s996__img {
+  top: -7rem;
+}
+@media (min-width: 821px) {
+  .s996 .s996__img {
+    left: 20%;
+  }
+}
+@media (min-width: 1025px) {
+  .s996 .s996__img {
+    left: 42%;
+    margin-top: -7%;
+    z-index: 3;
+    inline-size: 90%;
+  }
+  .s996 .s996__title {
+    padding-top: 10rem;
+  }
+  .s996 .s996__content {
+    margin-top: -20%;
+    text-align: start;
+  }
+}
+
+/* fallback z-index (déjà mis à 3 ci-dessus) */
+.s996__title,
+.s996__img,
+.s996__content,
+.annee__97 {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   997
+========================= */
+.s997 {
+  position: relative;
+  background-color: #010101;
+  overflow: hidden; /* masque toute fuite horizontale */
+  color: #ECECE7;
+}
+@media (min-width: 1025px) {
+  .s997 {
+    padding-bottom: 10%;
+  }
+}
+.s997__img {
+  opacity: 0;
+  transition: all 1s ease-out;
+  transform: translateY(50px);
+}
+.s997__img.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.s997__content {
+  margin-top: 3rem;
+}
+@media (min-width: 1025px) {
+  .s997__content {
+    inline-size: 45%;
+    flex-direction: column;
+    margin-top: -45rem;
+    padding-left: 7rem;
+  }
+}
+.s997__content .s997__fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+.s997__content .s997__fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.s997__image-container {
+  z-index: 2;
+  position: relative;
+  margin: 2rem 0;
+}
+.s997__image-container img.s997__img {
+  position: relative;
+  display: block;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  inline-size: 100%;
+  /* au lieu de left:40%, idem: translate + overflow hidden parent */
+  transform: translateX(40%) !important;
+  top: -10rem;
+}
+@media (min-width: 821px) {
+  .s997__image-container img.s997__img {
+    top: -17rem;
+  }
+}
+@media (min-width: 1025px) {
+  .s997__image-container img.s997__img {
+    inline-size: 75%;
+    top: 0;
+    transform: none;
+  }
+}
+.s997__animated-title {
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+/* =========================
+   991
+========================= */
+.s991__img {
+  top: 5rem;
+}
+
+/* =========================
+   992 (3D)
+========================= */
+.s992 {
+  position: relative;
+}
+.s992__img {
+  /* width:100vw → largeur sûre */
+  inline-size: min(100%, var(--vw-safe));
+}
+@media (min-width: 1025px) {
+  .s992__img {
+    margin-top: 12rem;
+  }
+}
+.s992__content {
+  flex-direction: column;
+  top: 16%;
+}
+@media (min-width: 1025px) {
+  .s992__content {
+    position: absolute;
+    margin: 10rem 0;
+    left: 50%;
+  }
+}
+.s992__title {
+  padding-top: 5rem;
+}
+
+/* =========================
+   Fake 3D (mobile only)
+========================= */
+.porsche-fake3d-section {
+  position: relative;
+  text-align: center;
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+}
+@media (min-width: 1025px) {
+  .porsche-fake3d-section {
+    display: none;
+    padding: 60px 20px;
+  }
+}
+.porsche-fake3d-section .annee {
+  text-align: center;
+  opacity: 10%;
+  position: relative;
+}
+@media (min-width: 1025px) {
+  .porsche-fake3d-section .annee {
+    margin: -4rem 0 -25rem;
+  }
+}
+.porsche-fake3d-section .rotation-container {
+  position: relative;
+  z-index: 1;
+}
+.porsche-fake3d-section .rotation-container img {
+  max-inline-size: 60%;
+  block-size: auto;
+  transition: opacity 0.4s ease;
+  display: block;
+  margin-inline: auto;
+}
+.porsche-fake3d-section .rotation-container .rotation-arrow {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .porsche-fake3d-section .rotation-container .rotation-arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #111;
+    cursor: pointer;
+    z-index: 3;
+  }
+}
+.porsche-fake3d-section .rotation-container .rotation-arrow.left {
+  left: 5%;
+}
+.porsche-fake3d-section .rotation-container .rotation-arrow.right {
+  right: 5%;
+}
+.porsche-fake3d-section .rotation-container .rotation-arrow:hover {
+  color: #000;
+  transform: translateY(-50%) scale(1.1);
+}
+.porsche-fake3d-section .rotation-text {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #111;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s, transform 0.3s;
+  max-width: 55ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 1025px) {
+  .porsche-fake3d-section .rotation-text {
+    margin-top: 20px;
+  }
+}
+.porsche-fake3d-section .rotation-text.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.porsche-fake3d-section .rotation-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 2rem;
+}
+@media (min-width: 1025px) {
+  .porsche-fake3d-section .rotation-controls {
+    margin-bottom: 0;
+  }
+}
+.porsche-fake3d-section .rotation-controls button {
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+  border: none;
+  background: #C9C9C9;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.porsche-fake3d-section .rotation-controls button:hover, .porsche-fake3d-section .rotation-controls button.active {
+  background: #D21F1B;
+  inline-size: 2rem;
+  border-radius: 8px;
+}
+
+/* =========================
+   Nav latérale histoire
+========================= */
+.hist-sidenav {
+  position: fixed;
+  top: 50vh;
+  transform: translateY(-50%);
+  left: 12px;
+  z-index: 900;
+  --w: 180px;
+  --w-mini: 56px;
+  width: var(--w-mini);
+  max-height: calc(100vh - 24px);
+  overflow: auto;
+  /* lisibilité over dark/clair */
+  background: rgba(17, 17, 17, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 10px 10px 10px 0;
+  transition: width 0.18s ease, opacity 0.18s ease;
+  opacity: 0.92;
+}
+.hist-sidenav:hover, .hist-sidenav:focus-within {
+  width: var(--w);
+  opacity: 1;
+}
+@media (max-width: 1024px) {
+  .hist-sidenav {
+    display: none;
+  }
+}
+
+.hist-sidenav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 26px;
+  position: relative;
+}
+
+.hist-sidenav__item {
+  margin: 0 0 14px 0;
+}
+
+.hist-sidenav__link {
+  display: grid;
+  grid-template-columns: 10px auto;
+  gap: 8px;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.15;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.hist-sidenav__link:hover {
+  opacity: 1;
+  transform: translateX(1px);
+}
+.hist-sidenav__link.is-active {
+  opacity: 1;
+}
+.hist-sidenav__link.is-active .hist-sidenav__dot {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.25);
+  background: #FFD700;
+}
+.hist-sidenav__link.is-active .hist-sidenav__label b {
+  color: #FFD700;
+}
+
+/* label masqué en mode mini, révélé à l’expansion */
+.hist-sidenav__label {
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 0;
+  opacity: 0;
+  transition: max-width 0.18s ease, opacity 0.18s ease;
+}
+.hist-sidenav__label b {
+  font-weight: 800;
+  margin-right: 8px;
+  color: #ECECE7;
+}
+
+.hist-sidenav:hover .hist-sidenav__label,
+.hist-sidenav:focus-within .hist-sidenav__label {
+  max-width: 140px;
+  opacity: 1;
+}
+
+/* points + rail + progress */
+.hist-sidenav__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ECECE7;
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.hist-sidenav__rail,
+.hist-sidenav__progress {
+  position: absolute;
+  left: 30px;
+  width: 2px;
+  pointer-events: none;
+}
+
+.hist-sidenav__rail {
+  top: 0;
+  height: 100%;
+  background: rgba(236, 236, 231, 0.25);
+}
+
+.hist-sidenav__progress {
+  top: 0;
+  height: 0;
+  background: #FFD700;
+  transition: height 0.2s ease;
+}
+
+.hist-sidenav {
+  opacity: 0.88;
+}
+
+.hist-sidenav:hover,
+.hist-sidenav:focus-within {
+  opacity: 1;
+}
+
+.lower {
+  text-transform: lowercase !important;
+  font-family: "Roboto", sans-serif;
+}
+
+/* ======================================================
+   SECTION ACCUEIL (intro du quiz)
+   ====================================================== */
+.quiz-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ECECE7;
+  margin-top: -3.5rem;
+  background-image: url(../images/porsche-new-interieur.jpg);
+  position: relative;
+}
+@media (min-width: 1025px) {
+  .quiz-section {
+    justify-content: start;
+  }
+}
+.quiz-section__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* effet sombre */
+  z-index: 1;
+}
+.quiz-section__content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+.quiz-section__content h1 {
+  font-family: "Porsche Next", sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+@media (min-width: 1025px) {
+  .quiz-section__content {
+    padding: 2rem 8rem;
+  }
+}
+
+/* ======================================================
+   SECTION QUIZ — CADRAN + QUESTIONS
+   ====================================================== */
+.question-quiz {
+  background: url("../images/compteur-armature.png") center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ECECE7;
+  margin-top: -3.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.quiz-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1600px;
+  padding: 2rem 5vw;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 1024px) {
+  .quiz-container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+}
+
+/* Safari/Firefox : autoriser le shrink */
+.question-quiz .quiz-left,
+.question-quiz .quiz-center,
+.question-quiz .quiz-right {
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+/* ======================================================
+   COLONNE GAUCHE — QUESTIONS
+   ====================================================== */
+.quiz-left {
+  width: 30%;
+  font-family: "Porsche Next", sans-serif;
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+.quiz-left p {
+  font-size: clamp(1.1rem, 2vw, 2rem);
+}
+@media (max-width: 1024px) {
+  .quiz-left {
+    width: 90%;
+    text-align: center;
+  }
+}
+
+/* ======================================================
+   CENTRE — CADRAN XXL + AIGUILLE
+   ====================================================== */
+/* Nouvelle version améliorée — cadran large */
+.quiz-center {
+  position: relative;
+  flex: 0 0 auto;
+  /* ⭐ Diamètre plus large, style capture 2 ⭐ */
+  width: clamp(300px, 40vw, 650px);
+  aspect-ratio: 1/1;
+  isolation: isolate;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .quiz-center {
+    order: -1;
+    margin-bottom: 0.25rem;
+    /* Mobile élargi mais maîtrisé */
+    width: clamp(240px, 60vw, 380px);
+  }
+}
+@supports not (aspect-ratio: 1/1) {
+  .quiz-center::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+}
+
+/* Bloc cadran */
+.dial {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Petit centre métallique (optionnel) */
+.dial::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f5f5f5 0%, #d0d0d0 60%, #777 100%);
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+/* PNG du cadran */
+.dial-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+/* Aiguille */
+.needle {
+  position: absolute;
+  top: 37%;
+  left: 0%;
+  width: 70%;
+  height: auto;
+  pointer-events: none;
+  z-index: 3;
+  /* ⭐ TES VALEURS ORIGINALES ⭐ */
+  transform-origin: 72% 32%;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Compteur numérique */
+.counter-display {
+  position: absolute;
+  left: 50%;
+  bottom: 32%;
+  transform: translateX(-50%);
+  color: #ECECE7;
+  font-family: "Porsche Next", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2vw, 2.25rem);
+  z-index: 4;
+}
+@media (min-width: 1921px) {
+  .counter-display {
+    bottom: 18%;
+  }
+}
+
+/* ======================================================
+   COLONNE DROITE — RÉPONSES
+   ====================================================== */
+.quiz-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  width: 25%;
+}
+@media (max-width: 1024px) {
+  .quiz-right {
+    width: 90%;
+    align-items: stretch;
+  }
+}
+
+.answer-btn {
+  position: relative;
+  background: transparent;
+  border: 1px solid #ECECE7;
+  padding: 0.8rem 1.5rem;
+  color: #ECECE7;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Porsche Next", sans-serif;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+.answer-btn:hover {
+  background: #FFD700;
+  color: #010101;
+  transform: translateY(-2px);
+}
+.answer-btn.correct {
+  background-color: #2ecc71;
+  color: #fff !important;
+  border-color: #2ecc71;
+}
+.answer-btn.correct::after {
+  content: "✔";
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+.answer-btn.wrong {
+  background-color: #e74c3c;
+  color: #fff !important;
+  border-color: #e74c3c;
+}
+.answer-btn.wrong::after {
+  content: "✖";
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+.answer-btn:disabled {
+  cursor: default;
+  opacity: 0.9;
+}
+
+/* ======================================================
+   ÉCRAN DE RÉSULTATS
+   ====================================================== */
+.result-quiz {
+  background: #111 url("../images/porsche-fin-new.png") center/cover no-repeat;
+  min-height: 100vh;
+  color: #ECECE7;
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: "Porsche Next", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.result-quiz h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin-bottom: 1rem;
+}
+.result-quiz p {
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+}
+
+.result-containe {
+  line-height: 4rem;
+}
+
+.result-quiz.hidden {
+  display: none;
+}
+
+.restart-quiz {
+  background: #FFD700;
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: background 0.3s ease;
+  margin-top: 1.25rem;
+}
+.restart-quiz:hover {
+  background: #e6c200;
+}
+
+/* ======================================================
+   RÉCOMPENSES
+   ====================================================== */
+.reward-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+.reward-section h3 {
+  margin-bottom: 1rem;
+  font-family: "Porsche Next", sans-serif;
+  color: #ECECE7;
+}
+.reward-section .reward-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.reward-section .reward-btn {
+  background: #FFD700;
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: background 0.3s ease;
+}
+.reward-section .reward-btn:hover {
+  background: #e6c200;
+}
+.reward-section .reward-btn.hidden {
+  display: none;
+}
+.reward-section .encouragement {
+  color: #ECECE7;
+  font-size: clamp(1.1rem, 2vw, 1.875rem);
+  font-weight: bold;
+}
+
+/* utile si pas déjà défini globalement */
+:root {
+  --vw-safe: 100dvw;
+}
+
+.S3 {
+  background: linear-gradient(to bottom, #ECECE7 90%, #010101 90%);
+  /* largeur sûre + anti overflow horizontal de sécurité */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+}
+
+.slider {
+  max-width: 100%;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  /* largeur sûre + garde-fou */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+}
+@media (min-width: 821px) {
+  .slider {
+    height: 85vh;
+  }
+}
+@media (min-width: 1025px) {
+  .slider {
+    display: none;
+  }
+}
+.slider .slide {
+  display: none;
+}
+.slider .slide__frein__img {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+@media (min-width: 821px) {
+  .slider .slide__frein__img {
+    width: 50% !important;
+  }
+}
+.slider .slide.is-visible {
+  display: block;
+}
+.slider .slide h2 {
+  font-size: 36px;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+@media (min-width: 821px) {
+  .slider .slide h2 {
+    font-size: 96px;
+    letter-spacing: 12px;
+  }
+}
+.slider .slide p {
+  font-size: 12px;
+  margin-bottom: 20px;
+  max-width: 60ch;
+}
+@media (min-width: 821px) {
+  .slider .slide p {
+    font-size: 16px;
+    margin: 4rem auto;
+  }
+}
+.slider .slide img {
+  /* centré et sûr sur toutes les largeurs */
+  display: block;
+  max-width: 90%;
+  height: auto;
+  margin: 0 auto;
+}
+@media (min-width: 821px) {
+  .slider .slide img {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+.slider .pagination {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+.slider .pagination .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #C9C9C9;
+  transition: background 0.3s;
+}
+.slider .pagination .dot.is-current {
+  background: #D21F1B;
+  width: 2rem;
+  border-radius: 8px;
+}
+
+/* --- Desktop features --- */
+.porsche-features {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  padding-bottom: 10rem;
+  /* largeur sûre + empêche un enfant de forcer la ligne */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+}
+@media (max-width: 1025px) {
+  .porsche-features {
+    display: none;
+  }
+}
+.porsche-features .content-left {
+  flex: 1;
+  min-width: 300px;
+  padding: 2rem 0 2rem 5rem;
+  /* important pour les flex-items contenant du texte/long mots */
+  min-inline-size: 0;
+}
+.porsche-features .content-left__info {
+  margin-left: 3rem;
+}
+.porsche-features .content-left h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.porsche-features .content-left p {
+  max-width: 500px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+.porsche-features .content-left img {
+  margin-top: 2rem;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.porsche-features .content-right {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 35rem;
+  margin-left: 3rem;
+  /* sécurité largeur en cas de viewport serré */
+  max-inline-size: 100%;
+  min-inline-size: 0;
+}
+.porsche-features .content-right .feature-card {
+  cursor: pointer;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 1 !important;
+}
+.porsche-features .content-right .feature-card.active {
+  border: 3px solid #FFD700;
+  border-radius: 8px;
+  background-color: #FFD700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+.porsche-features .content-right .feature-card span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  transition: transform 0.3s ease;
+}
+.porsche-features .content-right .feature-card .image {
+  width: 130px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+}
+.porsche-features .content-right .feature-card .image:hover {
+  transform: scale(1.08);
+}
+
+.hidden {
+  display: none !important;
+}
+
+#feature-text {
+  white-space: pre-line;
+}
+
+/* --- Escalier --- */
+#cards-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: -5rem;
+  /* évite qu’un enfant large force la largeur */
+  min-inline-size: 0;
+}
+#cards-container .feature-card {
+  transition: transform 0.3s ease;
+}
+#cards-container .feature-card:nth-child(1) {
+  transform: translateY(100px);
+}
+#cards-container .feature-card:nth-child(1):hover {
+  transform: translateY(60px) scale(1.08);
+}
+#cards-container .feature-card:nth-child(2) {
+  transform: translateY(30px);
+}
+#cards-container .feature-card:nth-child(2):hover {
+  transform: translateY(30px) scale(1.08);
+}
+#cards-container .feature-card:nth-child(3) {
+  transform: translateY(-40px);
+}
+#cards-container .feature-card:nth-child(3):hover {
+  transform: translateY(0px) scale(1.08);
+}
+
+.model-description {
+  background-color: #ECECE7;
+  padding: 90px 67px;
+  color: #010101;
+}
+
+.description-header h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.model-3d {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.model-3d model-viewer {
+  width: 120%;
+  height: 100%;
+}
+
+.description-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 45px;
+}
+
+.text-content {
+  width: 635px;
+}
+
+.description-content h3 {
+  font-size: 24px;
+  margin-top: 45px;
+  color: #0C2C84;
+}
+
+.description-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #010101;
+}
+
+.description-images {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.description-images img {
+  width: 450px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.description-paralax {
+  width: 100vw;
+  margin: 0 auto;
+  margin-left: -67px;
+}
+
+.img-coccinelle {
+  width: 50%;
+}
+
+/* utile si pas déjà défini plus haut */
+:root {
+  --vw-safe: 100dvw;
+}
+
+.credit-intro {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: -3.5rem;
+  /* évite tout débordement de l’élément ::before */
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  overflow-y: hidden;
+  /* Image de fond via pseudo, recentrée sans élargir la page */
+  /* Overlay foncé sur l'image */
+  /* Contenu */
+}
+.credit-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/porsche-credit.jpg") no-repeat center center;
+  background-size: cover;
+  z-index: 0; /* dessous le contenu */
+  /* Au lieu de left:-130% (qui débordait), on recadre par la position */
+  background-position: 60% center; /* décale visuellement vers la droite en mobile */
+}
+@media (min-width: 1025px) {
+  .credit-intro::before {
+    background-position: center center; /* reset desktop */
+  }
+}
+.credit-intro__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+.credit-intro__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 2rem;
+  inline-size: min(100%, var(--vw-safe));
+}
+
+/* Ancienne version commentée : inutile de remettre 100vw (source d’overflow) */
+/*
+.credit {
+  width: 100vw;
+  background-color: $carrara-white;
+  overflow: hidden;
+}
+*/
+.credit {
+  background-color: #ECECE7;
+  padding: 5rem 2rem;
+  font-family: "Roboto", sans-serif;
+  color: #010101;
+  /* largeur sûre + anti débordement horizontal */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+}
+.credit__wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  background: white;
+  padding: 4rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.07);
+  position: relative;
+  z-index: 2;
+}
+.credit__wrapper h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.8rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: #D21F1B;
+  position: relative;
+}
+.credit__wrapper h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #FFD700;
+  margin-top: 0.5rem;
+}
+.credit__wrapper ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 2rem;
+}
+.credit__wrapper ul li {
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+.credit__wrapper ul li::before {
+  content: "⟡";
+  position: absolute;
+  left: 0;
+  color: #0C2C84;
+}
+.credit__wrapper ul li strong {
+  color: #010101;
+}
+
+.color-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+  /* garde-fou largeur */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  /* Ombres spécifiques */
+}
+.color-palette .color-item {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 150px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.color-palette .color-item .color-swatch {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.color-palette .color-item .color-name {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  font-family: "Roboto", sans-serif;
+}
+.color-palette .color-item code {
+  font-size: 0.85rem;
+  color: #333;
+}
+.color-palette .color-item:nth-child(1) {
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3); /* Jaune Racing */
+}
+.color-palette .color-item:nth-child(2) {
+  box-shadow: 0 4px 10px rgba(210, 31, 27, 0.3); /* Rouge Indien */
+}
+
+/* ========== Sécurisation globale ========= */
+:root {
+  --vw-safe: 100dvw;
+}
+
+/* =========================
+   INTRO – Projet
+========================= */
+.projet-intro {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: -3.5rem;
+  /* Correction : évite tout débordement horizontal */
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  overflow-y: hidden;
+  /* Image de fond */
+  /* Overlay foncé */
+  /* Contenu texte */
+}
+.projet-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/porsche-fond-projet.jpg") no-repeat center center;
+  background-size: cover;
+  z-index: 0;
+  /* au lieu de left:-130%, on recadre via la position */
+  background-position: 60% center;
+}
+@media (min-width: 1025px) {
+  .projet-intro::before {
+    background-position: center center;
+  }
+}
+.projet-intro__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+.projet-intro__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 2rem;
+  inline-size: min(100%, var(--vw-safe));
+}
+
+/* =========================
+   SECTION – Projet
+========================= */
+.projet {
+  /* width: 100vw; → remplacé pour éviter overflow */
+  inline-size: min(100%, var(--vw-safe));
+  background-color: #ECECE7;
+  overflow-x: clip;
+  overflow-y: hidden;
+}
+
+/* =========================
+   CONTENU – Projet
+========================= */
+.projet__wrapper {
+  padding: 5rem 2rem;
+  margin: 0 auto;
+  color: #010101;
+  inline-size: min(100%, var(--vw-safe));
+  /* Animation fade-in */
+}
+.projet__wrapper h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #D21F1B;
+  position: relative;
+}
+.projet__wrapper h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #D21F1B;
+  margin-top: 0.5rem;
+}
+.projet__wrapper p,
+.projet__wrapper ul {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+.projet__wrapper ul {
+  padding-left: 1.5rem;
+}
+.projet__wrapper ul li {
+  margin-bottom: 1rem;
+  position: relative;
+}
+.projet__wrapper ul li::before {
+  content: "⟡";
+  color: #D21F1B;
+  margin-right: 0.5rem;
+}
+.projet__wrapper .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+.projet__wrapper .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   LISTE DES FONCTIONNALITÉS
+========================= */
+.feature-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 2rem;
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+}
+.feature-list li {
+  opacity: 0;
+  transform: translateX(-40px);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+  color: #010101;
+  padding-left: 1rem;
+  position: relative;
+  max-inline-size: 100%;
+}
+.feature-list li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: #D21F1B;
+  font-size: 0.9rem;
+}
+.feature-list li.visible {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.6s ease-out;
+}
+
+/* Accessibilité canvas */
+canvas:focus {
+  display: none;
+}
+@media (min-width: 821px) {
+  canvas:focus {
+    display: block;
+    outline: 2px solid #ffc107;
+    outline-offset: 2px;
+  }
+}
+
+/* ===== Section Porsche 3D (style “site web”, non plein écran) ===== */
+.porsche-3d {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .porsche-3d {
+    display: block;
+    --bg:#f1f1ec;
+    --ink:#111;
+    --muted:#c9c9c9;
+    --accent:#e12;
+    --glass:rgba(255,255,255,.75);
+    position: relative;
+    padding: 48px 24px 36px;
+    background: #ECECE7;
+    isolation: isolate;
+    overflow: hidden;
+  }
+}
+
+/* Grande année en arrière-plan (modifie data-year sur la section) */
+.porsche-3d::before {
+  content: attr(data-year);
+  position: absolute;
+  inset: 0 auto auto 50%;
+  transform: translateX(-50%);
+  font: 900 clamp(120px, 28vw, 420px)/1 "Porsche Next", system-ui, sans-serif;
+  color: rgba(0, 0, 0, 0.06);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+/* Bande centrale: flèches + scène 3D */
+.p3d-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Scène 3D en ratio 16:9 */
+.p3d-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9; /* responsive, ajuste au besoin */
+  background: transparent;
+  border-radius: 12px;
+}
+
+.p3d-viewer {
+  position: absolute;
+  inset: 0;
+}
+
+/* Flèches de navigation */
+.p3d-nav {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  background: #ECECE7;
+  color: #D21F1B;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.p3d-nav:hover {
+  transform: translateY(-1px);
+}
+
+/* Caption sous la voiture */
+.p3d-caption {
+  text-align: center;
+  color: #010101;
+}
+
+.p3d-caption h2 {
+  margin: 0 0 8px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+@media (min-width: 821px) {
+  .p3d-caption p {
+    font-size: 1.2rem;
+    color: #111;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s, transform 0.3s;
+    max-width: 55ch;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    height: 8rem;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Dots */
+.p3d-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.p3d-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--muted);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, opacity 0.2s ease;
+  opacity: 0.95;
+}
+
+.p3d-dots button.active {
+  background: var(--accent);
+  transform: scale(1.15);
+}
+
+/* Loader discret */
+.p3d-loading {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  width: min(420px, 90vw);
+  text-align: center;
+}
+
+.p3d-loading .bar {
+  height: 6px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.p3d-loading .bar span {
+  display: block;
+  height: 100%;
+  background: #ffc107;
+  transition: width 0.2s ease;
+}
+
+.p3d-loading p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .p3d-wrap {
+    grid-template-columns: 48px 1fr 48px;
+  }
+  .p3d-nav {
+    width: 44px;
+    height: 44px;
+  }
+}
+@media (max-width: 760px) {
+  .porsche-3d {
+    padding: 40px 16px 28px;
+  }
+  .p3d-wrap {
+    grid-template-columns: 40px 1fr 40px;
+    gap: 8px;
+  }
+  .p3d-nav {
+    width: 40px;
+    height: 40px;
+  }
+  .p3d-caption p {
+    font-size: clamp(14px, 2.4vw, 17px);
+  }
+}
+/* ===== (Optionnel) Thème sombre basé sur le système ===== */
+@media (min-width: 1025px) {
+  .porsche-3d::before {
+    color: #ECECE7 255, 255, 255, 0.07;
+  }
+  .p3d-nav {
+    background: #ECECE7 20, 22, 26, 0.9;
+    color: #D21F1B;
+  }
+  .p3d-nav:hover {
+    background-color: #B71C17;
+    color: #ECECE7;
+  }
+  .p3d-dots button {
+    background: #C9C9C9;
+  }
+  .p3d-dots button.active {
+    background: #D21F1B;
+    width: 2rem;
+    border-radius: 8px;
+  }
+  .p3dannee {
+    color: #010101;
+    font-weight: bold;
+    opacity: 10%;
+    position: relative;
+    font-family: "Bebas Neue", sans-serif;
+    z-index: 0;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+  }
+}
+/* ===== (Facultatif) Masquer tes anciens styles plein écran si encore en place ===== */
+/* On neutralise #viewer plein écran au cas où */
+#viewer {
+  position: static;
+  inset: auto;
+  background: transparent;
+  height: 100%;
+}
+
+/* On n’utilise plus .hud/.ui en section — si tu les gardes, commente-les */
+/* Utilitaire global au besoin (OK si déjà défini ailleurs) */
+:root {
+  --vw-safe: 100dvw;
+}
+
+.comparo {
+  display: flex;
+  flex-direction: column;
+  min-height: 55vh;
+  background: #ECECE7;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  /* largeur sûre + anti débordement horizontal */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  /* ===== Zones de comparaison ===== */
+  /* ===== Liste des modèles / slider ===== */
+}
+@media (min-width: 821px) {
+  .comparo {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+}
+.comparo__h2 {
+  text-align: center;
+  margin: 0 auto;
+}
+.comparo .comparo-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  /* Empêche un enfant flex de forcer la largeur */
+  min-inline-size: 0;
+}
+.comparo .comparo-area .comparo-slot {
+  flex: 1;
+  border: 2px dashed #ccc;
+  padding: 1rem;
+  min-height: 250px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  transition: background 0.3s, border-color 0.3s;
+  max-height: 320px;
+  overflow-y: auto;
+  /* sécurise largeur interne */
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+.comparo .comparo-area .comparo-slot:hover {
+  background: rgb(237.35, 237.35, 237.35);
+}
+.comparo .comparo-area .comparo-slot .comparo-slot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.comparo .comparo-area .comparo-slot .comparo-slot-header p {
+  margin: 0;
+  font-weight: 700;
+}
+.comparo .comparo-area .comparo-slot .comparo-slot-header .comparo-reset-btn {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.35rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.comparo .comparo-area .comparo-slot .comparo-slot-header .comparo-reset-btn:hover {
+  color: #d32626;
+  background: rgba(0, 0, 0, 0.06);
+}
+.comparo .comparo-area .comparo-slot .comparo-info {
+  display: block;
+  color: #111;
+  line-height: 1.35;
+  min-height: 120px;
+}
+.comparo .comparo-area .comparo-slot .comparo-info:empty::before {
+  content: "Cliquez un modèle";
+  color: #666;
+}
+.comparo .comparo-area .comparo-slot .comparo-info img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  max-height: 160px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: #ffffff;
+}
+.comparo .comparo-area .comparo-slot .comparo-info h3 {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 1.35rem;
+  color: #010101;
+}
+.comparo .comparo-area .comparo-slot .comparo-info p {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+}
+.comparo .comparo-area .comparo-slot .comparo-info p span.better {
+  color: #0a7f2e;
+  font-weight: 700;
+}
+.comparo .comparo-area .comparo-slot .comparo-info p span.worse {
+  color: #d32626;
+  font-weight: 700;
+}
+.comparo .comparo-list {
+  order: 2;
+  width: 100%;
+  color: #010101;
+  padding: 1rem 2rem 1.5rem;
+  /* évite qu’un contenu interne force la largeur */
+  min-inline-size: 0;
+}
+.comparo .comparo-list .comparo-title {
+  display: none;
+}
+.comparo .comparo-list .comparo-selector {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  /* garde-fou overflow horizontal local */
+  overflow-x: clip;
+}
+.comparo .comparo-list .comparo-selector .comparo-viewport {
+  scrollbar-width: thin;
+  scrollbar-color: #FFD700 transparent;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* confinement largeur */
+  inline-size: 100%;
+  max-inline-size: 100%;
+}
+.comparo .comparo-list .comparo-selector .comparo-viewport::-webkit-scrollbar {
+  height: 8px;
+}
+.comparo .comparo-list .comparo-selector .comparo-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+.comparo .comparo-list .comparo-selector .comparo-viewport::-webkit-scrollbar-thumb {
+  background: #FFD700;
+  border-radius: 4px;
+}
+.comparo .comparo-list .comparo-selector .comparo-viewport::-webkit-scrollbar-thumb:hover {
+  background: #E6B800;
+}
+.comparo .comparo-list .comparo-selector .comparo-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  list-style: none;
+  /* évite que les margins créent un débordement hors viewport */
+  margin: 0 1rem;
+  padding: 0.25rem;
+  overflow: visible;
+  scroll-snap-type: x mandatory;
+}
+.comparo .comparo-list .comparo-selector .comparo-track::-webkit-scrollbar {
+  display: none;
+}
+.comparo .comparo-list .comparo-selector .comparo-track li {
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+  width: clamp(140px, 26vw, 220px);
+  position: relative;
+  background: #f0f2f5;
+  border-radius: 16px;
+  padding: 14px 14px 16px;
+  color: #010101;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* empêche les cartes de pousser la ligne */
+  min-inline-size: 0;
+}
+.comparo .comparo-list .comparo-selector .comparo-track li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+.comparo .comparo-list .comparo-selector .comparo-track li .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ffffff;
+  color: #010101;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.comparo .comparo-list .comparo-selector .comparo-track li .check {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1rem;
+  color: #010101;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.15s, transform 0.15s;
+}
+.comparo .comparo-list .comparo-selector .comparo-track li .thumb {
+  /* centrage sans translateX qui peut déborder */
+  display: block;
+  margin-inline: auto;
+  width: 100%;
+  aspect-ratio: 16/6;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+.comparo .comparo-list .comparo-selector .comparo-track li .title {
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin: 2px 0 0;
+}
+.comparo .comparo-list .comparo-selector .comparo-track li.active-model {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.16);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+.comparo .comparo-list .comparo-selector .comparo-track li.active-model .check {
+  opacity: 1;
+  transform: scale(1);
+}
+.comparo .comparo-list .comparo-selector .comparo-track li.active-model .badge {
+  background: #eef1f5;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.comparo .comparo-list .comparo-selector .comparo-track li.active-model .title {
+  color: #010101;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.comparo .comparo-list .comparo-selector .comparo-nav {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  background: #ffffff;
+  color: #010101;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  transition: transform 0.1s ease, background 0.2s ease, opacity 0.2s ease;
+  /* supprime les marges négatives (source potentielle de débordement) */
+}
+.comparo .comparo-list .comparo-selector .comparo-nav:hover {
+  background: #E6B800;
+}
+.comparo .comparo-list .comparo-selector .comparo-nav:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.comparo .comparo-list .comparo-selector .comparo-nav.comparo-prev {
+  margin-left: 0;
+}
+.comparo .comparo-list .comparo-selector .comparo-nav.comparo-next {
+  margin-right: 0;
+}
+.comparo .comparo-list .comparo-reset-all {
+  margin-top: 2rem;
+  text-align: center;
+}
+.comparo .comparo-list .comparo-reset-all .comparo-reset-all-btn {
+  display: inline-block;
+  background: #0C2C84;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.comparo .comparo-list .comparo-reset-all .comparo-reset-all-btn:hover {
+  background: #E6B800;
+  color: #010101;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+.comparo .comparo-list .comparo-reset-all .comparo-reset-all-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   MEDIA QUERIES
+========================= */
+@media (min-width: 768px) {
+  .comparo .comparo-area {
+    flex-direction: row;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem 0;
+  }
+  .comparo .comparo-area .comparo-slot {
+    max-height: none;
+    overflow: visible;
+  }
+  .comparo .comparo-title {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .comparo .comparo-area {
+    gap: 2rem;
+    padding: 2rem 2rem 1rem;
+  }
+  .comparo .comparo-list {
+    order: 2;
+    width: 100%;
+    padding: 1rem 2rem 2rem;
+  }
+  .comparo .comparo-list .comparo-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+}
+/* Ghost (aperçu qui suit la souris pendant le drag) */
+.comparo-ghost {
+  position: fixed;
+  inset: 0 auto auto 0;
+  transform: translate(-9999px, -9999px);
+  pointer-events: none;
+  z-index: 9999;
+  width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  background: #fff;
+  padding: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.comparo-ghost img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  max-width: 100%;
+}
+.comparo-ghost .title {
+  font: 700 14px/1.3 system-ui, sans-serif;
+  margin-top: 6px;
+}
+
+/* Highlight de la case quand on survole avec un modèle */
+.comparo-slot.comparo-drop-target {
+  outline: 3px solid #FFD700;
+  outline-offset: 2px;
+}
+
+/* =========================
+   LAUNCH CONTROL – STYLE PREMIUM
+   ========================= */
+.launch-control {
+  padding: clamp(2rem, 4vw, 4rem) 0;
+  background: radial-gradient(circle at 50% 20%, #0a0a0a 0%, #000 90%);
+  background-image: url("../images/carbon-texture.jpg");
+  background-size: cover;
+  background-blend-mode: multiply;
+  border-top: 3px solid #FFD700;
+  border-bottom: 3px solid #FFD700;
+  color: #ECECE7;
+}
+
+.lc-card {
+  max-width: 980px;
+  margin: 0 auto;
+  border-radius: 18px;
+  padding: 2rem;
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.08);
+  font-family: "911Porscha", sans-serif;
+  text-align: center;
+}
+
+/* === Titre & texte === */
+.lc-head h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FFD700;
+  margin-bottom: 0.5rem;
+}
+
+.lc-head p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* === Zone lights + statut === */
+.lc-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Feux F1 (horizontaux) */
+.lc-lights {
+  display: flex;
+  gap: 1rem;
+}
+
+.lc-light {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #111;
+  border: 2px solid #333;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.9);
+  transition: all 0.3s ease;
+}
+
+.lc-red.on {
+  background: #ff1e1e;
+  box-shadow: 0 0 25px #ff1e1e, inset 0 0 12px rgba(0, 0, 0, 0.7);
+}
+
+/* 🔶 Ambre / Orange */
+.lc-amber.on {
+  background: #ffb300;
+  box-shadow: 0 0 25px #ffb300, inset 0 0 12px rgba(0, 0, 0, 0.7);
+}
+
+.lc-green.on {
+  background: #00ff5e;
+  box-shadow: 0 0 25px #00ff5e, inset 0 0 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Texte statut */
+.lc-status {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  color: #ECECE7;
+}
+
+/* === Boutons === */
+.lc-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+  /* Bouton Armer → bleu Porsche */
+  /* Bouton Rejouer → style "paddle shift" */
+}
+.lc-actions .btn {
+  font-family: "911Porscha", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  border-radius: 50px;
+  padding: 0.9rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
+  color: #ECECE7;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.lc-actions .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.lc-actions .btn:active {
+  transform: translateY(1px);
+}
+.lc-actions .btn--primary {
+  background: radial-gradient(circle at 30% 30%, #0C2C84, #020e40);
+  border: 1px solid #0C2C84;
+  box-shadow: 0 0 15px rgba(12, 44, 132, 0.6);
+}
+.lc-actions .btn--primary:hover {
+  box-shadow: 0 0 30px rgba(12, 44, 132, 0.8);
+}
+.lc-actions .restartbtn {
+  background: linear-gradient(145deg, #222, #111);
+  border: 1px solid #FFD700;
+}
+.lc-actions .restartbtn:not(:disabled):hover {
+  background: #FFD700;
+  color: #010101;
+  box-shadow: 0 0 20px #FFD700;
+}
+
+/* === Tableau de stats === */
+.lc-readout {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 1.2rem;
+  font-variant-numeric: tabular-nums;
+  justify-content: center;
+}
+@media (max-width: 720px) {
+  .lc-readout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Résultat final */
+.lc-result {
+  margin-top: 0.5rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #FFD700;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+}
+
+.lc-readout,
+.lc-result {
+  font-family: "Bebas Neue", sans-serif !important;
+}
+
+/* =========================
+ MINI-GAMES CARDS
+ ========================= */
+.mini-games {
+  padding: 4rem 0;
+  background: #000;
+  color: #ECECE7;
+  text-align: center;
+  background-image: url("../images/carbon-texture.jpg");
+}
+.mini-games h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #FFD700;
+  text-transform: uppercase;
+}
+.mini-games .mini-games-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  .mini-games .mini-games-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.mini-games .game-card {
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.mini-games .game-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+.mini-games .game-card .game-thumb {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+.mini-games .game-card h3 {
+  font-size: 1.4rem;
+  color: #FFD700;
+  margin-bottom: 0.3rem;
+}
+.mini-games .game-card p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* =========================
+   GAME OVERLAYS
+   ========================= */
+.game-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+}
+.game-overlay.active {
+  display: flex;
+}
+.game-overlay .overlay-content {
+  position: relative;
+  max-width: 1000px;
+  width: 90%;
+  max-height: 90%;
+  background: rgba(15, 15, 15, 0.95);
+  border-radius: 16px;
+  padding: 2rem;
+  overflow-y: auto;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+}
+.game-overlay .close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #ECECE7;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.game-overlay .close-btn:hover {
+  color: #FFD700;
+}
+
+/* =========================
+   MEMORY — STYLE (réutilisable)
+   ========================= */
+.memory-game {
+  padding: 4rem 0;
+  background: radial-gradient(circle at 50% 20%, #0a0a0a, #000);
+  color: #ECECE7;
+}
+
+.memory-card {
+  position: relative; /* nécessaire pour l'overlay de résultat */
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1rem 1rem 1.4rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.memory-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.memory-head h2 {
+  color: #FFD700;
+  margin: 0.4rem 0;
+  letter-spacing: 0.03em;
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+}
+.memory-head .memory-status {
+  opacity: 0.9;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.memory-grid {
+  --size: 120px;
+  margin: 1rem auto 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, var(--size));
+  gap: 0.85rem;
+  justify-content: center;
+}
+@media (max-width: 900px) {
+  .memory-grid {
+    --size: 110px;
+  }
+}
+@media (max-width: 560px) {
+  .memory-grid {
+    --size: 84px;
+    grid-template-columns: repeat(4, var(--size));
+  }
+}
+
+/* ---- Carte (conteneur + flip) ---- */
+.mem-card {
+  width: var(--size);
+  height: var(--size);
+  perspective: 900px;
+  border-radius: 12px;
+}
+
+.mem-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+.mem-inner:hover {
+  transform: translateY(-2px);
+}
+.mem-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.mem-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Face arrière (dos de carte) */
+.mem-back {
+  background: radial-gradient(120% 100% at 20% 20%, rgba(255, 215, 0, 0.08), transparent 40%), #0f0f0f;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05) inset, 0 6px 14px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+
+.mem-back::after {
+  content: "";
+  width: 60%;
+  height: 60%;
+  background: url("../images/logo.svg") center/contain no-repeat;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.25));
+}
+
+/* Face avant (image) */
+.mem-front {
+  transform: rotateY(180deg);
+}
+
+/* Appariée */
+.mem-card.matched .mem-inner {
+  transform: rotateY(180deg) scale(0.98);
+}
+
+.mem-card.matched .mem-front {
+  outline: 2px solid #FFD700;
+  box-shadow: 0 0 30px rgba(255, 210, 0, 0.25);
+}
+
+/* Boutons */
+.memory-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.restartbtn {
+  background: transparent;
+  border: 2px solid #FFD700;
+  color: #FFD700;
+  padding: 0.55rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: all 0.25s ease;
+}
+.restartbtn:hover {
+  background: #FFD700;
+  color: #000;
+  transform: translateY(-1px);
+}
+
+/* ---- Overlay de résultat ---- */
+.memory-result {
+  position: absolute;
+  inset: 0;
+  display: none; /* caché par défaut, affiché en JS */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.86);
+  border-radius: 14px;
+  z-index: 20;
+}
+.memory-result .result-text {
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  color: #FFD700;
+  text-align: center;
+  font-weight: 800;
+}
+
+/* Utilitaire global au besoin (OK si déjà défini ailleurs) */
+:root {
+  --vw-safe: 100dvw;
+}
+
+.backgroundBlack {
+  background: #010101 !important;
+  color: #ECECE7;
+}
+
+.competition-intro {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: -3.5rem;
+  /* sécurise la largeur + bloque toute fuite horizontale */
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+  overflow-y: hidden;
+  /* Image de fond */
+  /* Overlay foncé sur l'image */
+  /* Contenu */
+}
+.competition-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/img-gt3rs-piste-back.webp") no-repeat center center;
+  background-size: cover;
+  z-index: 0;
+  /* au lieu de left:-130% → on recadre via background-position */
+  background-position: 60% center; /* décale le cadrage sur mobile */
+}
+@media (min-width: 1025px) {
+  .competition-intro::before {
+    background-position: center center; /* reset desktop */
+  }
+}
+.competition-intro__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+.competition-intro__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 2rem;
+  inline-size: min(100%, var(--vw-safe));
+}
+
+.competition {
+  background: linear-gradient(to top, #ECECE7 100%, #010101 95%);
+}
+.competition__intro {
+  padding-top: 2rem;
+}
+.competition__content {
+  margin-bottom: 0;
+  padding-bottom: 5rem;
+}
+@media (min-width: 1025px) {
+  .competition__title {
+    padding-top: 5rem;
+    padding-left: 7rem;
+  }
+}
+.competition__title2 {
+  align-items: center;
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  .competition__title2 {
+    padding-left: 7rem;
+    align-items: flex-start;
+    text-align: start;
+  }
+}
+
+.Cprelude__content {
+  margin-top: 0;
+  gap: 2rem;
+}
+
+/* =========================
+   COMPÉTITION — PRÉCURSEUR (Type 64)
+========================= */
+.Cprelude {
+  background: #ECECE7 !important;
+  color: #010101;
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow: hidden;
+}
+.Cprelude::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Grille principale */
+.Cprelude__grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+@media (min-width: 1025px) {
+  .Cprelude__grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: start;
+    padding-bottom: 7rem;
+    padding-right: 7rem;
+  }
+}
+
+/* Colonne gauche */
+@media (min-width: 1025px) {
+  .Cprelude__left {
+    padding-top: 0;
+  }
+}
+
+.Cprelude__subtitle {
+  margin: 0 0 1.6rem 0;
+  text-transform: uppercase;
+}
+
+/* Texte */
+.Cprelude__content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 7rem;
+  align-items: center;
+}
+@media (min-width: 1025px) {
+  .Cprelude__content {
+    align-items: start;
+  }
+}
+
+.gt__title {
+  padding-left: 0;
+}
+
+/* Colonne droite */
+.Cprelude__right {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  margin-top: -7rem;
+}
+
+/* Grande image */
+.Cprelude__hero {
+  width: min(620px, 100%);
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.22));
+}
+
+/* Galerie 2 vignettes */
+.Cprelude__gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  width: min(620px, 100%);
+}
+
+.Cprelude__gallery img {
+  display: block;
+  width: 100%;
+  height: 165px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
+}
+
+.Cprelude__title {
+  text-align: center;
+  margin-top: 5rem;
+}
+@media (min-width: 1025px) {
+  .Cprelude__title {
+    text-align: start;
+    margin-top: O;
+  }
+}
+
+/* Mobile : images sous le texte */
+@media (max-width: 900px) {
+  .Cprelude {
+    padding-top: 7rem;
+  }
+  .Cprelude__title {
+    text-align: center;
+  }
+  .Cprelude__right {
+    justify-items: center;
+  }
+  .Cprelude__subtitle {
+    text-align: center;
+  }
+  .Cprelude__content {
+    margin-inline: auto;
+    padding: 2rem;
+  }
+  .Cprelude__gallery img {
+    display: none;
+  }
+  .Cprelude__hero {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+  }
+}
+.endurance {
+  background: #010101;
+  color: #ECECE7;
+}
+.endurance__content {
+  margin-top: 0;
+  gap: 2rem;
+}
+.endurance__title {
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  .endurance__title {
+    text-align: start;
+  }
+}
+.endurance__subtitle {
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  .endurance__subtitle {
+    text-align: start;
+  }
+}
+
+/* =========================
+   COMPÉTITION — ENDURANCE
+   vidéo à gauche + panneau noir à droite
+========================= */
+.endurance {
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow: hidden;
+  background: #010101;
+  color: #ECECE7;
+}
+
+/* Vidéo fond (côté gauche) */
+.endurance__bg {
+  position: absolute;
+  inset: 0 auto 0 0;
+  padding-left: 7rem;
+  padding-top: 5rem;
+  width: 40%;
+  /* border-radius: 43px; */
+  -o-object-fit: cover;
+  object-fit: cover;
+  z-index: 0;
+  filter: saturate(1.05) contrast(1.05);
+}
+@media (max-width: 900px) {
+  .endurance__bg {
+    width: 100%;
+    height: 45vh;
+    padding-left: 0;
+  }
+}
+
+/* Panneau noir à droite */
+.endurance__panel {
+  margin-left: 0;
+  width: 100%;
+  min-height: auto;
+  padding: 3.5rem 2rem 4rem;
+  margin-top: 45vh; /* le panneau commence après la vidéo */
+}
+@media (min-width: 1025px) {
+  .endurance__panel {
+    position: relative;
+    z-index: 2;
+    margin-left: 45%;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+}
+
+/* Titres */
+@media (min-width: 1025px) {
+  .endurance__title {
+    margin: 0;
+    text-transform: uppercase;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (min-width: 1025px) {
+  .endurance__subtitle {
+    margin: 0;
+    text-transform: uppercase;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* Texte */
+.endurance__content {
+  padding: 2rem 0;
+}
+@media (min-width: 1025px) {
+  .endurance__content {
+    padding-left: 7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    align-items: flex-start;
+  }
+  .endurance__content p {
+    margin: 0;
+    line-height: 1.55;
+    opacity: 0.92;
+  }
+}
+
+/* Optionnel : image 917 par-dessus le panneau */
+.endurance__img {
+  margin-top: 1rem;
+  pointer-events: none;
+}
+.endurance__img img {
+  width: min(520px, 100%);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
+}
+
+/* =========================
+   COMPÉTITION — RALLYE
+========================= */
+.rallye {
+  padding: 0 2rem;
+}
+@media (min-width: 1025px) {
+  .rallye {
+    padding: 0;
+  }
+}
+.rallye__title {
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  .rallye__title {
+    text-align: start;
+    padding-left: 7rem;
+  }
+}
+.rallye__title2 {
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  .rallye__title2 {
+    text-align: start;
+  }
+}
+.rallye__content {
+  padding: 0 0 5rem 0;
+  gap: 2rem;
+}
+@media (min-width: 1025px) {
+  .rallye__content {
+    margin-top: -35rem;
+    padding-left: 7rem;
+    align-items: flex-start;
+  }
+}
+.rallye__img {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rem;
+}
+@media (min-width: 1025px) {
+  .rallye__img {
+    align-items: flex-end;
+    margin-top: 0;
+  }
+}
+@media (min-width: 1025px) {
+  .rallye__img img {
+    inline-size: 55%;
+    margin-top: -4rem;
+  }
+}
+
+.videoComp video {
+  opacity: 1 !important;
+  transform: translateY(-30px);
+}
+
+.videoComp::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+}
+
+.gt__title2 {
+  padding-bottom: 2rem;
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  .gt__title2 {
+    padding-bottom: 0;
+  }
+}
+.gt__img {
+  top: 0;
+}
+.gt__content {
+  gap: 2rem;
+}
+@media (min-width: 1025px) {
+  .gt__content {
+    gap: 5rem;
+  }
+}
+
+.hybrides__title {
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  .hybrides__title {
+    text-align: start;
+  }
+}
+@media (min-width: 1025px) {
+  .hybrides__content {
+    margin-top: -30rem;
+  }
+}
+.hybrides__img img {
+  margin-top: 1rem;
+}
+@media (min-width: 1025px) {
+  .hybrides__img img {
+    margin-top: 0 !important;
+  }
+}
+
+.monoplace__content {
+  padding-bottom: 0;
+}
+@media (min-width: 1025px) {
+  .monoplace__img {
+    top: 0;
+    left: 7rem;
+  }
+}
+
+.monoplace {
+  /* ============ Bloc "F" (MP4/2) ============ */
+  /* grande image (profil voiture) */
+  /* 2 vignettes */
+  /* colonne texte : je ne touche PAS aux <p> */
+  /* ============ Desktop ============ */
+}
+.monoplace__img {
+  top: 0;
+}
+.monoplace__img img {
+  width: 80%;
+  padding-left: 3rem;
+}
+.monoplace__F {
+  margin-top: clamp(22px, 3vw, 34px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  align-items: center;
+  border-radius: 12px;
+  padding: clamp(14px, 2vw, 24px);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 5rem;
+}
+.monoplace__Fleft {
+  display: grid;
+  gap: 14px;
+  justify-content: center;
+}
+.monoplace__Fimg {
+  display: flex;
+  justify-content: center;
+}
+.monoplace__Fimg img {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  display: block;
+  -o-object-fit: contain;
+     object-fit: contain;
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.12));
+}
+.monoplace__imgM {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  max-width: 640px;
+}
+.monoplace__imgM img {
+  width: 100%;
+  height: 140px;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+.monoplace__Fcontent {
+  margin: auto;
+}
+.monoplace__Fcontent p {
+  max-width: 36ch;
+  font-size: 22px;
+}
+@media (min-width: 1025px) {
+  .monoplace__F {
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(31px, 5rem, 60px);
+    padding-left: 7rem;
+    padding-bottom: 5rem;
+  }
+  .monoplace__Fcontent {
+    padding-top: 28px;
+  }
+  .monoplace__Fcontent p {
+    max-width: 36ch;
+    font-size: 22px;
+  }
+  .monoplace__Fimg img {
+    max-width: 720px;
+  }
+  .monoplace__imgM {
+    max-width: 720px;
+  }
+  .monoplace__imgM img {
+    height: 150px;
+  }
+}
+
+/* CONCLUSION — COMPÉTITION*/
+.conclusion {
+  position: relative;
+  inline-size: min(100%, var(--vw-safe));
+  overflow: hidden;
+  background: url("../images/img-conclusion.jpg") center/cover no-repeat;
+  color: #ECECE7;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 1.5rem;
+  /* Desktop */
+}
+.conclusion::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  z-index: 0;
+}
+.conclusion > * {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 58ch;
+}
+.conclusion__title {
+  margin: 0 0 1.5rem 0;
+  text-transform: uppercase;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: clamp(2.2rem, 7vw, 3.2rem);
+}
+.conclusion p {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(1.05rem, 3.2vw, 1.2rem);
+  line-height: 1.55;
+  opacity: 0.92;
+}
+.conclusion p + p {
+  margin-top: 1.3rem;
+}
+.conclusion__title,
+.conclusion p {
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+}
+@media (min-width: 1025px) {
+  .conclusion {
+    min-height: 100vh;
+    padding: 7rem 2rem;
+    /* Overlay un peu plus doux sur grand écran */
+  }
+  .conclusion > * {
+    max-width: 70ch;
+  }
+  .conclusion__title {
+    font-size: clamp(3rem, 4vw, 4.2rem);
+    margin-bottom: 2rem;
+  }
+  .conclusion p {
+    font-size: 26px;
+  }
+  .conclusion p + p {
+    margin-top: 1.6rem;
+  }
+  .conclusion::before {
+    background: rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* =========================
+   COMP NOW - Porsche aujourd'hui
+   ========================= */
+#now.compNow {
+  /* ========== MEDIA COLUMN ========== */
+  /* IMPORTANT : on garde compNow__img comme classe base */
+  /* ========== TEXT COLUMN ========== */
+  /* “Piliers” façon éditorial racing : un trait, pas une card */
+  /* ========== DESKTOP ========== */
+}
+#now.compNow .compNow__layout {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+#now.compNow .compNow__media {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+@media (min-width: 821px) {
+  #now.compNow .compNow__media {
+    margin: 1rem 5rem 2rem 5rem;
+  }
+}
+@media (min-width: 1025px) {
+  #now.compNow .compNow__media {
+    margin: 0;
+  }
+}
+#now.compNow .compNow__mediaTop {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+#now.compNow .compNow__img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  /* overlay discret premium (comme sur tes visuels) */
+}
+#now.compNow .compNow__img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#now.compNow .compNow__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+}
+#now.compNow .compNow__img--small {
+  height: 150px; /* mobile */
+}
+#now.compNow .compNow__img--main {
+  height: 260px; /* mobile */
+}
+#now.compNow .compNow__title2 {
+  margin-bottom: 1.4rem;
+  padding-left: 2rem;
+}
+#now.compNow .compNow__content {
+  /* évite les effets "colonne bizarre" : on force une lecture clean */
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+}
+@media (min-width: 1025px) {
+  #now.compNow .compNow__content {
+    align-items: flex-start;
+  }
+}
+#now.compNow .compNow__lead {
+  margin-bottom: 1.6rem;
+}
+#now.compNow .compNow__pillars {
+  display: grid;
+  gap: 1.8rem;
+  margin-top: 1.2rem;
+}
+#now.compNow .compNow__pillar-title {
+  margin: 0;
+}
+#now.compNow .compNow__pillar p {
+  margin-top: 0.65rem;
+}
+#now.compNow .compNow__signature {
+  margin-top: 2.2rem !important;
+  font-weight: bold;
+}
+#now.compNow .compNow__title {
+  text-align: center;
+}
+@media (min-width: 1025px) {
+  #now.compNow .compNow__media {
+    padding-left: 7rem;
+  }
+  #now.compNow .compNow__title {
+    padding-bottom: 3rem;
+  }
+  #now.compNow .compNow__layout {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: start;
+    gap: 4rem;
+  }
+  #now.compNow .compNow__img--small {
+    height: 170px;
+  }
+  #now.compNow .compNow__img--main {
+    height: 520px; /* gros visuel comme dans ta capture */
+  }
+  #now.compNow .compNow__right {
+    padding-top: 0.4rem;
+  }
+}
+
+@font-face {
+  font-family: "911 Porscha";
+  src: url("/assets/fonts/911porschav3.ttf") format("truetype");
+  src: url("../fonts/911porschav3.ttf") format("truetype");
+}
+/* =========================================================
+   RESET + GARDE-FOUS ANTI OVERFLOW HORIZONTAL
+   ========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables globales */
+:root {
+  --header-h: 100px; /* mets la hauteur réelle de .navbar */
+  --vw-safe: 100dvw; /* évite le débordement dû à la scrollbar */
+}
+
+/* Ancrages : marge de scroll sous le header fixe */
+[id] {
+  scroll-margin-top: 120px; /* ajuste selon la hauteur de ton header */
+}
+
+/* Empêche le scroll horizontal parasite au niveau racine */
+html, body {
+  overflow-x: clip;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   TYPO
+   ========================================================= */
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+}
+@media (min-width: 1025px) {
+  h1 {
+    font-size: 128px;
+  }
+}
+
+h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+}
+@media (min-width: 1025px) {
+  h2 {
+    font-size: 64px;
+  }
+}
+
+h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+@media (min-width: 821px) {
+  p {
+    font-size: 16px;
+  }
+}
+
+.cta {
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* =========================================================
+   LAYOUT GLOBAL
+   ========================================================= */
+body {
+  font-family: "Oswald", sans-serif;
+  margin: 0;
+  background: #010101;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Conteneurs flex susceptibles de forcer la largeur : on permet la compression */
+.footer-content, .footer-columns, .footer-bottom {
+  min-inline-size: 0;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  justify-content: space-between;
+  -webkit-font-smoothing: antialiased;
+}
+.navbar__logo {
+  flex: 1;
+}
+.navbar__logo img {
+  height: 50px;
+  width: auto;
+  display: block;
+  max-width: 100%;
+}
+.navbar__toggle {
+  display: block;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: transform 0.3s;
+  color: #D21F1B;
+}
+.navbar__toggle.open {
+  content: "✖";
+}
+@media (min-width: 821px) {
+  .navbar__toggle {
+    display: none;
+  }
+}
+.navbar__links {
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: rgba(0, 0, 0, 0.85);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  padding: 1rem;
+  text-align: center;
+  justify-content: space-evenly;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.navbar__links.active {
+  display: flex;
+  transform: translateY(0);
+  pointer-events: all;
+}
+@media (min-width: 821px) {
+  .navbar__links {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    width: auto;
+    background: transparent;
+    padding: 0;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+.navbar__links li {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.navbar__links li.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (min-width: 821px) {
+  .navbar__links li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.navbar__links a {
+  padding: 1rem;
+  text-decoration: none;
+  color: #ECECE7;
+  transition: color 0.3s;
+}
+.navbar__links a.active {
+  border-radius: 8px;
+  -webkit-text-decoration: underline #FFD700;
+          text-decoration: underline #FFD700;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+.navbar__links a:hover {
+  color: #FFD700;
+}
+@media (min-width: 821px) {
+  .navbar__links a {
+    padding: 0.5rem 1rem;
+    color: #ECECE7;
+  }
+}
+.navbar__links .quiz-btn {
+  background-color: #D21F1B;
+  color: #ECECE7;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.navbar__links .quiz-btn:hover {
+  background-color: #FFD700;
+  color: #010101;
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+main {
+  /* remplace width: 100vw; par une largeur sûre */
+  inline-size: min(100%, var(--vw-safe));
+  padding: 2rem 0;
+  margin-bottom: -2rem;
+  /* évite le scroll horizontal parasite sans couper le vertical */
+  overflow-x: clip;
+  overflow-y: visible;
+}
+@media (min-width: 821px) {
+  main {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+}
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+.event {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.event:hover {
+  background: red;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer {
+  position: relative;
+  background: url("../images/footer-bg.jpg") no-repeat center/cover;
+  color: #ECECE7;
+  overflow: hidden;
+  padding: 3rem 1.5rem 2rem;
+  /* remplace width: 100vw; par une largeur sûre */
+  inline-size: min(100%, var(--vw-safe));
+  margin-bottom: -1rem;
+}
+.site-footer .footer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 0;
+}
+.site-footer .footer-top-line {
+  height: 2px;
+  background-color: #ffcc00;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.site-footer .footer-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.site-footer .footer-content .footer-columns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5rem;
+  margin-bottom: 2rem;
+}
+.site-footer .footer-content .footer-columns .footer-column h2 {
+  color: #ffcc00;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.site-footer .footer-content .footer-columns .footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.site-footer .footer-content .footer-columns .footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+.site-footer .footer-content .footer-columns .footer-column ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.site-footer .footer-content .footer-columns .footer-column ul li a:hover {
+  color: #ffcc00;
+}
+.site-footer .footer-content .footer-anchors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.site-footer .footer-content .footer-anchors a {
+  color: #fff;
+  text-decoration: none;
+}
+.site-footer .footer-content .footer-anchors a:hover {
+  color: #ffcc00;
+}
+.site-footer .footer-content .footer-divider {
+  height: 2px;
+  width: 100%;
+  background-color: #ffcc00;
+  margin: 1rem 0;
+  transform-origin: center;
+  transform: scaleX(0);
+}
+.site-footer .footer-content .footer-bottom {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.site-footer .footer-content .footer-bottom .footer-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.site-footer .footer-content .footer-bottom .footer-copyright {
+  position: absolute;
+  right: 0;
+  bottom: -1.5rem;
+  font-size: 0.75rem;
+  color: #ccc;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+.fade-up-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: none;
+}
+
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+}/*# sourceMappingURL=app.css.map */

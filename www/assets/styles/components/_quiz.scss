@@ -1,0 +1,379 @@
+/* ======================================================
+   SECTION ACCUEIL (intro du quiz)
+   ====================================================== */
+   .quiz-section {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $carrara-white;
+    margin-top: -3.5rem;
+    background-image: url(../images/porsche-new-interieur.jpg);
+    position: relative;
+  
+    @media (min-width: $breakpoint-desktop) {
+      justify-content: start;
+    }
+  
+    &__overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6); /* effet sombre */
+      z-index: 1;
+    }
+  
+    &__content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+  
+      h1 {
+        font-family: 'Porsche Next', sans-serif;
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.1;
+      }
+  
+      @media (min-width: $breakpoint-desktop) {
+        padding: 2rem 8rem;
+      }
+    }
+  }
+  
+  
+  /* ======================================================
+     SECTION QUIZ — CADRAN + QUESTIONS
+     ====================================================== */
+  
+  .question-quiz {
+    background: url('../images/compteur-armature.png') center/cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $carrara-white;
+    margin-top: -3.5rem;
+    position: relative;
+    text-align: center;
+  }
+  
+  .quiz-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1600px;
+    padding: 2rem 5vw;
+    position: relative;
+    z-index: 2;
+  
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem 1rem;
+    }
+  }
+  
+  /* Safari/Firefox : autoriser le shrink */
+  .question-quiz .quiz-left,
+  .question-quiz .quiz-center,
+  .question-quiz .quiz-right {
+    min-width: 0;
+    flex-shrink: 1;
+  }
+  
+  
+  /* ======================================================
+     COLONNE GAUCHE — QUESTIONS
+     ====================================================== */
+  .quiz-left {
+    width: 30%;
+    font-family: "Porsche Next", sans-serif;
+    text-transform: uppercase;
+    line-height: 1.35;
+  
+    p {
+      font-size: clamp(1.1rem, 2vw, 2rem);
+    }
+  
+    @media (max-width: 1024px) {
+      width: 90%;
+      text-align: center;
+    }
+  }
+  
+  
+  /* ======================================================
+     CENTRE — CADRAN XXL + AIGUILLE
+     ====================================================== */
+  
+  /* Nouvelle version améliorée — cadran large */
+  .quiz-center {
+    position: relative;
+    flex: 0 0 auto;
+  
+    /* ⭐ Diamètre plus large, style capture 2 ⭐ */
+    width: clamp(300px, 40vw, 650px);
+    aspect-ratio: 1 / 1;
+  
+    isolation: isolate;
+    z-index: 2;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    @media (max-width: 768px) {
+      order: -1;
+      margin-bottom: .25rem;
+  
+      /* Mobile élargi mais maîtrisé */
+      width: clamp(240px, 60vw, 380px);
+    }
+  
+    @supports not (aspect-ratio: 1/1) {
+      &::before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+      }
+    }
+  }
+  
+  /* Bloc cadran */
+  .dial {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Petit centre métallique (optionnel) */
+  .dial::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f5f5f5 0%, #d0d0d0 60%, #777 100%);
+    transform: translate(-50%, -50%);
+    z-index: 4;
+  }
+  
+  /* PNG du cadran */
+  .dial-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* Aiguille */
+  .needle {
+    position: absolute;
+    top: 37%;
+    left: 0%;
+    width: 70%;
+    height: auto;
+    pointer-events: none;
+    z-index: 3;
+  
+    /* ⭐ TES VALEURS ORIGINALES ⭐ */
+    transform-origin: 72% 32%;
+    // transform: translate(-50%, -50%) rotate(var(--angle, 0deg));
+  
+    transition: transform .5s ease-in-out;
+  }
+  
+  /* Compteur numérique */
+  .counter-display {
+    position: absolute;
+    left: 50%;
+    // bottom: 15%;
+    bottom: 32%;
+    transform: translateX(-50%);
+    color: $carrara-white;
+    font-family: 'Porsche Next', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2vw, 2.25rem);
+    z-index: 4;
+  
+    @media (min-width: 1921px) {
+      bottom: 18%;
+    }
+  }
+  
+  
+  /* ======================================================
+     COLONNE DROITE — RÉPONSES
+     ====================================================== */
+  .quiz-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    width: 25%;
+  
+    @media (max-width: 1024px) {
+      width: 90%;
+      align-items: stretch;
+    }
+  }
+  
+  .answer-btn {
+    position: relative;
+    background: transparent;
+    border: 1px solid $carrara-white;
+    padding: 0.8rem 1.5rem;
+    color: $carrara-white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Porsche Next', sans-serif;
+    transition: background .3s ease, color .3s ease, transform .2s ease;
+  
+    &:hover {
+      background: $yellow;
+      color: $black;
+      transform: translateY(-2px);
+    }
+  
+    &.correct {
+      background-color: #2ecc71;
+      color: #fff !important;
+      border-color: #2ecc71;
+  
+      &::after {
+        content: '✔';
+        position: absolute;
+        right: 1.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+      }
+    }
+  
+    &.wrong {
+      background-color: #e74c3c;
+      color: #fff !important;
+      border-color: #e74c3c;
+  
+      &::after {
+        content: '✖';
+        position: absolute;
+        right: 1.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+      }
+    }
+  
+    &:disabled {
+      cursor: default;
+      opacity: .9;
+    }
+  }
+  
+  
+  /* ======================================================
+     ÉCRAN DE RÉSULTATS
+     ====================================================== */
+  .result-quiz {
+    background: #111 url('../images/porsche-fin-new.png') center/cover no-repeat;
+    min-height: 100vh;
+    color: $carrara-white;
+    padding: 4rem 2rem;
+    text-align: center;
+    font-family: 'Porsche Next', sans-serif;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    h2 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+    }
+  }
+  
+  .result-containe {
+    line-height: 4rem;
+  }
+  
+  .result-quiz.hidden {
+    display: none;
+  }
+  
+  .restart-quiz {
+    background: #FFD700;
+    color: #000;
+    padding: .8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 700;
+    transition: background .3s ease;
+    margin-top: 1.25rem;
+  
+    &:hover {
+      background: #e6c200;
+    }
+  }
+  
+  
+  /* ======================================================
+     RÉCOMPENSES
+     ====================================================== */
+  .reward-section {
+    margin-top: 2rem;
+    text-align: center;
+  
+    h3 {
+      margin-bottom: 1rem;
+      font-family: 'Porsche Next', sans-serif;
+      color: $carrara-white;
+    }
+  
+    .reward-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  
+    .reward-btn {
+      background: #FFD700;
+      color: #000;
+      padding: .8rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 700;
+      transition: background .3s ease;
+  
+      &:hover {
+        background: #e6c200;
+      }
+  
+      &.hidden {
+        display: none;
+      }
+    }
+  
+    .encouragement {
+      color: $carrara-white;
+      font-size: clamp(1.1rem, 2vw, 1.875rem);
+      font-weight: bold;
+    }
+  }
+  

@@ -1,0 +1,390 @@
+/* Utilitaire global au besoin (OK si déjà défini ailleurs) */
+:root { --vw-safe: 100dvw; }
+
+.comparo {
+  display: flex;
+  flex-direction: column;
+  min-height: 55vh;
+  background: $carrara-white;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  /* largeur sûre + anti débordement horizontal */
+  inline-size: min(100%, var(--vw-safe));
+  overflow-x: clip;
+
+  @media (min-width: $breakpoint-tablet){
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+
+  &__h2 {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  /* ===== Zones de comparaison ===== */
+  .comparo-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+
+    /* Empêche un enfant flex de forcer la largeur */
+    min-inline-size: 0;
+
+    .comparo-slot {
+      flex: 1;
+      border: 2px dashed #ccc;
+      padding: 1rem;
+      min-height: 250px;
+      border-radius: 12px;
+      background: $gray-light;
+      transition: background 0.3s, border-color 0.3s;
+      max-height: 320px; // mobile
+      overflow-y: auto;
+
+      /* sécurise largeur interne */
+      inline-size: 100%;
+      min-inline-size: 0;
+
+      &:hover { background: darken($gray-light, 3%); }
+
+      .comparo-slot-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: .5rem;
+        margin-bottom: 1rem;
+
+        p { margin: 0; font-weight: 700; }
+
+        .comparo-reset-btn {
+          background: transparent;
+          border: none;
+          color: #999;
+          font-size: 1.2rem;
+          cursor: pointer;
+          padding: .25rem .35rem;
+          border-radius: 6px;
+          transition: color .2s, background .2s;
+
+          &:hover {
+            color: #d32626;
+            background: rgba(0,0,0,.06);
+          }
+        }
+      }
+
+      .comparo-info {
+        display:block;
+        color:#111;
+        line-height:1.35;
+        min-height: 120px;
+
+        &:empty::before {
+          content: "Cliquez un modèle";
+          color: #666;
+        }
+
+        img {
+          width: 100%;
+          max-width: 100%;
+          display: block;
+          max-height: 160px;
+          object-fit: cover;
+          border-radius: 10px;
+          margin-bottom: 1rem;
+          background: $white;
+        }
+
+        h3 {
+          margin: .5rem 0 .25rem;
+          font-size: 1.35rem;
+          color: $black;
+        }
+
+        p {
+          margin: .25rem 0;
+          font-size: 1rem;
+
+          span.better { color: #0a7f2e; font-weight: 700; }
+          span.worse  { color: #d32626; font-weight: 700; }
+        }
+      }
+    }
+  }
+
+  /* ===== Liste des modèles / slider ===== */
+  .comparo-list {
+    order: 2;
+    width: 100%;
+    color: $black;
+    padding: 1rem 2rem 1.5rem;
+
+    /* évite qu’un contenu interne force la largeur */
+    min-inline-size: 0;
+
+    .comparo-title { display: none; }
+
+    .comparo-selector {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: .75rem;
+      width: 100%;
+
+      /* garde-fou overflow horizontal local */
+      overflow-x: clip;
+
+      .comparo-viewport {
+        scrollbar-width: thin;
+        scrollbar-color: $yellow transparent;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+
+        /* confinement largeur */
+        inline-size: 100%;
+        max-inline-size: 100%;
+
+        &::-webkit-scrollbar { height: 8px; }
+        &::-webkit-scrollbar-track { background: transparent; }
+        &::-webkit-scrollbar-thumb {
+          background: $yellow;
+          border-radius: 4px;
+          &:hover { background: $yellow-hover; }
+        }
+      }
+
+      .comparo-track {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 12px;
+        list-style: none;
+        /* évite que les margins créent un débordement hors viewport */
+        margin: 0 1rem;
+        padding: .25rem;
+        overflow: visible;
+        scroll-snap-type: x mandatory;
+
+        &::-webkit-scrollbar { display: none; }
+
+        li {
+          scroll-snap-align: center;
+          flex: 0 0 auto;
+          width: clamp(140px, 26vw, 220px);
+          position: relative;
+          background: $gray-mid;
+          border-radius: 16px;
+          padding: 14px 14px 16px;
+          color: $black;
+          border: 1px solid $gray-border;
+          box-shadow: 0 1px 2px rgba(0,0,0,.04);
+          cursor: pointer;
+          user-select: none;
+          transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          /* empêche les cartes de pousser la ligne */
+          min-inline-size: 0;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,.12);
+            border-color: rgba(0,0,0,.12);
+          }
+
+          .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: $white;
+            color: $black;
+            font-size: .8rem;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 10px;
+            box-shadow: 0 1px 2px rgba(0,0,0,.06);
+            border: 1px solid $gray-border;
+          }
+
+          .check {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            font-size: 1rem;
+            color: $black;
+            opacity: 0;
+            transform: scale(.9);
+            transition: opacity .15s, transform .15s;
+          }
+
+          .thumb {
+            /* centrage sans translateX qui peut déborder */
+            display: block;
+            margin-inline: auto;
+            width: 100%;
+            aspect-ratio: 16/6;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-top: 2rem;
+          }
+
+          .title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin: 2px 0 0;
+          }
+
+          &.active-model {
+            background: $white;
+            border-color: $gray-border-strong;
+            box-shadow: 0 8px 22px rgba(0,0,0,.12);
+            transform: translateY(-1px);
+
+            .check { opacity: 1; transform: scale(1); }
+            .badge { background: #eef1f5; border-color: rgba(0,0,0,.08); }
+            .title { color: $black; text-shadow: 0 1px 0 rgba(255,255,255,.35); }
+          }
+        }
+      }
+
+      .comparo-nav {
+        appearance: none;
+        border: none;
+        background: $white;
+        color: $black;
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        box-shadow: 0 2px 8px rgba(0,0,0,.15);
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 700;
+        display: grid;
+        place-items: center;
+        transition: transform .1s ease, background .2s ease, opacity .2s ease;
+
+        &:hover { background: $yellow-hover; }
+        &:disabled { opacity: .35; cursor: default; }
+
+        /* supprime les marges négatives (source potentielle de débordement) */
+        &.comparo-prev { margin-left: 0; }
+        &.comparo-next { margin-right: 0; }
+      }
+    }
+
+    .comparo-reset-all {
+      margin-top: 2rem;
+      text-align: center;
+
+      .comparo-reset-all-btn {
+        display: inline-block;
+        background: $gentiane-blue;
+        color: $white;
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+        &:hover {
+          background: $yellow-hover;
+          color: $black;
+          box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+          transform: translateY(-2px);
+        }
+        &:active {
+          transform: translateY(0);
+          box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+      }
+    }
+  }
+}
+
+/* =========================
+   MEDIA QUERIES
+========================= */
+@media (min-width: 768px) {
+  .comparo {
+    .comparo-area {
+      flex-direction: row;
+      gap: 1.5rem;
+      padding: 1.25rem 1.5rem 0;
+
+      .comparo-slot {
+        max-height: none;
+        overflow: visible;
+      }
+    }
+
+    .comparo-title {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin: 0 0 .75rem;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .comparo {
+    .comparo-area {
+      gap: 2rem;
+      padding: 2rem 2rem 1rem;
+    }
+
+    .comparo-list {
+      order: 2;
+      width: 100%;
+      padding: 1rem 2rem 2rem;
+
+      .comparo-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+/* Ghost (aperçu qui suit la souris pendant le drag) */
+.comparo-ghost {
+  position: fixed;
+  inset: 0 auto auto 0;
+  transform: translate(-9999px, -9999px);
+  pointer-events: none;
+  z-index: 9999;
+  width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  background: #fff;
+  padding: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    max-width: 100%;
+  }
+
+  .title {
+    font: 700 14px/1.3 system-ui, sans-serif;
+    margin-top: 6px;
+  }
+}
+
+/* Highlight de la case quand on survole avec un modèle */
+.comparo-slot.comparo-drop-target {
+  outline: 3px solid $yellow; // ta variable jaune Porsche
+  outline-offset: 2px;
+}

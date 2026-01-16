@@ -1,0 +1,439 @@
+@import './utils/variables';
+@import 'components/accueil';
+@import 'components/history';
+@import 'components/quiz';
+@import 'components/slider';
+@import 'components/356';
+@import 'components/credit';
+@import 'components/projet';
+@import 'components/3d-992';
+@import 'components/comparo';
+@import 'components/mini-jeu';
+@import 'components/competition';
+// typo
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display&family=Roboto:wght@400;700&display=swap');
+
+
+@font-face {
+  font-family: '911 Porscha';
+  src: url('/assets/fonts/911porschav3.ttf') format('truetype');
+  src: url('../fonts/911porschav3.ttf') format('truetype');
+
+
+}
+
+
+/* =========================================================
+   RESET + GARDE-FOUS ANTI OVERFLOW HORIZONTAL
+   ========================================================= */
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Variables globales */
+  :root {
+    --header-h: 100px;              /* mets la hauteur réelle de .navbar */
+    --vw-safe: 100dvw;              /* évite le débordement dû à la scrollbar */
+  }
+  
+  /* Ancrages : marge de scroll sous le header fixe */
+  [id] {
+    scroll-margin-top: 120px; /* ajuste selon la hauteur de ton header */
+  }
+  
+  /* Empêche le scroll horizontal parasite au niveau racine */
+  html, body {
+    overflow-x: clip;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* =========================================================
+     TYPO
+     ========================================================= */
+  
+  h1 {
+    font-family: $font-title;
+    font-size: 44px;
+    font-weight: 700;
+  
+    @media (min-width: $breakpoint-desktop) {
+      font-size: 128px;
+    }
+  }
+  
+  h2 {
+    font-family: $font-title;
+    font-size: 40px;
+    font-weight: 700;
+  
+    @media (min-width: $breakpoint-desktop) {
+      font-size: 64px;
+    }
+  }
+  
+  h3 {
+    font-family: $font-title;
+    font-size: 36px;
+    font-weight: 700;
+  }
+  
+  p {
+    font-family: $font-text;
+    font-size: 12px;
+    font-weight: 400;
+  
+    @media (min-width: $breakpoint-tablet){
+      font-size: 16px;
+    }
+  }
+  
+  .cta {
+    font-family: $font-cta;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  /* =========================================================
+     LAYOUT GLOBAL
+     ========================================================= */
+  
+  body {
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    background: $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // padding: 1rem;
+  }
+  
+  /* Conteneurs flex susceptibles de forcer la largeur : on permet la compression */
+  .footer-content, .footer-columns, .footer-bottom {
+    min-inline-size: 0;
+  }
+  
+  /* =========================================================
+     NAVBAR
+     ========================================================= */
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: space-between;
+
+    -webkit-font-smoothing: antialiased;
+  
+    &__logo {
+      flex: 1; // occupe la colonne gauche
+      img {
+        height: 50px; // adapte la taille
+        width: auto;
+        display: block;
+        max-width: 100%;
+      }
+    }
+  
+    &__toggle {
+      display: block;
+      cursor: pointer;
+      font-size: 2rem;
+      transition: transform 0.3s;
+      color: $indian-red;
+  
+      &.open {
+        content: '✖';
+      }
+  
+      @media (min-width: $breakpoint-tablet) {
+        display: none;
+      }
+    }
+  
+    &__links {
+      list-style: none;
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: rgba(0, 0, 0, 0.85);
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      height: 100vh;
+      padding: 1rem;
+      text-align: center;
+      justify-content: space-evenly;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+  
+      &.active {
+        display: flex;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+  
+      @media (min-width: $breakpoint-tablet) {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: static;
+        width: auto;
+        background: transparent;
+        padding: 0;
+        height: fit-content;
+      }
+  
+      li {
+        display: inline-block;
+  
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+  
+        &.show {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        @media (min-width: $breakpoint-tablet) {
+          opacity: 1;
+          transform: translateY(0);
+        }
+  
+        // @media (min-width: $breakpoint-desktop) {
+        //   opacity: 1;
+        //   transform: translateY(0);
+        // }
+      }
+  
+      a {
+        padding: 1rem;
+        text-decoration: none;
+        color: $carrara-white;
+        transition: color 0.3s;
+  
+        &.active {
+          border-radius: 8px;
+          text-decoration: underline $yellow;
+          text-underline-offset: 6px;
+          text-decoration-thickness: 2px;
+        }
+  
+        &:hover {
+          color: $yellow;
+        }
+  
+        @media (min-width: $breakpoint-tablet) {
+          padding: 0.5rem 1rem;
+          color: $carrara-white;
+        }
+      }
+  
+      .quiz-btn {
+        background-color: $indian-red;
+        color: $carrara-white;
+        border-radius: 5px;
+        font-weight: bold;
+        font-family: $font-title;
+        font-size: 20px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  
+        &:hover {
+          background-color: $yellow;
+          color: $black;
+        }
+      }
+    }
+  }
+  
+  /* =========================================================
+     MAIN
+     ========================================================= */
+  
+  main {
+    /* remplace width: 100vw; par une largeur sûre */
+    inline-size: min(100%, var(--vw-safe));
+    padding: 2rem 0;
+    margin-bottom: -2rem;
+  
+    /* évite le scroll horizontal parasite sans couper le vertical */
+    overflow-x: clip;
+    overflow-y: visible;
+  
+    @media (min-width: $breakpoint-tablet){
+      overflow-x: clip;
+      overflow-y: visible;
+    }
+  }
+  
+  /* =========================================================
+     ELEMENTS
+     ========================================================= */
+  
+  .event {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+  
+    &:hover {
+      background: red;
+    }
+  }
+  
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  
+  .site-footer {
+    position: relative;
+    background: url('../images/footer-bg.jpg') no-repeat center/cover;
+    color: $carrara-white;
+    overflow: hidden;
+    padding: 3rem 1.5rem 2rem;
+  
+    /* remplace width: 100vw; par une largeur sûre */
+    inline-size: min(100%, var(--vw-safe));
+    margin-bottom: -1rem;
+  
+    .footer-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 0;
+    }
+  
+    .footer-top-line {
+      height: 2px;
+      background-color: #ffcc00;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  
+    .footer-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+  
+      .footer-columns {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5rem;
+        margin-bottom: 2rem;
+  
+        .footer-column {
+          h2 {
+            color: #ffcc00;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+          }
+  
+          ul {
+            list-style: none;
+            padding: 0;
+  
+            li {
+              margin-bottom: 0.5rem;
+  
+              a {
+                color: #fff;
+                text-decoration: none;
+  
+                &:hover {
+                  color: #ffcc00;
+                }
+              }
+            }
+          }
+        }
+      }
+  
+      .footer-anchors {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+  
+        a {
+          color: #fff;
+          text-decoration: none;
+  
+          &:hover {
+            color: #ffcc00;
+          }
+        }
+      }
+  
+      .footer-divider {
+        height: 2px;
+        width: 100%;
+        background-color: #ffcc00;
+        margin: 1rem 0;
+        transform-origin: center;
+        transform: scaleX(0); // état initial
+      }
+  
+      .footer-bottom {
+        display: flex;
+        justify-content: center;
+        position: relative;
+  
+        .footer-brand {
+          font-size: 1.8rem;
+          font-weight: bold;
+        }
+  
+        .footer-copyright {
+          position: absolute;
+          right: 0;
+          bottom: -1.5rem;
+          font-size: 0.75rem;
+          color: #ccc;
+        }
+      }
+    }
+  }
+  
+  /* =========================================================
+     ANIMATIONS
+     ========================================================= */
+  
+  .fade-up-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: none;
+  }
+  
+  .fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
